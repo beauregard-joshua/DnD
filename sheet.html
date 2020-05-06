@@ -5570,7 +5570,7 @@ on("change:repeating_armor:newarmorworn", function(values) {
 /**********************************************************************************
 Function that updates the the armor score on a change of value
 **********************************************************************************/
-on("change:repeating_armor:repacitembonus change:repeating_armor:repacitemdex change:repeating_armor:repacitemcheckpenalty change:repeating_armor:acitemspellfailure change:repeating_armor:acitemspeed", function(eventInfo) {
+on("change:repeating_armor:repacitembonus change:repeating_armor:repacitemdex change:repeating_armor:repacitemcheckpenalty change:repeating_armor:repacitemspellfailure change:repeating_armor:repacitemspeed", function(eventInfo) {
     var field = eventInfo.sourceAttribute.slice(40);
     var ID = eventInfo.sourceAttribute.slice(16).slice(0,20);
     getAttrs(["repeating_armor_"+ID+"_newarmorworn"], function(results) {
