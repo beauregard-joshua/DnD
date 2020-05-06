@@ -766,8 +766,70 @@
 												<td colspan="6" class="sheet-statlabel-big-gray" style="font-size: 1.5em; width: 790px;"><span data-i18n="range-two-handed">Range: Two-Handed</span></td>
 											</tr>
 										</table>
-										<!-- Fieldset -->
-										<button type="action" name="act_addonehandrange">Add Two-Handed Range Weapon</button>
+										<fieldset class="repeating_weaponthr">
+											<table cellpadding="0" cellspacing="0">
+												<tr>
+													<td colspan="2" class="sheet-blackbox"> &nbsp; <input type="checkbox" name="attr_equipweaponthrmain" title="equipweaponmain" value="1" style="width: 8px;"> &nbsp; <input class="sheet-weapon-number" type="text" name="attr_weaponthrnumber" title="weaponnumber" style="height: 24px; width: 74px" value="-" readonly> &nbsp; &nbsp; &nbsp; </td>
+													<td colspan="2" class="sheet-statlabel" style="height: 24px; width: 130px;" data-i18n="name">Name</td>
+													<td class="sheet-statlabel" style="height: 24px; width: 42px;" data-i18n="weight">Weight</td>
+													<td class="sheet-statlabel" style="height: 24px; width: 42px;" data-i18n="ammo">Ammo</td>
+													<td class="sheet-statlabel" style="height: 24px; width: 50px;" data-i18n="ammo-weight">Ammo Weight</td>
+													<td colspan="2" class="sheet-statlabel" style="height: 24px; width: 137px;" data-i18n="effects">Effects</td>
+													<td class="sheet-statlabel" style="height: 24px; width: 251px;" data-i18n="notes">Notes</td>
+													<td class="sheet-statlabel" style="height: 24px; width: 20px;" data-i18n="del">Del</td>
+												</tr>
+												<tr>
+													<td colspan="2"><input class="sheet-inputbox" type="text" name="attr_weaponthritem" title="weaponitem" style="height: 24px; width: 130px;"></td>
+													<td colspan="2"><input class="sheet-inputbox" type="text" name="attr_weaponthrname" title="weaponname" style="height: 24px; width: 130px;"></td>
+													<td><input class="sheet-inputbox" type="text" name="attr_weaponthrweight" title="weaponweight" style="height: 24px; width: 42px;" value="0"></td>
+													<td><input class="sheet-inputbox" type="text" name="attr_weaponthrammo" title="weaponammo" style="height: 24px; width: 42px;" value="0"></td>
+													<td><input class="sheet-inputbox" type="text" name="attr_weaponthrammoweight" title="weaponammoweight" style="height: 24px; width: 50px;" value="0"></td>
+													<td colspan="2"><input class="sheet-inputbox" type="text" name="attr_weaponthreffects" title="weaponeffects" style="height: 24px; width: 137px;"></td>
+													<td><input class="sheet-inputbox" type="text" name="attr_weaponthrnotes" title="weaponnotes" style="height: 24px; width: 251px;"></td>
+													<td><input type="checkbox" name="attr_deleteweaponthr" title="deleteweapon" value="1" style="width: 20px;"></td>
+												</tr>
+												<tr>
+													<td class="sheet-statlabel" style="height: 24px; width: 65px;" data-i18n="weapon-enhancement-a" >Weapon Enh</td>
+													<td class="sheet-statlabel" style="width: 65px;" data-i18n="weapon-focus-s" >Weapon<br>Focus</td>
+													<td class="sheet-statlabel" style="width: 65px;" data-i18n="weapon-specialization-as" >Weapon<br>Specialize</td>
+													<td class="sheet-statlabel" style="width: 65px;" data-i18n="reach" >Reach</td>
+													<td colspan="2" class="sheet-statlabel" style="height: 24px; width: 84px;" data-i18n="type" >Type</td>
+													<td class="sheet-statlabel" style="width: 50px;" data-i18n="attack-ability" >Attack Ability</td>
+													<td class="sheet-statlabel" style="width: 50px;" data-i18n="damage-ability" >Damage Ability</td>
+													<td class="sheet-statlabel" style="width: 87px;" data-i18n="critical" >Critical</td>
+													<td class="sheet-statlabel" style="width: 251px;" data-i18n="damage-dice" >Damage Dice</td>
+												</tr>
+												<tr>
+													<td><input class="sheet-inputbox" type="text" name="attr_weaponthrenh" title="enh (affects both attack and damage)" style="height: 24px; width: 65px;" value="0"></td>
+													<td><input class="sheet-inputbox" type="text" name="attr_weaponthrfocus" title="focus (affects only attack)" style="height: 24px; width: 65px;" value="0"></td>
+													<td><input class="sheet-inputbox" type="text" name="attr_weaponthrspecialize" title="specialize (affects only damage)" style="height: 24px; width: 65px;" value="0"></td>
+													<td><input class="sheet-inputbox" type="text" name="attr_weaponthrreach" title="reach" style="height: 24px; width: 65px;" value="5 ft"></td>
+													<td colspan="2"><select class="sheet-inputbox" style="height: 24px; width: 84px; font-size: 0.75em;" name="attr_weaponthrtype" title="weapontype">
+														<option type="text" style="width: 84px;" value="0" data-i18n="piercing" selected>Piercing</option>
+														<option type="text" style="width: 84px;" value="1" data-i18n="slashing" >Slashing</option>
+														<option type="text" style="width: 84px;" value="2" data-i18n="bludgeoning" >Bludgeoning</option>
+														<option type="text" style="width: 84px;" value="3" data-i18n="pierce-slash" >Pierce/Slash</option>
+														<option type="text" style="width: 84px;" value="4" data-i18n="pierce-bludgeon" >Pierce/Bludgeon</option>
+														<option type="text" style="width: 84px;" value="5" data-i18n="slash-bludgeon" >Slash/Bludgeon</option>
+													</select></td>
+													<td><select class="sheet-inputbox" style="height: 24px; width: 50px; font-size: 0.75em;" name="attr_weaponthrstat" title="weaponstat">
+														<option type="text" style="width: 50px;" value="@{str-mod} " data-i18n="strength-a" selected>Str</option>
+														<option type="text" style="width: 50px;" value="@{dex-mod} " data-i18n="dexterity-a" >Dex</option>
+													</select></td>
+													<td><select class="sheet-inputbox" style="height: 24px; width: 50px; font-size: 0.75em;" name="attr_weaponthrdamagestat" title="weapondamagestat">
+														<option type="text" style="width: 50px;" value="@{str-mod} " data-i18n="strength-a" selected>Str</option>
+														<option type="text" style="width: 50px;" value="(floor(@{str-mod}/2))" data-i18n="half-strength" >1/2 Str</option>
+														<option type="text" style="width: 50px;" value="(@{str-mod} +floor(@{str-mod}/2))" data-i18n="strength-and-half-strength" >Str+1/2Str</option>
+														<option type="text" style="width: 50px;" value="@{dex-mod} " data-i18n="dexterity-a" >Dex</option>
+														<option type="text" style="width: 50px;" value="0" data-i18n="none" >None</option>
+													</select></td>
+													<td><input class="sheet-inputbox" type="text" name="attr_weaponthrcritmin" title="weaponcritmin" style="height: 24px; width: 25px;" value="20">-20/x<input class="sheet-inputbox" type="text" name="attr_weaponthrcritmult" title="weaponcritmult" style="height: 24px; width: 19px;" value="2"></td>
+													<td><input class="sheet-inputbox" type="text" name="attr_weaponthrdice" title="weapondice" style="height: 24px; width: 251px;" value="0"></td>
+												</tr>
+											</table>
+											<br/>
+										</fieldset>
+										<button type="action" name="act_addtwohandrange">Add Two-Handed Range Weapon</button>
 									</div>
 								</td>
 							</tr>
@@ -5796,6 +5858,51 @@ on("change:repeating_weaponohr:deleteweaponohr", function(value) {
 			}
             setAttrs(newattr);
             removeRepeatingRow("repeating_weaponohr_"+ID)
+        });
+    });
+});
+
+/**********************************************************************************
+Function that adds a repeating two-handed range weapon to the list
+**********************************************************************************/
+on("clicked:addtwohandrange", function(values) {
+    getSectionIDsOrdered("repeating_weaponthr", function(ids) {
+        var ID = generateRowID();
+        newattr = {};
+        newattr["repeating_weaponthr_"+ID+"_weaponthrnumber"] = "Weapon "+(ids.length+1).toString();
+		newattr["repeating_weaponthr_"+ID+"_equipweaponmain"] = 0;
+        setAttrs(newattr);
+    });
+});
+
+/**********************************************************************************
+Function that deletes a repeating two-handed range weapon and resets the weapon stats if appropriate
+**********************************************************************************/
+on("change:repeating_weaponthr:deleteweaponthr", function(value) {
+	var ID = value.sourceAttribute.slice(20,value.sourceAttribute.length-16);
+    getSectionIDsOrdered("repeating_weaponthr", function(ids) {
+        getAttrs(["repeating_weaponthr_"+ID+"_equipweaponmain"], function(values) {
+            /*for (key in values) {
+				if (typeof values[key] !== undefined) {
+					if (parseInt(values[key]) === 1) {
+						setAttrs({
+							"shieldbonus": 0,
+							"shieldcheckpenalty": 0,
+							"shieldspellfailure": 0
+						});
+					}
+				}
+            }*/
+            var i = 0;
+            while (ids[i] !== ID) {
+                i++;
+			}
+            newattr = {};
+            for (var j = i+1; j < ids.length; j++) {
+				newattr["repeating_weaponthr_"+ids[j]+"_weaponthrnumber"] = "Weapon "+j.toString();
+			}
+            setAttrs(newattr);
+            removeRepeatingRow("repeating_weaponthr_"+ID)
         });
     });
 });
