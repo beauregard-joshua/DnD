@@ -391,5 +391,7 @@
 	"pierce-bludgeon": "Pierce/Bludegon",
 	"slash-bludgeon": "Slash/Bludgeon",
 	"melee-one-handed": "Melee: One-Handed",
-	"melee-two-handed": "Melee: Two-Handed"
+	"melee-two-handed": "Melee: Two-Handed",
+	"range-one-handed": "Range: One-Handed",
+	"range-two-handed": "Range: Two-Handed"
 }
