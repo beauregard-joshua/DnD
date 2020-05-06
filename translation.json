@@ -393,5 +393,7 @@
 	"melee-one-handed": "Melee: One-Handed",
 	"melee-two-handed": "Melee: Two-Handed",
 	"range-one-handed": "Range: One-Handed",
-	"range-two-handed": "Range: Two-Handed"
+	"range-two-handed": "Range: Two-Handed",
+	"ammo": "Ammo",
+	"ammo-weight": "Ammo Weight"
 }
