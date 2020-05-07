@@ -5740,6 +5740,96 @@ on("clicked:addonehandmelee", function(values) {
 });
 
 /**********************************************************************************
+Function that changes the weapon score based on a main-hand one-handed melee weapon being equipped or removed from the main hand
+**********************************************************************************/
+on("change:repeating_weaponohm:equipweaponohmmain", function(values) {
+	if (values.sourceType === "sheetworker") {				//<-- Code executed by sheetworker: ignore
+		return;
+	}
+	if (parseInt(values.newValue,10) === 1) {				//<-- Box checked by a user; update the scores
+		var ID = values.sourceAttribute.slice(20,values.sourceAttribute.length-19);
+		newattr = {};
+		newattr["repeating_weaponohm_"+ID+"_equipweaponohmoff"] = 0;
+		setAttrs(newattr);
+		getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				if (IDs[i] !== ID) {
+					newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmmain"] = 0;
+				}
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponthm", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponthm_"+IDs[i]+"_equipweaponthmmain"] = 0;
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponohr", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponohr_"+IDs[i]+"_equipweaponohrmain"] = 0;
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponthr", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponthr_"+IDs[i]+"_equipweaponthrmain"] = 0;
+			}
+			setAttrs(newattr);
+		});
+	}
+});
+
+/**********************************************************************************
+Function that changes the weapon score based on an off-hand one-handed melee weapon being equipped or removed from the main hand
+**********************************************************************************/
+on("change:repeating_weaponohm:equipweaponohmoff", function(values) {
+	if (values.sourceType === "sheetworker") {				//<-- Code executed by sheetworker: ignore
+		return;
+	}
+	if (parseInt(values.newValue,10) === 1) {				//<-- Box checked by a user; update the scores
+		var ID = values.sourceAttribute.slice(20,values.sourceAttribute.length-18);
+		newattr = {};
+		newattr["repeating_weaponohm_"+ID+"_equipweaponohmmain"] = 0;
+		setAttrs(newattr);
+		getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				if (IDs[i] !== ID) {
+					newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmoff"] = 0;
+				}
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponthm", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponthm_"+IDs[i]+"_equipweaponthmmain"] = 0;
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponohr", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponohr_"+IDs[i]+"_equipweaponohroff"] = 0;
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponthr", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponthr_"+IDs[i]+"_equipweaponthrmain"] = 0;
+			}
+			setAttrs(newattr);
+		});
+	}
+});
+
+/**********************************************************************************
 Function that deletes a repeating ohm weapon and resets the weapon stats if appropriate
 **********************************************************************************/
 on("change:repeating_weaponohm:deleteweaponohm", function(value) {
@@ -5782,6 +5872,50 @@ on("clicked:addtwohandmelee", function(values) {
 		newattr["repeating_weaponthm_"+ID+"_equipweaponmain"] = 0;
         setAttrs(newattr);
     });
+});
+
+/**********************************************************************************
+Function that changes the weapon score based on a two-handed melee weapon being equipped or removed from the main hand
+**********************************************************************************/
+on("change:repeating_weaponthm:equipweaponthmmain", function(values) {
+	if (values.sourceType === "sheetworker") {				//<-- Code executed by sheetworker: ignore
+		return;
+	}
+	if (parseInt(values.newValue,10) === 1) {				//<-- Box checked by a user; update the scores
+		var ID = values.sourceAttribute.slice(20,values.sourceAttribute.length-19);
+		getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmmain"] = 0;
+				newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmoff"] = 0;
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponthm", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				if (IDs[i] !== ID) {
+					newattr["repeating_weaponthm_"+IDs[i]+"_equipweaponthmmain"] = 0;
+				}
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponohr", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponohr_"+IDs[i]+"_equipweaponohrmain"] = 0;
+				newattr["repeating_weaponohr_"+IDs[i]+"_equipweaponohroff"] = 0;
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponthr", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponthr_"+IDs[i]+"_equipweaponthrmain"] = 0;
+			}
+			setAttrs(newattr);
+		});
+	}
 });
 
 /**********************************************************************************
@@ -5831,6 +5965,96 @@ on("clicked:addonehandrange", function(values) {
 });
 
 /**********************************************************************************
+Function that changes the weapon score based on a main-hand one-handed range weapon being equipped or removed from the main hand
+**********************************************************************************/
+on("change:repeating_weaponohr:equipweaponohrmain", function(values) {
+	if (values.sourceType === "sheetworker") {				//<-- Code executed by sheetworker: ignore
+		return;
+	}
+	if (parseInt(values.newValue,10) === 1) {				//<-- Box checked by a user; update the scores
+		var ID = values.sourceAttribute.slice(20,values.sourceAttribute.length-19);
+		newattr = {};
+		newattr["repeating_weaponohr_"+ID+"_equipweaponohroff"] = 0;
+		setAttrs(newattr);
+		getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmmain"] = 0;
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponthm", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponthm_"+IDs[i]+"_equipweaponthmmain"] = 0;
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponohr", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				if (IDs[i] !== ID) {
+					newattr["repeating_weaponohr_"+IDs[i]+"_equipweaponohrmain"] = 0;
+				}
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponthr", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponthr_"+IDs[i]+"_equipweaponthrmain"] = 0;
+			}
+			setAttrs(newattr);
+		});
+	}
+});
+
+/**********************************************************************************
+Function that changes the weapon score based on an off-hand one-handed range weapon being equipped or removed from the main hand
+**********************************************************************************/
+on("change:repeating_weaponohr:equipweaponohroff", function(values) {
+	if (values.sourceType === "sheetworker") {				//<-- Code executed by sheetworker: ignore
+		return;
+	}
+	if (parseInt(values.newValue,10) === 1) {				//<-- Box checked by a user; update the scores
+		var ID = values.sourceAttribute.slice(20,values.sourceAttribute.length-18);
+		newattr = {};
+		newattr["repeating_weaponohr_"+ID+"_equipweaponohrmain"] = 0;
+		setAttrs(newattr);
+		getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmoff"] = 0;
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponthm", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponthm_"+IDs[i]+"_equipweaponthmmain"] = 0;
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponohr", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				if (IDs[i] !== ID) {
+					newattr["repeating_weaponohr_"+IDs[i]+"_equipweaponohroff"] = 0;
+				}
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponthr", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponthr_"+IDs[i]+"_equipweaponthrmain"] = 0;
+			}
+			setAttrs(newattr);
+		});
+	}
+});
+
+/**********************************************************************************
 Function that deletes a repeating one-handed range weapon and resets the weapon stats if appropriate
 **********************************************************************************/
 on("change:repeating_weaponohr:deleteweaponohr", function(value) {
@@ -5873,6 +6097,50 @@ on("clicked:addtwohandrange", function(values) {
 		newattr["repeating_weaponthr_"+ID+"_equipweaponmain"] = 0;
         setAttrs(newattr);
     });
+});
+
+/**********************************************************************************
+Function that changes the weapon score based on a two-handed range weapon being equipped or removed from the main hand
+**********************************************************************************/
+on("change:repeating_weaponthr:equipweaponthrmain", function(values) {
+	if (values.sourceType === "sheetworker") {				//<-- Code executed by sheetworker: ignore
+		return;
+	}
+	if (parseInt(values.newValue,10) === 1) {				//<-- Box checked by a user; update the scores
+		var ID = values.sourceAttribute.slice(20,values.sourceAttribute.length-19);
+		getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmmain"] = 0;
+				newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmoff"] = 0;
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponthm", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponthm_"+IDs[i]+"_equipweaponthmmain"] = 0;
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponohr", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponohr_"+IDs[i]+"_equipweaponohrmain"] = 0;
+				newattr["repeating_weaponohr_"+IDs[i]+"_equipweaponohroff"] = 0;
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponthr", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				if (IDs[i] !== ID) {
+					newattr["repeating_weaponthr_"+IDs[i]+"_equipweaponthrmain"] = 0;
+				}
+			}
+			setAttrs(newattr);
+		});
+	}
 });
 
 /**********************************************************************************
