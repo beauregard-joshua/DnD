@@ -5676,6 +5676,34 @@ on("change:repeating_shield:newshieldworn", function(values) {
 			}
 			setAttrs(newattr);
 		});
+		getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmoff"] = 0;
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponthm", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponthm_"+IDs[i]+"_equipweaponthmmain"] = 0;
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponohr", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponohr_"+IDs[i]+"_equipweaponohroff"] = 0;
+			}
+			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_weaponthr", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_weaponthr_"+IDs[i]+"_equipweaponthrmain"] = 0;
+			}
+			setAttrs(newattr);
+		});
 	}
 	else {										//<-- Box was unchecked by the user. Assign all values to default
 		setAttrs({
@@ -5826,6 +5854,18 @@ on("change:repeating_weaponohm:equipweaponohmoff", function(values) {
 			}
 			setAttrs(newattr);
 		});
+		getSectionIDsOrdered("repeating_shield", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_shield_"+IDs[i]+"_newshieldworn"] = 0;
+			}
+			setAttrs(newattr);
+			setAttrs({
+				"shieldbonus": 0,
+				"shieldcheckpenalty": 0,
+				"shieldspellfailure": 0
+			});
+		});
 	}
 });
 
@@ -5914,6 +5954,18 @@ on("change:repeating_weaponthm:equipweaponthmmain", function(values) {
 				newattr["repeating_weaponthr_"+IDs[i]+"_equipweaponthrmain"] = 0;
 			}
 			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_shield", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_shield_"+IDs[i]+"_newshieldworn"] = 0;
+			}
+			setAttrs(newattr);
+			setAttrs({
+				"shieldbonus": 0,
+				"shieldcheckpenalty": 0,
+				"shieldspellfailure": 0
+			});
 		});
 	}
 });
@@ -6051,6 +6103,18 @@ on("change:repeating_weaponohr:equipweaponohroff", function(values) {
 			}
 			setAttrs(newattr);
 		});
+		getSectionIDsOrdered("repeating_shield", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_shield_"+IDs[i]+"_newshieldworn"] = 0;
+			}
+			setAttrs(newattr);
+			setAttrs({
+				"shieldbonus": 0,
+				"shieldcheckpenalty": 0,
+				"shieldspellfailure": 0
+			});
+		});
 	}
 });
 
@@ -6139,6 +6203,18 @@ on("change:repeating_weaponthr:equipweaponthrmain", function(values) {
 				}
 			}
 			setAttrs(newattr);
+		});
+		getSectionIDsOrdered("repeating_shield", function(IDs) {
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				newattr["repeating_shield_"+IDs[i]+"_newshieldworn"] = 0;
+			}
+			setAttrs(newattr);
+			setAttrs({
+				"shieldbonus": 0,
+				"shieldcheckpenalty": 0,
+				"shieldspellfailure": 0
+			});
 		});
 	}
 });
