@@ -395,5 +395,8 @@
 	"range-one-handed": "Range: One-Handed",
 	"range-two-handed": "Range: Two-Handed",
 	"ammo": "Ammo",
-	"ammo-weight": "Ammo Weight"
+	"ammo-weight": "Ammo Weight",
+	"bab": "BAB",
+	"enh": "Enh",
+	"focus": "Focus"
 }
