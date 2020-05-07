@@ -5979,10 +5979,10 @@ on("change:repeating_weaponthm:equipweaponthmmain", function(values) {
 		return;
 	}
 	if (parseInt(values.newValue,10) === 1) {				//<-- Box checked by a user; update the scores
-		var ID = values.sourceAttribute.slice(20,values.sourceAttribute.length-19);
-		getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
-			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
+    var ID=values.sourceAttribute.slice(20,values.sourceAttribute.length-19);
+    getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
+    newattr={};
+    for (var i=0; i < IDs.length; i++) {
 				newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmmain"] = 0;
 				newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmoff"] = 0;
 			}
@@ -6024,7 +6024,31 @@ on("change:repeating_weaponthm:equipweaponthmmain", function(values) {
 				"shieldspellfailure": 0
 			});
 		});
+		getAttrs(["repeating_weaponthm_"+ID+"_weaponthmenh", "repeating_weaponthm_"+ID+"_weaponthmfocus", "repeating_weaponthm_"+ID+"_weaponthmstat"], function(results) {
+			newattr = {};
+			field = "";
+			for (key in results) {
+				if (key.charAt(key.length-1) === 'h') {
+					field = "weaponenh";
+				}
+				else if (key.charAt(key.length-1) === 's') {
+					field = "weaponfocus";
+				}
+				else {
+					field = "weaponattackstat";
+				}
+				newattr[field] = results[key];
+			}
+			setAttrs(newattr);
+		});
 	}
+    else {                      //<-- Weapon was unequipped
+        setAttrs({
+            "weaponenh": 0,
+            "weaponfocus": 0,
+            "weaponattackstat": 0
+        });
+    }
 });
 
 /**********************************************************************************
@@ -6081,13 +6105,13 @@ on("change:repeating_weaponohr:equipweaponohrmain", function(values) {
 		return;
 	}
 	if (parseInt(values.newValue,10) === 1) {				//<-- Box checked by a user; update the scores
-		var ID = values.sourceAttribute.slice(20,values.sourceAttribute.length-19);
-		newattr = {};
-		newattr["repeating_weaponohr_"+ID+"_equipweaponohroff"] = 0;
-		setAttrs(newattr);
-		getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
-			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
+    var ID=values.sourceAttribute.slice(20,values.sourceAttribute.length-19);
+    newattr={};
+    newattr["repeating_weaponohr_"+ID+"_equipweaponohroff"]=0;
+    setAttrs(newattr);
+    getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
+    newattr={};
+    for (var i=0; i < IDs.length; i++) {
 				newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmmain"] = 0;
 			}
 			setAttrs(newattr);
@@ -6115,7 +6139,31 @@ on("change:repeating_weaponohr:equipweaponohrmain", function(values) {
 			}
 			setAttrs(newattr);
 		});
+		getAttrs(["repeating_weaponohr_"+ID+"_weaponohrenh", "repeating_weaponohr_"+ID+"_weaponohrfocus", "repeating_weaponohr_"+ID+"_weaponohrstat"], function(results) {
+			newattr = {};
+			field = "";
+			for (key in results) {
+				if (key.charAt(key.length-1) === 'h') {
+					field = "weaponenh";
+				}
+				else if (key.charAt(key.length-1) === 's') {
+					field = "weaponfocus";
+				}
+				else {
+					field = "weaponattackstat";
+				}
+				newattr[field] = results[key];
+			}
+			setAttrs(newattr);
+		});
 	}
+    else {                      //<-- Weapon was unequipped
+        setAttrs({
+            "weaponenh": 0,
+            "weaponfocus": 0,
+            "weaponattackstat": 0
+        });
+    }
 });
 
 /**********************************************************************************
@@ -6228,10 +6276,10 @@ on("change:repeating_weaponthr:equipweaponthrmain", function(values) {
 		return;
 	}
 	if (parseInt(values.newValue,10) === 1) {				//<-- Box checked by a user; update the scores
-		var ID = values.sourceAttribute.slice(20,values.sourceAttribute.length-19);
-		getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
-			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
+    var ID=values.sourceAttribute.slice(20,values.sourceAttribute.length-19);
+    getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
+    newattr={};
+    for (var i=0; i < IDs.length; i++) {
 				newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmmain"] = 0;
 				newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmoff"] = 0;
 			}
@@ -6273,7 +6321,31 @@ on("change:repeating_weaponthr:equipweaponthrmain", function(values) {
 				"shieldspellfailure": 0
 			});
 		});
+		getAttrs(["repeating_weaponthr_"+ID+"_weaponthrenh", "repeating_weaponthr_"+ID+"_weaponthrfocus", "repeating_weaponthr_"+ID+"_weaponthrstat"], function(results) {
+			newattr = {};
+			field = "";
+			for (key in results) {
+				if (key.charAt(key.length-1) === 'h') {
+					field = "weaponenh";
+				}
+				else if (key.charAt(key.length-1) === 's') {
+					field = "weaponfocus";
+				}
+				else {
+					field = "weaponattackstat";
+				}
+				newattr[field] = results[key];
+			}
+			setAttrs(newattr);
+		});
 	}
+    else {                      //<-- Weapon was unequipped
+        setAttrs({
+            "weaponenh": 0,
+            "weaponfocus": 0,
+            "weaponattackstat": 0
+        });
+    }
 });
 
 /**********************************************************************************
