@@ -5877,13 +5877,13 @@ on("change:repeating_weaponohm:equipweaponohmoff", function(values) {
 		return;
 	}
 	if (parseInt(values.newValue,10) === 1) {				//<-- Box checked by a user; update the scores
-		var ID = values.sourceAttribute.slice(20,values.sourceAttribute.length-18);
-		newattr = {};
-		newattr["repeating_weaponohm_"+ID+"_equipweaponohmmain"] = 0;
-		setAttrs(newattr);
-		getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
-			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
+    var ID=values.sourceAttribute.slice(20,values.sourceAttribute.length-18);
+    newattr={};
+    newattr["repeating_weaponohm_"+ID+"_equipweaponohmmain"]=0;
+    setAttrs(newattr);
+    getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
+    newattr={};
+    for (var i=0; i < IDs.length; i++) {
 				if (IDs[i] !== ID) {
 					newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmoff"] = 0;
 				}
@@ -5924,6 +5924,28 @@ on("change:repeating_weaponohm:equipweaponohmoff", function(values) {
 			});
 		});
 	}
+});
+
+/**********************************************************************************
+Function that updates the weapon stats when the equipped one-handed melee weapon changes stats
+**********************************************************************************/
+on("change:repeating_weaponohm:weaponohmenh change:repeating_weaponohm:weaponohmfocus change:repeating_weaponohm:weaponohmattackstat", function(value) {
+    var ID = value.sourceAttribute.slice(20);
+    ID = ID.slice(0,20);
+    console.log(ID);
+    getAttrs(["repeating_weaponohm_"+ID+"_equipweaponohmmain"], function(results) {
+        console.log(results["repeating_weaponohm_"+ID+"_equipweaponohmmain"]);
+        if (typeof results["repeating_weaponohm_"+ID+"_equipweaponohmmain"] === undefined) {
+            return;
+        }
+        if (parseInt(results["repeating_weaponohm_"+ID+"_equipweaponohmmain"],10) === 0) {
+            return;
+        }
+        var field = "weapon" + value.sourceAttribute.slice(50);
+        newattr = {};
+        newattr[field] = value.newValue;
+        setAttrs(newattr);
+    });
 });
 
 /**********************************************************************************
