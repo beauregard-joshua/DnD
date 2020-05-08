@@ -405,14 +405,20 @@
 												<input type="checkbox" class="sheet-pc-savemacros-show sheet-arrow" title="savemacros-show" name="attr_savemacros-show" value="1" /><span style="text-align: left;" data-i18n="show-save-macros">Show Save Macros</span>
 											</td></tr>
 										</table>
-									    <br>
+										<br>
+										<input type="hidden" name="attr_hiddenbab2" title="hiddenbab2" value="-">
+										<input type="hidden" name="attr_hiddenbab3" title="hiddenbab3" value="-">
+										<input type="hidden" name="attr_hiddenbab4" title="hiddenbab4" value="-">
 										<table>
 											<tr>
 												<td class="sheet-statlabel-big" style="width: 80px;"><span data-i18n="base-attack">Base Attack</span></td>
 												<td>&nbsp;<input class="sheet-inputbox" type="text" name="attr_bab" title="bab" value="0" style="height: 24px; width: 50px;"></td>
-												<td>/<input class="sheet-inputbox" type="text" style="width: 45px;" name="attr_bab2" title="bab2" value="(((@{bab} -5)+abs(@{bab} -5))/2)" disabled="true" style="height: 24px; width: 50px;"></td>
+												<!--<td>/<input class="sheet-inputbox" type="text" style="width: 45px;" name="attr_bab2" title="bab2" value="(((@{bab} -5)+abs(@{bab} -5))/2)" disabled="true" style="height: 24px; width: 50px;"></td>
 												<td>/<input class="sheet-inputbox" type="text" style="width: 45px;" name="attr_bab3" title="bab3" value="(((@{bab} -10)+abs(@{bab} -10))/2)" disabled="true" style="height: 24px; width: 50px;"></td>
-												<td>/<input class="sheet-inputbox" type="text" style="width: 45px;" name="attr_bab4" title="bab4" value="(((@{bab} -15)+abs(@{bab} -15))/2)" disabled="true" style="height: 24px; width: 50px;"></td>
+												<td>/<input class="sheet-inputbox" type="text" style="width: 45px;" name="attr_bab4" title="bab4" value="(((@{bab} -15)+abs(@{bab} -15))/2)" disabled="true" style="height: 24px; width: 50px;"></td>-->
+												<td>/<input class="sheet-inputbox" type="text" style="width: 45px;" name="attr_bab2" title="bab2" value="@{hiddenbab2}" style="height: 24px; width: 50px;" disabled="true"></td>
+												<td>/<input class="sheet-inputbox" type="text" style="width: 45px;" name="attr_bab3" title="bab3" value="@{hiddenbab3}" style="height: 24px; width: 50px;" disabled="true"></td>
+												<td>/<input class="sheet-inputbox" type="text" style="width: 45px;" name="attr_bab4" title="bab4" value="@{hiddenbab4}" style="height: 24px; width: 50px;" disabled="true"></td>
 											</tr>
 										</table>
 										<!--Grapple, Melee Attack, and Ranged Attack-->
@@ -533,36 +539,29 @@
 		<table>
 			<tr>
 				<td style="width: 40px;" class="sheet-statlabel"><span data-i18n="attack-bonus">Attack<br\>Bonus</span></td>
-				<td><input class="sheet-inputbox" type="text" name="attr_attackbonus" title="attackbonus" value="(@{babvalue}+@{attackstat}+@{enh}+@{focus})" disabled="true" style="width: 35px; height: 24px;"/><br/><div style="font-size: 0.5em;" data-i18n="total">Total</div></td>
+				<td><input class="sheet-inputbox" type="text" name="attr_attackbonus" title="attackbonus" value="(@{babvalue}+@{attackstat}+@{enh}+@{focus}+@{twfpenalty})" disabled="true" style="width: 35px; height: 24px;"/><br/><div style="font-size: 0.5em;" data-i18n="total">Total</div></td>
 				<td>=<br/></td>
 				<td><input class="sheet-inputbox" type="text" name="attr_babvalue" title="babvalue" value="(@{bab}+@{epicattackbonus})" disabled="true" style="width: 35px; height: 24px;"/><br/><div style="font-size: 0.5em;" data-i18n="bab">BAB</div></td>
 				<td>+<input class="sheet-inputbox" type="text" name="attr_attackstat" title="attackstat" value="(@{weaponattackstat})" disabled="true" style="height: 24px; width: 35px;"/><br/><div style="font-size: 0.5em;" data-i18n="stat">Stat</div></td>
 				<td>+<input class="sheet-inputbox" type="text" name="attr_enh" title="enh" value="(@{weaponenh})" disabled="true" style="width: 35px; height: 24px;"/><br/><div style="font-size: 0.5em;" data-i18n="enh">Enh</div></td>
 				<td>+<input class="sheet-inputbox" type="text" name="attr_focus" title="focus" value="(@{weaponfocus})" disabled="true" style="height: 24px; width: 35px;"/><br/><div style="font-size: 0.5em;" data-i18n="focus">Focus</div></td>
-				<!--<td style="width: 38px;" class="sheet-statlabel"><span data-i18n="armor-class-i">AC</span><br><div style="font-size: 0.65em;" data-i18n="armor-class">Armor Class</div></td>
-				<td><input class="sheet-inputbox" type="text" name="attr_armorclass" title="armorclass" value="(10+@{armorclassbonus}+@{totalabilityacbonus}+@{armorclasssizemod}+@{acdodgemod}+@{acnaturalarmor}+@{acdeflectionmod}+@{acmiscmod})" disabled="true" style="height: 24px; width: 35px;" /><br><div style="font-size: 0.5em;" data-i18n="total">Total</div></td>
-				<td>=10<br><br></td>
-				<td>+<input class="sheet-inputbox" type="text" name="attr_armorclassdexmod" title="armorclassdexmod (see Ability Bonus section in AC for how value is calculated)" value="@{totalabilityacbonus}" disabled="true" style="height: 24px; width: 28px;" /><br><div style="font-size: 0.5em;" data-i18n="ability-modifier-a">Ability Mod</div></td>
-				<td>+<input class="sheet-inputbox" type="text" name="attr_armorclassbonus" title="armorclassbonus (from AC items section below)" value="(@{totalarmorbonus})" disabled="true" style="height: 24px; width: 28px;" /><br><div style="font-size: 0.5em;" data-i18n="armor-bonus-a">Armor Bns</div></td>
-				<td>+<input class="sheet-inputbox" type="text" name="attr_armorclasssizemod" title="armorclasssizemod" value="@{size}" disabled="true" style="height: 24px; width: 28px;" /><br><div style="font-size: 0.5em;" data-i18n="size-modifier-a">Size Mod</div></td>
-				<td>+<input class="sheet-inputbox" type="text" name="attr_acdodgemod" title="acdodgemod" value="@{totaldodgebonus}" style="height: 24px; width: 28px;" disabled="true" /><br><div style="font-size: 0.5em;" data-i18n="dodge">Dodge</div></td>
-				<td>+<input class="sheet-inputbox" type="text" name="attr_acnaturalarmor" title="acnaturalarmor" value="@{totalnaturalarmorbonus}" style="height: 24px; width: 28px;" disabled="true" /><br><div style="font-size: 0.5em;" data-i18n="natural-armor-a">Nat. Armor</div></td>
-				<td>+<input class="sheet-inputbox" type="text" name="attr_acdeflectionmod" title="acdeflectionmod" value="@{totaldeflectionbonus}" style="height: 24px; width: 28px;" disabled="true" /><br><div style="font-size: 0.5em;" data-i18n="deflection">Deflection</div></td>
-				<td>+<input class="sheet-inputbox" type="text" name="attr_acmiscmod" title="acmiscmod" value="@{totalmiscacbonus}" style="height: 24px; width: 28px;" disabled="true" /><br><div style="font-size: 0.5em;" data-i18n="miscellaneous-modifier-a">Misc Mod</div></td>
+				<td>+<input class="sheet-inputbox" type="text" name="attr_twfpenalty" title="twfpenalty" value="0" disabled="true" style="height: 24px; width: 35px;"><br/><div style="font-size: 0.5em;" data-i18n="twf-penalty">TWF Penalty</div></td>
 				<td> &nbsp; &nbsp; &nbsp; </td>
-				<td style="width: 35px; height: 24px;" class="sheet-statlabel"><span data-i18n="touch-u">TOUCH</span><br><div style="font-size: 0.65em;" data-i18n="armor-class">Armor Class</div></td>
-				<td valign="top"><input class="sheet-inputbox" type="text" style="width: 35px;" name="attr_touchac" title="touchac" value="(10+ @{totalabilitytouchacbonus} +@{armorclasssizemod} +@{acdodgemod} +@{acdeflectionmod} +@{totalmisctouchacbonus})" disabled="true" style="height: 24px; width: 35px;" /> &nbsp; </td>
-				<td style="width: 70px;" class="sheet-statlabel"><span data-i18n="flat-footed-u">FLAT-FOOTED</span><br><div style="font-size: 0.65em;" data-i18n="armor-class">Armor Class</div></td>
-				<td valign="top"><input class="sheet-inputbox" type="text" style="width: 35px;" name="attr_flatac" title="flatac" value="10 +@{totalabilityffacbonus} +@{armorclassbonus} +@{armorclasssizemod} +@{acnaturalarmor} +@{acdeflectionmod} +@{totalmiscffacbonus}" disabled="true" style="height: 24px; width: 35px;" /> &nbsp; </td>
-				<td style="width: 70px;" class="sheet-statlabel"><span data-i18n="immobilized">Immobilized</span><br><div style="font-size: 0.65em;" data-i18n="armor-class">Armor Class</div></td>
-				<td valign="top"><input class="sheet-inputbox" type="text" style="width: 35px;" name="attr_immoblac" title="immoblac" value="10 +@{totalabilityimmoblacbonus} +@{armorclassbonus} +@{armorclasssizemod} +@{acnaturalarmor} +@{acdeflectionmod} +@{totalmiscimmoblacbonus}" disabled="true" style="height: 24px; width: 35px;" /> &nbsp; </td>
-				<td valign="top"> &nbsp;<input type="hidden" name="attr_armorpenalty" title="armorpenalty (max of armor check penalty and encumbrance check penalty)" value="(@{acitemcheckpenalty}+@{shieldcheckpenalty})" disabled="true"/> &nbsp;
-					<input class="sheet-inputbox" type="text" style="width: 45px;" name="attr_armorcheckpenalty" title="armorcheckpenalty" value="(ceil((@{armorpenalty}-@{encumbracp})/10000000000)*@{encumbracp} - floor((@{armorpenalty}-@{encumbracp}-1)/10000000000)*@{armorpenalty})" disabled="true" style="height: 24px; width: 80px;" /><br><div style="font-size: 0.65em;" data-i18n="armor-check-penalty-a">Armor Check Pen</div></td>-->
+				<td style="width: 40px;" class="sheet-statlabel"><span data-i18n="full-attack">Full<br\>Attack</span></td>
+				<td> &nbsp; </td>
+				<td><input class="sheet-inputbox" type="text" name="attr_fullattack1" title="fullattack1" value="(@{attackbonus})" disabled="true" style="height: 24px; width: 35px;"></td>
+				<td>/<input class="sheet-inputbox" type="text" name="attr_fullattack2" title="fullattack2" value="@{hiddenfullattack2}" disabled="true" style="height: 24px; width: 35px;"></td>
+				<td>/<input class="sheet-inputbox" type="text" name="attr_fullattack3" title="fullattack3" value="@{hiddenfullattack3}" disabled="true" style="height: 24px; width: 35px;"></td>
+				<td>/<input class="sheet-inputbox" type="text" name="attr_fullattack4" title="fullattack4" value="@{hiddenfullattack4}" disabled="true" style="height: 24px; width: 35px;"></td>
 			</tr>
 		</table>
 		<input type="hidden" name="attr_weaponenh" title="weaponenh" value="0"/>
 		<input type="hidden" name="attr_weaponfocus" title="weaponfocus" value="0"/>
 		<input type="hidden" name="attr_weaponattackstat" title="weaponattackstat" value="(@{str-mod})"/>
+		<input type="hidden" name="attr_weaponpenalty" title="weaponpenalty" value="0"/>
+		<input type="hidden" name="attr_hiddenfullattack2" title="hiddenfullattack2" value="-">
+		<input type="hidden" name="attr_hiddenfullattack3" title="hiddenfullattack3" value="-">
+		<input type="hidden" name="attr_hiddenfullattack4" title="hiddenfullattack4" value="-">
 		<input type="checkbox" class="sheet-pc-weapons-show sheet-arrow" title="weapons-show" name="attr_weapons-show" value="1" checked /><span style="text-align: left;" data-i18n="weapons">Weapons</span>
 		<div class="sheet-pc-weapons">
 			<div class="sheet-table">
@@ -6494,6 +6493,44 @@ on("change:repeating_weaponthr:deleteweaponthr", function(value) {
             removeRepeatingRow("repeating_weaponthr_"+ID)
         });
     });
+});
+
+/**********************************************************************************
+Function that updates several scores based on a change in BAB
+**********************************************************************************/
+on("change:bab", function(eventInfo) {
+	newattr = {};
+	newattr["hiddenbab2"] = "-";
+	newattr["hiddenbab3"] = "-";
+	newattr["hiddenbab4"] = "-";
+	newattr["hiddenfullattack2"] = "-";
+	newattr["hiddenfullattack3"] = "-";
+	newattr["hiddenfullattack4"] = "-";
+	if (parseInt(eventInfo.newValue,10) < 6) {
+		setAttrs(newattr);
+		return;
+	}
+	else {
+		newattr["hiddenbab2"] = "(@{bab}-5)";
+		newattr["hiddenfullattack2"] = "(@{attackbonus}-5)"
+	}
+	if (parseInt(eventInfo.newValue,10) < 11) {
+		setAttrs(newattr);
+		console.log(newattr);
+		return;
+	}
+	else {
+		newattr["hiddenbab3"] = "(@{bab}-10)";
+		newattr["hiddenfullattack3"] = "(@{attackbonus}-10)";
+	}
+	if (parseInt(eventInfo.newValue,10) < 16) {
+		setAttrs(newattr);
+	}
+	else {
+		newattr["hiddenbab4"] = "(@{bab}-15)";
+		newattr["hiddenfullattack4"] = "(@{attackbonus}-15)";
+		setAttrs(newattr);
+	}
 });
 
 //  <!---- Copy weight from total equipment weight to total carried weight if wanted ---->
