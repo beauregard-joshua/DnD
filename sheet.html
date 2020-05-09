@@ -5876,50 +5876,61 @@ on("change:repeating_weaponohm:equipweaponohmoff", function(values) {
 		return;
 	}
 	if (parseInt(values.newValue,10) === 1) {				//<-- Box checked by a user; update the scores
-    var ID=values.sourceAttribute.slice(20,values.sourceAttribute.length-18);
-    newattr={};
-    newattr["repeating_weaponohm_"+ID+"_equipweaponohmmain"]=0;
-    setAttrs(newattr);
-    getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
-    newattr={};
-    for (var i=0; i < IDs.length; i++) {
-				if (IDs[i] !== ID) {
-					newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmoff"] = 0;
+		var ID = values.sourceAttribute.slice(20,values.sourceAttribute.length-18);
+		getAttrs(["repeating_weaponohm_"+ID+"_equipweaponohmmain"], function(result) {
+			for (key in result) {
+				if (parseInt(result[key],10) === 1) {
+					setAttrs({
+						"weaponenh": 0,
+						"weaponfocus": 0,
+						"weaponattackstat": "(@{str-mod})"
+					});
 				}
 			}
-			setAttrs(newattr);
-		});
-		getSectionIDsOrdered("repeating_weaponthm", function(IDs) {
 			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
-				newattr["repeating_weaponthm_"+IDs[i]+"_equipweaponthmmain"] = 0;
-			}
-			setAttrs(newattr);
-		});
-		getSectionIDsOrdered("repeating_weaponohr", function(IDs) {
-			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
-				newattr["repeating_weaponohr_"+IDs[i]+"_equipweaponohroff"] = 0;
-			}
-			setAttrs(newattr);
-		});
-		getSectionIDsOrdered("repeating_weaponthr", function(IDs) {
-			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
-				newattr["repeating_weaponthr_"+IDs[i]+"_equipweaponthrmain"] = 0;
-			}
-			setAttrs(newattr);
-		});
-		getSectionIDsOrdered("repeating_shield", function(IDs) {
-			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
-				newattr["repeating_shield_"+IDs[i]+"_newshieldworn"] = 0;
-			}
-			setAttrs(newattr);
-			setAttrs({
-				"shieldbonus": 0,
-				"shieldcheckpenalty": 0,
-				"shieldspellfailure": 0
+    		newattr["repeating_weaponohm_"+ID+"_equipweaponohmmain"] = 0;
+    		setAttrs(newattr);
+    		getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
+    			newattr={};
+    			for (var i=0; i < IDs.length; i++) {
+					if (IDs[i] !== ID) {
+						newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmoff"] = 0;
+					}
+				}
+				setAttrs(newattr);
+			});
+			getSectionIDsOrdered("repeating_weaponthm", function(IDs) {
+				newattr = {};
+				for (var i = 0; i < IDs.length; i++) {
+					newattr["repeating_weaponthm_"+IDs[i]+"_equipweaponthmmain"] = 0;
+				}
+				setAttrs(newattr);
+			});
+			getSectionIDsOrdered("repeating_weaponohr", function(IDs) {
+				newattr = {};
+				for (var i = 0; i < IDs.length; i++) {
+					newattr["repeating_weaponohr_"+IDs[i]+"_equipweaponohroff"] = 0;
+				}
+				setAttrs(newattr);
+			});
+			getSectionIDsOrdered("repeating_weaponthr", function(IDs) {
+				newattr = {};
+				for (var i = 0; i < IDs.length; i++) {
+					newattr["repeating_weaponthr_"+IDs[i]+"_equipweaponthrmain"] = 0;
+				}
+				setAttrs(newattr);
+			});
+			getSectionIDsOrdered("repeating_shield", function(IDs) {
+				newattr = {};
+				for (var i = 0; i < IDs.length; i++) {
+					newattr["repeating_shield_"+IDs[i]+"_newshieldworn"] = 0;
+				}
+				setAttrs(newattr);
+				setAttrs({
+					"shieldbonus": 0,
+					"shieldcheckpenalty": 0,
+					"shieldspellfailure": 0
+				});
 			});
 		});
 	}
@@ -6232,49 +6243,60 @@ on("change:repeating_weaponohr:equipweaponohroff", function(values) {
 	}
 	if (parseInt(values.newValue,10) === 1) {				//<-- Box checked by a user; update the scores
 		var ID = values.sourceAttribute.slice(20,values.sourceAttribute.length-18);
-		newattr = {};
-		newattr["repeating_weaponohr_"+ID+"_equipweaponohrmain"] = 0;
-		setAttrs(newattr);
-		getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
-			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
-				newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmoff"] = 0;
-			}
-			setAttrs(newattr);
-		});
-		getSectionIDsOrdered("repeating_weaponthm", function(IDs) {
-			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
-				newattr["repeating_weaponthm_"+IDs[i]+"_equipweaponthmmain"] = 0;
-			}
-			setAttrs(newattr);
-		});
-		getSectionIDsOrdered("repeating_weaponohr", function(IDs) {
-			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
-				if (IDs[i] !== ID) {
-					newattr["repeating_weaponohr_"+IDs[i]+"_equipweaponohroff"] = 0;
+		getAttrs(["repeating_weaponohr_"+ID+"_equipweaponohrmain"], function(result) {
+			for (key in result) {
+				if (parseInt(result[key],10) === 1) {
+					setAttrs({
+						"weaponenh": 0,
+						"weaponfocus": 0,
+						"weaponattackstat": "(@{str-mod})"
+					});
 				}
 			}
-			setAttrs(newattr);
-		});
-		getSectionIDsOrdered("repeating_weaponthr", function(IDs) {
 			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
-				newattr["repeating_weaponthr_"+IDs[i]+"_equipweaponthrmain"] = 0;
-			}
+			newattr["repeating_weaponohr_"+ID+"_equipweaponohrmain"] = 0;
 			setAttrs(newattr);
-		});
-		getSectionIDsOrdered("repeating_shield", function(IDs) {
-			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
-				newattr["repeating_shield_"+IDs[i]+"_newshieldworn"] = 0;
-			}
-			setAttrs(newattr);
-			setAttrs({
-				"shieldbonus": 0,
-				"shieldcheckpenalty": 0,
-				"shieldspellfailure": 0
+			getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
+				newattr = {};
+				for (var i = 0; i < IDs.length; i++) {
+					newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmoff"] = 0;
+				}
+				setAttrs(newattr);
+			});
+			getSectionIDsOrdered("repeating_weaponthm", function(IDs) {
+				newattr = {};
+				for (var i = 0; i < IDs.length; i++) {
+					newattr["repeating_weaponthm_"+IDs[i]+"_equipweaponthmmain"] = 0;
+				}
+				setAttrs(newattr);
+			});
+			getSectionIDsOrdered("repeating_weaponohr", function(IDs) {
+				newattr = {};
+				for (var i = 0; i < IDs.length; i++) {
+					if (IDs[i] !== ID) {
+						newattr["repeating_weaponohr_"+IDs[i]+"_equipweaponohroff"] = 0;
+					}
+				}
+				setAttrs(newattr);
+			});
+			getSectionIDsOrdered("repeating_weaponthr", function(IDs) {
+				newattr = {};
+				for (var i = 0; i < IDs.length; i++) {
+					newattr["repeating_weaponthr_"+IDs[i]+"_equipweaponthrmain"] = 0;
+				}
+				setAttrs(newattr);
+			});
+			getSectionIDsOrdered("repeating_shield", function(IDs) {
+				newattr = {};
+				for (var i = 0; i < IDs.length; i++) {
+					newattr["repeating_shield_"+IDs[i]+"_newshieldworn"] = 0;
+				}
+				setAttrs(newattr);
+				setAttrs({
+					"shieldbonus": 0,
+					"shieldcheckpenalty": 0,
+					"shieldspellfailure": 0
+				});
 			});
 		});
 	}
