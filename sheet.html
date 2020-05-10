@@ -554,7 +554,7 @@
 				<td>/<input class="sheet-inputbox" type="text" name="attr_fullattack3" title="fullattack3" value="@{hiddenfullattack3}" disabled="true" style="height: 24px; width: 35px;"></td>
 				<td>/<input class="sheet-inputbox" type="text" name="attr_fullattack4" title="fullattack4" value="@{hiddenfullattack4}" disabled="true" style="height: 24px; width: 35px;"></td>
 				<td> &nbsp; &nbsp; &nbsp; </td>
-				<td><input class="sheet-inputbox" type="text" name="attr_secondattack1" title="secondattack1" value="-" disabled="true" style="height: 24px; width: 35px;"></td>
+				<td><input class="sheet-inputbox" type="text" name="attr_secondattack1" title="secondattack1" value="@{offtotal}" disabled="true" style="height: 24px; width: 35px;"></td>
 				<td>/<input class="sheet-inputbox" type="text" name="attr_secondattack1" title="secondattack1" value="-" disabled="true" style="height: 24px; width: 35px;"></td>
 			</tr>
 		</table>
@@ -565,6 +565,7 @@
 		<input type="hidden" name="attr_offweaponenh" title="offweaponenh" value="0"/>
 		<input type="hidden" name="attr_offweaponfocus" title="offweaponfocus" value="0"/>
 		<input type="hidden" name="attr_offweaponattackstat" title="offweaponattackstat" value="0"/>
+		<input type="hidden" name="attr_offtotal" title="offtotal" value="-"/>
 		<input type="hidden" name="attr_hiddenfullattack2" title="hiddenfullattack2" value="-">
 		<input type="hidden" name="attr_hiddenfullattack3" title="hiddenfullattack3" value="-">
 		<input type="hidden" name="attr_hiddenfullattack4" title="hiddenfullattack4" value="-">
@@ -5820,7 +5821,8 @@ on("change:repeating_weaponohm:equipweaponohmmain", function(values) {
 					setAttrs({
 						"offweaponenh": 0,
 						"offweaponfocus": 0,
-						"offweaponattackstat": 0
+						"offweaponattackstat": 0,
+						"offtotal": "-"
 					});
 				}
 			}
@@ -5964,6 +5966,7 @@ on("change:repeating_weaponohm:equipweaponohmoff", function(values) {
 					}
 					newattr[field] = results[key];
 				}
+				newattr["offtotal"] = "@{bab}+@{offweaponenh}+@{offweaponfocus}+@{offweaponattackstat}";
 				setAttrs(newattr);
 			});
 		});
@@ -5972,7 +5975,8 @@ on("change:repeating_weaponohm:equipweaponohmoff", function(values) {
 		setAttrs({
 			"offweaponenh": 0,
 			"offweaponfocus": 0,
-			"offweaponattackstat": 0
+			"offweaponattackstat": 0,
+			"offtotal": "-"
 		});
 	}
 });
@@ -6003,11 +6007,25 @@ on("change:repeating_weaponohm:weaponohmenh change:repeating_weaponohm:weaponohm
 		newattr = {};
 		newattr[field] = value.newValue;
         setAttrs(newattr);
-    });
+	});
+	getAttrs(["repeating_weaponohm_"+ID+"_equipweaponohmoff"], function(results) {
+		if (parseInt(results["repeating_weaponohm_"+ID+"_equipweaponohmoff"],10) === 1) {
+			var field = "";
+			if (value.sourceAttribute.charAt(value.sourceAttribute.length-1) === 't') {
+				field = "offweaponattackstat"
+			}
+			else {
+				field = "offweapon" + value.sourceAttribute.slice(50);
+			}
+			newattr = {};
+			newattr[field] = value.newValue;
+        	setAttrs(newattr);
+		}
+	});
 });
 
 /**********************************************************************************
-Function that deletes a repeating ohm weapon and resets the weapon stats if appropriate
+Function that deletes a repeating one-hand melee weapon and resets the weapon stats if appropriate
 **********************************************************************************/
 on("change:repeating_weaponohm:deleteweaponohm", function(value) {
 	var ID = value.sourceAttribute.slice(20,value.sourceAttribute.length-16);
@@ -6023,18 +6041,30 @@ on("change:repeating_weaponohm:deleteweaponohm", function(value) {
 						});
 					}
 				}
-            }
-            var i = 0;
-            while (ids[i] !== ID) {
-                i++;
 			}
-            newattr = {};
-            for (var j = i+1; j < ids.length; j++) {
-				newattr["repeating_weaponohm_"+ids[j]+"_weaponohmnumber"] = "Weapon "+j.toString();
+		});
+		getAttrs(["repeating_weaponohm_"+ID+"_equipweaponohmoff"], function(result) {
+			for (key in result) {
+				if (parseInt(result[key],10) === 1) {
+					setAttrs({
+						"offweaponenh": 0,
+						"offweaponfocus": 0,
+						"offweaponattackstat": 0,
+						"offtotal": "-"
+					});
+				}
 			}
-            setAttrs(newattr);
-            removeRepeatingRow("repeating_weaponohm_"+ID)
-        });
+		})
+        var i = 0;
+		while (ids[i] !== ID) {
+            i++;
+		}
+        newattr = {};
+        for (var j = i+1; j < ids.length; j++) {
+			newattr["repeating_weaponohm_"+ids[j]+"_weaponohmnumber"] = "Weapon "+j.toString();
+		}
+	    setAttrs(newattr);
+        removeRepeatingRow("repeating_weaponohm_"+ID)
     });
 });
 
@@ -6124,7 +6154,8 @@ on("change:repeating_weaponthm:equipweaponthmmain", function(values) {
 		setAttrs({
 			"offweaponenh": 0,
 			"offweaponfocus": 0,
-			"offweaponattackstat": 0
+			"offweaponattackstat": 0,
+			"offtotal": "-"
 		});
 	}
     else {                      //<-- Weapon was unequipped
@@ -6182,18 +6213,18 @@ on("change:repeating_weaponthm:deleteweaponthm", function(value) {
 						});
 					}
 				}
-            }
-            var i = 0;
-            while (ids[i] !== ID) {
-                i++;
 			}
-            newattr = {};
-            for (var j = i+1; j < ids.length; j++) {
-				newattr["repeating_weaponthm_"+ids[j]+"_weaponthmnumber"] = "Weapon "+j.toString();
-			}
-            setAttrs(newattr);
-            removeRepeatingRow("repeating_weaponthm_"+ID)
-        });
+		});
+        var i = 0;
+        while (ids[i] !== ID) {
+            i++;
+		}
+        newattr = {};
+        for (var j = i+1; j < ids.length; j++) {
+			newattr["repeating_weaponthm_"+ids[j]+"_weaponthmnumber"] = "Weapon "+j.toString();
+		}
+        setAttrs(newattr);
+        removeRepeatingRow("repeating_weaponthm_"+ID)
     });
 });
 
@@ -6226,7 +6257,8 @@ on("change:repeating_weaponohr:equipweaponohrmain", function(values) {
 					setAttrs({
 						"offweaponenh": 0,
 						"offweaponfocus": 0,
-						"offweaponatackstat": 0
+						"offweaponatackstat": 0,
+						"offtotal": "-"
 					});
 				}
 			}
@@ -6355,7 +6387,7 @@ on("change:repeating_weaponohr:equipweaponohroff", function(values) {
 					"shieldspellfailure": 0
 				});
 			});
-			getAttrs(["repeating_weaponoohr_"+ID+"_weaponohrenh", "repeating_weaponohr_"+ID+"_weaponohrfocus", "repeating_weaponohr_"+ID+"_weaponstat"], function(results) {
+			getAttrs(["repeating_weaponohr_"+ID+"_weaponohrenh", "repeating_weaponohr_"+ID+"_weaponohrfocus", "repeating_weaponohr_"+ID+"_weaponstat"], function(results) {
 				newattr = {};
 				field = "";
 				for (key in results) {
@@ -6370,6 +6402,7 @@ on("change:repeating_weaponohr:equipweaponohroff", function(values) {
 					}
 					newattr[field] = results[key];
 				}
+				newattr["offtotal"] = "@{bab}+@{offweaponenh}+@{offweaponfocus}+@{offweaponattackstat}";
 				setAttrs(newattr);
 			});
 		});
@@ -6378,7 +6411,8 @@ on("change:repeating_weaponohr:equipweaponohroff", function(values) {
 		setAttrs({
 			"offweaponenh": 0,
 			"offweaponfocus": 0,
-			"offweaponattackstat": 0
+			"offweaponattackstat": 0,
+			"offtotal": "-"
 		});
 	}
 });
@@ -6409,7 +6443,21 @@ on("change:repeating_weaponohr:weaponohrenh change:repeating_weaponohr:weaponohr
 		newattr = {};
 		newattr[field] = value.newValue;
         setAttrs(newattr);
-    });
+	});
+	getAttrs(["repeating_weaponohr_"+ID+"_equipweaponohroff"], function(result) {
+		if (parseInt(result["repeating_weaponohr_"+ID+"_equipweaponohroff"],10) === 1) {
+			var field = "";
+			if (value.sourceAttribute.charAt(value.sourceAttribute.length-1) === 't') {
+				field = "offweaponattackstat"
+			}
+			else {
+				field = "offweapon" + value.sourceAttribute.slice(50);
+			}
+			newattr = {};
+			newattr[field] = value.newValue;
+			setAttrs(newattr);
+		}
+	});
 });
 
 /**********************************************************************************
@@ -6429,18 +6477,30 @@ on("change:repeating_weaponohr:deleteweaponohr", function(value) {
 						});
 					}
 				}
-            }
-            var i = 0;
-            while (ids[i] !== ID) {
-                i++;
 			}
-            newattr = {};
-            for (var j = i+1; j < ids.length; j++) {
-				newattr["repeating_weaponohr_"+ids[j]+"_weaponohrnumber"] = "Weapon "+j.toString();
+		});
+		getAttrs(["repeating_weaponohr_"+ID+"_equipweaponohroff"], function(result) {
+			for (key in result) {
+				if (parseInt(result[key],10) === 1) {
+					setAttrs({
+						"offweaponenh": 0,
+						"offweaponfocus": 0,
+						"offweaponattackstat": 0,
+						"offtotal": "-"
+					});
+				}
 			}
-            setAttrs(newattr);
-            removeRepeatingRow("repeating_weaponohr_"+ID)
-        });
+		});
+        var i = 0;
+        while (ids[i] !== ID) {
+            i++;
+		}
+        newattr = {};
+        for (var j = i+1; j < ids.length; j++) {
+			newattr["repeating_weaponohr_"+ids[j]+"_weaponohrnumber"] = "Weapon "+j.toString();
+		}
+        setAttrs(newattr);
+        removeRepeatingRow("repeating_weaponohr_"+ID)
     });
 });
 
@@ -6530,7 +6590,8 @@ on("change:repeating_weaponthr:equipweaponthrmain", function(values) {
 		setAttrs({
 			"offweaponenh": 0,
 			"offweaponfocus": 0,
-			"offweaponattackstat": 0
+			"offweaponattackstat": 0,
+			"offtotal": "-"
 		});
 	}
     else {                      //<-- Weapon was unequipped
@@ -6588,18 +6649,18 @@ on("change:repeating_weaponthr:deleteweaponthr", function(value) {
 						});
 					}
 				}
-            }
-            var i = 0;
-            while (ids[i] !== ID) {
-                i++;
 			}
-            newattr = {};
-            for (var j = i+1; j < ids.length; j++) {
-				newattr["repeating_weaponthr_"+ids[j]+"_weaponthrnumber"] = "Weapon "+j.toString();
-			}
-            setAttrs(newattr);
-            removeRepeatingRow("repeating_weaponthr_"+ID)
-        });
+		});
+        var i = 0;
+        while (ids[i] !== ID) {
+            i++;
+		}
+        newattr = {};
+        for (var j = i+1; j < ids.length; j++) {
+			newattr["repeating_weaponthr_"+ids[j]+"_weaponthrnumber"] = "Weapon "+j.toString();
+		}
+        setAttrs(newattr);
+        removeRepeatingRow("repeating_weaponthr_"+ID)
     });
 });
 
