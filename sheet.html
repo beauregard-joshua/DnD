@@ -931,31 +931,8 @@
 					<tr>
 						<td colspan="3" class="sheet-statlabel-big-gray" style="font-size: 1.5em; width: 790px;" data-i18n="armor">Armor</td>
 					</tr>
-				</table><!--
-				<table cellpadding="0" cellspacing="0">
-					<tr>
-						<td class="sheet-statlabel" style="font-size: 1em; width: 180px;" colspan="3"><input type="radio" name="attr_armorworn" title="armorworn (Check if this armor is being worn.)" value="1" style="width: 8px;" checked /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span data-i18n="armor-name">Armor Name</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>
-						<td class="sheet-statlabel" style="font-size: 0.65em; width: 58px;" data-i18n="type" >Type</td>
-						<td class="sheet-statlabel" style="font-size: 0.65em; width: 54px;" data-i18n="bonus" >Bonus</td>
-						<td class="sheet-statlabel" style="font-size: 0.65em; width: 54px;" data-i18n="maximum-dexterity-a" >Max Dex</td>
-						<td class="sheet-statlabel" style="font-size: 0.65em; width: 54px;" data-i18n="check-penalty">Check Penalty</td>
-						<td class="sheet-statlabel" style="font-size: 0.65em; width: 54px;" data-i18n="spell-failure" >Spell Failure</td>
-						<td class="sheet-statlabel" style="font-size: 0.65em; width: 70px;" data-i18n="speed" >Speed</td>
-						<td class="sheet-statlabel" style="font-size: 0.65em; width: 54px;" data-i18n="weight" >Weight</td>
-						<td class="sheet-statlabel" style="font-size: 0.65em; width: 223px;" colspan="4" data-i18n="special-properties" >Special Properties</td>
-					</tr>
-					<tr>
-						<td colspan="3"><input class="sheet-inputbox" type="text" name="attr_acitem" title="acitem" style="height: 24px; width: 180px;" /></td>
-						<td><input class="sheet-inputbox" type="text" name="attr_acitemtype" title="acitemtype" style="height: 24px; width: 58px;" /></td>
-						<td><input class="sheet-inputbox" type="text" name="attr_acitembonus" title="acitembonus" style="height: 24px; width: 54px;" value="0"/></td>
-						<td><input class="sheet-inputbox" type="text" name="attr_acitemdex" title="acitemdex" style="height: 24px; width: 54px;" value="20"/></td>
-						<td><input class="sheet-inputbox" type="text" name="attr_acitemcheckpenalty" title="acitemcheckpenalty" style="height: 24px; width: 54px;" value="0"/></td>
-						<td><input class="sheet-inputbox" type="text" name="attr_acitemspellfailure" title="acitemspellfailure" style="height: 24px; width: 54px;" value="0"/></td>
-						<td><input class="sheet-inputbox" type="text" name="attr_acitemspeed" title="acitemspeed" style="height: 24px; width: 70px;" /></td>
-						<td><input class="sheet-inputbox" type="text" name="attr_acitemweight" title="acitemweight" value="0" style="height: 24px; width: 54px;" /></td>
-						<td colspan="4"><input class="sheet-inputbox" type="text" name="attr_acitemproperties" title="acitemproperties" style="height: 24px; width: 223px;" /></td>
-					</tr>
-				</table>-->
+				</table>
+				<input type="hidden" name="attr_armorid" title="armorid" value="-">
 				<input type="hidden" name="attr_acitem" title="acitem" value="0">
 				<input type="hidden" name="attr_acitemtype" title="acitemtype" value="0">
 				<input type="hidden" name="attr_acitembonus" title="acitembonus" value="0">
@@ -1001,28 +978,8 @@
 						<td colspan="3" class="sheet-statlabel-big-gray" style="font-size: 1.5em; width: 790px;" data-i18n="shield">Shield</td>
 					</tr>
 				</table>
-				<!--
-				<table cellpadding="0" cellspacing="0">
-					<tr>
-					<td class="sheet-statlabel" style="font-size: 1em; width: 184px;"><input type="checkbox" name="attr_shieldworn" title="shieldworn" value="1" style="width: 8px;" checked /> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span data-i18n="shield">Shield</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </td>
-						<td class="sheet-statlabel" style="font-size: 0.65em; width: 54px;" data-i18n="armor-bonus" >Armor Bonus</td>
-						<td class="sheet-statlabel" style="font-size: 0.65em; width: 54px;" data-i18n="check-penalty" >Check Penalty</td>
-						<td class="sheet-statlabel" style="font-size: 0.65em; width: 54px;" data-i18n="spell-failure" >Spell Failure</td>
-						<td class="sheet-statlabel" style="font-size: 0.65em; width: 54px;" data-i18n="weight" >Weight</td>
-						<td class="sheet-statlabel" style="font-size: 0.65em; width: 404px;" colspan="5" data-i18n="properties" >Properties</td>
-					</tr>
-					<tr>
-						<td><input class="sheet-inputbox" type="text" name="attr_shield" title="shield" style="height: 24px; width: 184px;" /></td>
-						<td><input class="sheet-inputbox" type="text" name="attr_shieldbonus" title="shieldbonus" value="0" style="height: 24px; width: 54px;" /></td>
-						<td><input class="sheet-inputbox" type="text" name="attr_shieldcheckpenalty" title="shieldcheckpenalty" value="0" style="height: 24px; width: 54px;" /></td>
-						<td><input class="sheet-inputbox" type="text" name="attr_shieldspellfailure" title="shieldspellfailure" value="0" style="height: 24px; width: 54px;" /></td>
-						<td><input class="sheet-inputbox" type="text" name="attr_shieldweight" title="shieldweight" value="0" style="height: 24px; width: 54px;" /></td>
-						<td colspan="5"><input class="sheet-inputbox" type="text" name="attr_shieldproperties" title="shieldproperties" style="height: 24px; width: 404px;" /></td>
-					</tr>
-				</table>
-				-->
 				<!--<input type="hidden" name="attr_shield" title="shield" value="0">-->
-				<input type="hidden" name="attr_equippedshieldid" title="shieldbonus" value="-">
+				<input type="hidden" name="attr_shieldid" title="shieldbonus" value="-">
 				<input type="hidden" name="attr_shieldbonus" title="shieldbonus" value="0">
 				<input type="hidden" name="attr_shieldcheckpenalty" title="shieldcheckpenalty" value="0">
 				<input type="hidden" name="attr_shieldspellfailure" title="shieldspellfailure" value="0">
@@ -5515,88 +5472,26 @@ on("clicked:addarmor", function(values) {
 });
 
 /**********************************************************************************
-Function that deletes a repeating armor and resets the armor scores if appropriate
+Function that changes the armor score based on an armor being equipped or removed
 **********************************************************************************/
-on("change:repeating_armor:deletearmor", function(value) {
-    var ID = value.sourceAttribute.slice(16,value.sourceAttribute.length-12);
-    getSectionIDsOrdered("repeating_armor", function(ids) {
-        getAttrs(["repeating_armor_"+ID+"_newarmorworn"], function(values) {
-            for (key in values) {
-                if (typeof values[key] !== undefined) {
-                    if (parseInt(values[key]) === 1) {
-						setAttrs({
-							"acitembonus": 0,
-							"acitemdex": 100,
-							"acitemcheckpenalty": 0,
-							"acitemspellfailure": 0,
-							"acitemspeed": 200
-						});
-					}
-                }
-            }
-            var i = 0;
-            while (ids[i] !== ID) {
-                i++;
-            }
-            newattr = {};
-            for (var j = i+1; j < ids.length; j++) {
-                newattr["repeating_armor_"+ids[j]+"_armornumber"] = "Armor "+j.toString();
-            }
-            setAttrs(newattr);
-            removeRepeatingRow("repeating_armor_"+ID)
-        });
-    });
-});
-
-/**********************************************************************************
-Function that changes the armor score based on a shield being equipped or removed
-**********************************************************************************/
-on("change:repeating_armor:newarmorworn", function(values) {
-	if (values.sourceType === "sheetworker") {			//<-- Event was trigger by the sheet, don't worry about anything (covers creation and unchecking)
+on("change:repeating_armor:newarmorworn", function(eventInfo) {
+	if (eventInfo.sourceType === "sheetworker") {			//<-- Event was trigger by the sheet, don't worry about anything (covers creation and unchecking)
 		return;
 	}
-	if (parseInt(values.newValue,10) === 1) {						//<-- Box was checked by a user. Update the scores.
-		ID = values.sourceAttribute.slice(16,values.sourceAttribute.length-13);
-		getAttrs(["repeating_armor_"+ID+"_repacitembonus", "repeating_armor_"+ID+"_repacitemdex", "repeating_armor_"+ID+"_repacitemcheckpenalty", "repeating_armor_"+ID+"_repacitemspellfailure", "repeating_armor_"+ID+"_repacitemspeed"], function(results) {
+	if (eventInfo.newValue === "1") {						//<-- Box was checked by a user. Update the scores.
+		var ID = eventInfo.sourceAttribute.slice(16,eventInfo.sourceAttribute.length-13);
+		var armorString = "repeating_armor_"+ID+"_";
+		getAttrs(["armorid", armorString+"repacitembonus", armorString+"repacitemdex", armorString+"repacitemcheckpenalty", armorString+"repacitemspellfailure", armorString+"repacitemspeed"], function(results) {
 			newattr = {};
-			for (key in results) {
-				if (key.charAt(key.length-1) === 's') {
-					field = "acitembonus";
-				}
-				else if (key.charAt(key.length-1) === 'x') {
-					field = "acitemdex";
-				}
-				else if (key.charAt(key.length-1) === 'y') {
-					field = "acitemcheckpenalty";
-				}
-				else if (key.charAt(key.length-1) === 'e') {
-					field = "acitemspellfailure";
-				}
-				else {
-					field = "acitemspeed";
-				}
-				if (results[key] == null || Number.isNaN(parseInt(results[key]),10)) {
-					if (field == "armorbonus" || field == "acitemspeed" || field == "acitemdex") {
-						newValue = 0;
-					}
-					else {
-						newValue = 100;
-					}
-				}
-				else {
-					newValue = parseInt(results[key],10);
-				}
-				newattr[field] = newValue;
+			if (results["armorid"] !== "-") {
+				newattr["repeating_armor_"+results["armorid"]+"_newarmorworn"] = 0;
 			}
-			setAttrs(newattr);
-		});
-		getSectionIDsOrdered("repeating_armor", function(IDs) {
-			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
-				if (IDs[i] != ID) {
-					newattr["repeating_armor_"+IDs[i]+"_newarmorworn"] = 0;
-				}
-			}
+			newattr["acitembonus"] = results[armorString+"repacitembonus"];
+			newattr["acitemdex"] = results[armorString+"repacitemdex"];
+			newattr["acitemcheckpenalty"] = results[armorString+"repacitemcheckpenalty"];
+			newattr["acitemspellfailure"] = results[armorString+"repacitemspellfailure"];
+			newattr["acitemspeed"] = results[armorString+"repacitemspeed"];
+			newattr["armorid"] = ID;
 			setAttrs(newattr);
 		});
 	}
@@ -5606,7 +5501,8 @@ on("change:repeating_armor:newarmorworn", function(values) {
 			"acitemdex": 100,
 			"acitemcheckpenalty": 0,
 			"acitemspellfailure": 0,
-			"acitemspeed": 200
+			"acitemspeed": 200,
+			"armorid": "-"
 		});
 	}
 });
@@ -5616,17 +5512,42 @@ Function that updates the the armor score on a change of value
 **********************************************************************************/
 on("change:repeating_armor:repacitembonus change:repeating_armor:repacitemdex change:repeating_armor:repacitemcheckpenalty change:repeating_armor:repacitemspellfailure change:repeating_armor:repacitemspeed", function(eventInfo) {
     var field = eventInfo.sourceAttribute.slice(40);
-    var ID = eventInfo.sourceAttribute.slice(16).slice(0,20);
-    getAttrs(["repeating_armor_"+ID+"_newarmorworn"], function(results) {
-        if (typeof results["repeating_armor_"+ID+"_newarmorworn"] === undefined) {
-            return;
-        }
-        if (parseInt(results["repeating_armor_"+ID+"_newarmorworn"],10) === 0) {
-            return;
-        }
-        newattr = {};
-        newattr[field] = eventInfo.newValue;
-        setAttrs(newattr);
+	var ID = eventInfo.sourceAttribute.slice(16).slice(0,20);
+	getAttrs(["armorid"], function(result) {
+		if (result["armorid"] === ID) {
+			newattr = {};
+			newattr[field] = eventInfo.newValue;
+			setAttrs(newattr);
+		}
+	});
+});
+
+/**********************************************************************************
+Function that deletes a repeating armor and resets the armor scores if appropriate
+**********************************************************************************/
+on("change:repeating_armor:deletearmor", function(value) {
+    var ID = value.sourceAttribute.slice(16,value.sourceAttribute.length-12);
+    getSectionIDsOrdered("repeating_armor", function(IDs) {
+		getAttrs(["armorid"], function(result) {
+			newattr = {};
+			if (result["armorid"] === ID) {
+				newattr["acitembonus"] = 0;
+				newattr["acitemdex"] = 100;
+				newattr["acitemcheckpenalty"] = 0;
+				newattr["acitemspellfailure"] = 0;
+				newattr["acitemspeed"] = 200;
+				newattr["armorid"] = "-";
+			}
+			var i = 0;
+            while (IDs[i] !== ID) {
+                i++;
+            }
+            for (var j = i+1; j < IDs.length; j++) {
+                newattr["repeating_armor_"+IDs[j]+"_armornumber"] = "Armor "+j.toString();
+            }
+            setAttrs(newattr);
+            removeRepeatingRow("repeating_armor_"+ID);
+		});
     });
 });
 
@@ -5644,136 +5565,76 @@ on("clicked:addshield", function(values) {
 });
 
 /**********************************************************************************
+Function that changes the shield score based on an shield being equipped or removed
+**********************************************************************************/
+on("change:repeating_shield:newshieldworn", function(eventInfo) {
+	if (eventInfo.sourceType === "sheetworker") {			//<-- Event was trigger by the sheet, don't worry about anything (covers creation and unchecking)
+		return;
+	}
+	if (eventInfo.newValue === "1") {						//<-- Box was checked by a user. Update the scores.
+		var ID = eventInfo.sourceAttribute.slice(17,eventInfo.sourceAttribute.length-14);
+		var shieldString = "repeating_shield_"+ID+"_";
+		getAttrs(["shieldid", shieldString+"repshieldbonus", shieldString+"repshieldcheckpenalty", shieldString+"repshieldspellfailure"], function(results) {
+			newattr = {};
+			if (results["shieldid"] !== "-") {
+				newattr["repeating_shield_"+results["shieldid"]+"_newshieldworn"] = 0;
+			}
+			newattr["shieldbonus"] = results[shieldString+"repshieldbonus"];
+			newattr["shieldcheckpenalty"] = results[shieldString+"repshieldcheckpenalty"];
+			newattr["shieldspellfailure"] = results[shieldString+"repshieldspellfailure"];
+			newattr["shieldid"] = ID;
+			setAttrs(newattr);
+		});
+	}
+	else {							//<-- Box was unchecked. Restore deault values
+		setAttrs({
+			"shieldbonus": 0,
+			"shieldcheckpenalty": 0,
+			"shieldspellfailure": 0,
+			"shieldid": "-"
+		});
+	}
+});
+
+/**********************************************************************************
+Function that updates the the armor score on a change of value
+**********************************************************************************/
+on("change:repeating_shield:repshieldbonus change:repeating_shield:repshieldcheckpenalty change:repeating_shield:repshieldspellfailure", function(eventInfo) {
+    var field = eventInfo.sourceAttribute.slice(41);
+	var ID = eventInfo.sourceAttribute.slice(17).slice(0,20);
+	getAttrs(["shieldid"], function(result) {
+		if (result["shieldid"] === ID) {
+			newattr = {};
+			newattr[field] = eventInfo.newValue;
+			setAttrs(newattr);
+		}
+	});
+});
+
+/**********************************************************************************
 Function that deletes a repeating shield and resets the shield scores if appropriate
 **********************************************************************************/
 on("change:repeating_shield:deleteshield", function(value) {
     var ID = value.sourceAttribute.slice(17,value.sourceAttribute.length-13);
-    getSectionIDsOrdered("repeating_shield", function(ids) {
-        getAttrs(["repeating_shield_"+ID+"_newshieldworn"], function(values) {
-            for (key in values) {
-				if (typeof values[key] !== undefined) {
-					if (parseInt(values[key]) === 1) {
-						setAttrs({
-							"shieldbonus": 0,
-							"shieldcheckpenalty": 0,
-							"shieldspellfailure": 0
-						});
-					}
-				}
-            }
-            var i = 0;
-            while (ids[i] !== ID) {
+    getSectionIDsOrdered("repeating_shield", function(IDs) {
+		getAttrs(["shieldid"], function(result) {
+			newattr = {};
+			if (result["shieldid"] === ID) {
+				newattr["shieldbonus"] = 0;
+				newattr["shieldcheckpenalty"] = 0;
+				newattr["shieldspellfailure"] = 0;
+				newattr["shieldid"] = "-";
+			}
+			var i = 0;
+            while (IDs[i] !== ID) {
                 i++;
             }
-            newattr = {};
-            for (var j = i+1; j < ids.length; j++) {
-                newattr["repeating_shield_"+ids[j]+"_shieldnumber"] = "Shield "+j.toString();
+            for (var j = i+1; j < IDs.length; j++) {
+                newattr["repeating_shield_"+IDs[j]+"_shieldnumber"] = "shield "+j.toString();
             }
             setAttrs(newattr);
-            removeRepeatingRow("repeating_shield_"+ID)
-        });
-    });
-});
-
-/**********************************************************************************
-Function that changes the shield score based on a shield being equipped or removed
-**********************************************************************************/
-on("change:repeating_shield:newshieldworn", function(values) {
-	if (values.sourceType === "sheetworker") {			//<-- Event was trigger by the sheet, don't worry about anything (covers creation and unchecking)
-		return;
-	}
-	else if (parseInt(values.newValue,10) === 1) {		//<-- Box was checked by a user. Update the scores and uncheck the other boxes
-		ID = values.sourceAttribute.slice(17,values.sourceAttribute.length-14);
-		getAttrs(["repeating_shield_"+ID+"_repshieldbonus", "repeating_shield_"+ID+"_repshieldcheckpenalty", "repeating_shield_"+ID+"_repshieldspellfailure"], function(results) {
-			newattr = {};
-			for (key in results) {
-				if (key.charAt(key.length-1) === 's') {
-					field = "shieldbonus";
-				}
-				else if (key.charAt(key.length-1) === 'y') {
-					field = "shieldcheckpenalty";
-				}
-				else {
-					field = "shieldspellfailure";
-				}
-				if (results[key] == null || Number.isNaN(parseInt(results[key]),10)) {
-					if (field == "shieldbonus") {
-						newValue = 0;
-					}
-					else {
-						newValue = 100;
-					}
-				}
-				else {
-					newValue = parseInt(results[key],10);
-				}
-				newattr[field] = newValue;
-			}
-			setAttrs(newattr);
+            removeRepeatingRow("repeating_shield_"+ID);
 		});
-		getSectionIDsOrdered("repeating_shield", function(IDs) {
-			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
-				if (IDs[i] != ID) {
-					newattr["repeating_shield_"+IDs[i]+"_newshieldworn"] = 0;
-				}
-			}
-			setAttrs(newattr);
-		});
-		getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
-			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
-				newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmoff"] = 0;
-			}
-			setAttrs(newattr);
-		});
-		getSectionIDsOrdered("repeating_weaponthm", function(IDs) {
-			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
-				newattr["repeating_weaponthm_"+IDs[i]+"_equipweaponthmmain"] = 0;
-			}
-			setAttrs(newattr);
-		});
-		getSectionIDsOrdered("repeating_weaponohr", function(IDs) {
-			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
-				newattr["repeating_weaponohr_"+IDs[i]+"_equipweaponohroff"] = 0;
-			}
-			setAttrs(newattr);
-		});
-		getSectionIDsOrdered("repeating_weaponthr", function(IDs) {
-			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
-				newattr["repeating_weaponthr_"+IDs[i]+"_equipweaponthrmain"] = 0;
-			}
-			setAttrs(newattr);
-		});
-	}
-	else {										//<-- Box was unchecked by the user. Assign all values to default
-		setAttrs({
-			"shieldbonus": 0,
-			"shieldcheckpenalty": 0,
-			"shieldspellfailure": 0
-		})
-	}
-});
-
-/**********************************************************************************
-Function that updates the shield score on a change of value
-**********************************************************************************/
-on("change:repeating_shield:repshieldbonus change:repeating_shield:repshieldcheckpenalty change:repeating_shield:shieldspellfailure", function(eventInfo) {
-    var field = eventInfo.sourceAttribute.slice(41);			//<-- Get the name of the field that changed
-    var ID = eventInfo.sourceAttribute.slice(17).slice(0,20);	//<-- Get the shield ID value
-    getAttrs(["repeating_shield_"+ID+"_newshieldworn"], function(val) {
-        if (typeof val["repeating_shield_"+ID+"_newshieldworn"] === undefined) {
-            return;
-        }
-        if (parseInt(val["repeating_shield_"+ID+"_newshieldworn"],10) === 0) {
-            return;
-        }
-        newattr = {};
-        newattr[field] = eventInfo.newValue;
-        setAttrs(newattr);
     });
 });
 
@@ -5864,7 +5725,7 @@ on("change:repeating_weaponohm:equipweaponohmoff", function(eventInfo) {
 	if (eventInfo.newValue === "1") {							//<-- Box was checked, update scores
 		var ID = eventInfo.sourceAttribute.slice(20,eventInfo.sourceAttribute.length-18);
 		var weaponString = "repeating_weaponohm_"+ID+"_";
-		getAttrs(["equippedoffweapontype", "equippedoffweaponid", "equippedweapontype", "equippedweaponid", weaponString+"weaponohmenh", weaponString+"weaponohmfocus", weaponString+"weaponohmstat", "equippedshieldid"], function(results) {
+		getAttrs(["equippedoffweapontype", "equippedoffweaponid", "equippedweapontype", "equippedweaponid", weaponString+"weaponohmenh", weaponString+"weaponohmfocus", weaponString+"weaponohmstat", "shieldid"], function(results) {
 			newattr = {};
 			if (results["equippedoffweapontype"] !== "-" && results["equippedoffweaponid"] !== "-") {
 				newattr["repeating_weapon"+results["offequippedweapontype"]+"_"+results["offequippedweaponid"]+"_equipweapon"+results["offequippedweapontype"]+"main"] = 0;
@@ -5891,9 +5752,12 @@ on("change:repeating_weaponohm:equipweaponohmoff", function(eventInfo) {
 			newattr["offweaponfocus"] = results[weaponString+"weaponohmfocus"];
 			newattr["offweaponattackstat"] = results[weaponString+"weaponohmstat"];
 			newattr["offtotal"] = "@{bab}+@{offweaponenh}+@{offweaponfocus}+@{offweaponattackstat}";
-			if (results["equippedshieldid"] !== "-") {
-				newattr["repeating_shield_"+results["equippedshieldid"]+"_newshieldworn"] = 0;
-				//TODO: reset shield score
+			if (results["shieldid"] !== "-") {
+				newattr["repeating_shield_"+results["shieldid"]+"_newshieldworn"] = 0;
+				newattr["shieldbonus"] = 0;
+				newattr["shieldcheckpenalty"] = 0;
+				newattr["shieldspellfailure"] = 0;
+				newattr["shieldid"] = "-";
 			}
 			setAttrs(newattr);
 		});
@@ -6002,7 +5866,7 @@ on("change:repeating_weaponthm:equipweaponthmmain", function(eventInfo) {
 	if (eventInfo.newValue === "1") {				//<-- Box checked by a user; update the scores
 		var ID = eventInfo.sourceAttribute.slice(20,eventInfo.sourceAttribute.length-19);
 		var weaponString = "repeating_weaponthm_"+ID+"_";
-		getAttrs(["equippedweapontype", "equippedweaponid", "equippedoffweapontype", "equippedoffweaponid", "equippedshieldid", weaponString+"weaponthmenh", weaponString+"weaponthmfocus", weaponString+"weaponthmstat"], function(results) {
+		getAttrs(["equippedweapontype", "equippedweaponid", "equippedoffweapontype", "equippedoffweaponid", "shieldid", weaponString+"weaponthmenh", weaponString+"weaponthmfocus", weaponString+"weaponthmstat"], function(results) {
 			newattr = {};
 			if (results["equippedweapontype"] !== "-" && results["equippedweaponid"] !== "-") {
 				newattr["repeating_weapon"+results["equippedweapontype"]+"_"+results["equippedweaponid"]+"_equipweapon"+results["equippedweapontype"]+"main"] = 0;
@@ -6016,9 +5880,12 @@ on("change:repeating_weaponthm:equipweaponthmmain", function(eventInfo) {
 				newattr["equippedoffweaponid"] = "-";
 				newattr["offtotal"] = "-";
 			}
-			if (results["equippedshieldid"] !== "-") {
-				newattr["repeating_shield_"+results["equippedshieldid"]+"_newshieldworn"] = 0;
-				//TODO: clear out the shield score
+			if (results["shieldid"] !== "-") {
+				newattr["repeating_shield_"+results["shieldid"]+"_newshieldworn"] = 0;
+				newattr["shieldbonus"] = 0;
+				newattr["shieldcheckpenalty"] = 0;
+				newattr["shieldspellfailure"] = 0;
+				newattr["shieldid"] = "-";
 			}
 			newattr["equippedweapontype"] = "thm";
 			newattr["equippedweaponid"] = ID;
@@ -6161,7 +6028,7 @@ on("change:repeating_weaponohr:equipweaponohroff", function(eventInfo) {
 	if (eventInfo.newValue === "1") {							//<-- Box was checked, update scores
 		var ID = eventInfo.sourceAttribute.slice(20,eventInfo.sourceAttribute.length-18);
 		var weaponString = "repeating_weaponohr_"+ID+"_";
-		getAttrs(["equippedoffweapontype", "equippedoffweaponid", "equippedweapontype", "equippedweaponid", weaponString+"weaponohrenh", weaponString+"weaponohrfocus", weaponString+"weaponohrstat", "equippedshieldid"], function(results) {
+		getAttrs(["equippedoffweapontype", "equippedoffweaponid", "equippedweapontype", "equippedweaponid", weaponString+"weaponohrenh", weaponString+"weaponohrfocus", weaponString+"weaponohrstat", "shieldid"], function(results) {
 			newattr = {};
 			if (results["equippedoffweapontype"] !== "-" && results["equippedoffweaponid"] !== "-") {
 				newattr["repeating_weapon"+results["offequippedweapontype"]+"_"+results["offequippedweaponid"]+"_equipweapon"+results["offequippedweapontype"]+"main"] = 0;
@@ -6188,9 +6055,12 @@ on("change:repeating_weaponohr:equipweaponohroff", function(eventInfo) {
 			newattr["offweaponfocus"] = results[weaponString+"weaponohrfocus"];
 			newattr["offweaponattackstat"] = results[weaponString+"weaponohrstat"];
 			newattr["offtotal"] = "@{bab}+@{offweaponenh}+@{offweaponfocus}+@{offweaponattackstat}";
-			if (results["equippedshieldid"] !== "-") {
-				newattr["repeating_shield_"+results["equippedshieldid"]+"_newshieldworn"] = 0;
-				//TODO: reset shield score
+			if (results["shieldid"] !== "-") {
+				newattr["repeating_shield_"+results["shieldid"]+"_newshieldworn"] = 0;
+				newattr["shieldbonus"] = 0;
+				newattr["shieldcheckpenalty"] = 0;
+				newattr["shieldspellfailure"] = 0;
+				newattr["shieldid"] = "-";
 			}
 			setAttrs(newattr);
 		});
@@ -6299,7 +6169,7 @@ on("change:repeating_weaponthr:equipweaponthrmain", function(eventInfo) {
 	if (eventInfo.newValue === "1") {				//<-- Box checked by a user; update the scores
 		var ID = eventInfo.sourceAttribute.slice(20,eventInfo.sourceAttribute.length-19);
 		var weaponString = "repeating_weaponthr_"+ID+"_";
-		getAttrs(["equippedweapontype", "equippedweaponid", "equippedoffweapontype", "equippedoffweaponid", "equippedshieldid", weaponString+"weaponthrenh", weaponString+"weaponthrfocus", weaponString+"weaponthrstat"], function(results) {
+		getAttrs(["equippedweapontype", "equippedweaponid", "equippedoffweapontype", "equippedoffweaponid", "shieldid", weaponString+"weaponthrenh", weaponString+"weaponthrfocus", weaponString+"weaponthrstat"], function(results) {
 			newattr = {};
 			if (results["equippedweapontype"] !== "-" && results["equippedweaponid"] !== "-") {
 				newattr["repeating_weapon"+results["equippedweapontype"]+"_"+results["equippedweaponid"]+"_equipweapon"+results["equippedweapontype"]+"main"] = 0;
@@ -6313,9 +6183,12 @@ on("change:repeating_weaponthr:equipweaponthrmain", function(eventInfo) {
 				newattr["equippedoffweaponid"] = "-";
 				newattr["offtotal"] = "-";
 			}
-			if (results["equippedshieldid"] !== "-") {
-				newattr["repeating_shield_"+results["equippedshieldid"]+"_newshieldworn"] = 0;
-				//TODO: clear out the shield score
+			if (results["shieldid"] !== "-") {
+				newattr["repeating_shield_"+results["shieldid"]+"_newshieldworn"] = 0;
+				newattr["shieldbonus"] = 0;
+				newattr["shieldcheckpenalty"] = 0;
+				newattr["shieldspellfailure"] = 0;
+				newattr["shieldid"] = "-";
 			}
 			newattr["equippedweapontype"] = "thr";
 			newattr["equippedweaponid"] = ID;
