@@ -16,7 +16,7 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
     * *Beautify everything*
 * **Overhaul the weapon section**
     * ~~Add repeating weapons of each type~~
-    * *Write javascript for updating weapon stats*
+    * ~~Write javascript for updating weapon stats~~
     * Beautify everything
 * **Overhaul Spells**
 * **Overhaul items and inventory**
