@@ -5827,7 +5827,6 @@ on("change:repeating_weaponohm:equipweaponohmmain", function(eventInfo) {
 				newattr["repeating_weapon"+results["equippedweapontype"]+"_"+results["equippedweaponid"]+"_equipweapon"+results["equippedweapontype"]+"main"] = 0;
 			}
 			if (results["equippedoffweapontype"] === "ohm" && results["equippedoffweaponid"] === ID) {
-				console.log("here");
 				newattr["repeating_weaponohm_"+ID+"_equipweaponohmoff"] = 0;
 				newattr["offweaponenh"] = 0;
 				newattr["offweaponfocus"] = 0;
@@ -5878,6 +5877,14 @@ on("change:repeating_weaponohm:equipweaponohmoff", function(eventInfo) {
 				newattr["equippedweapontype"] = "-";
 				newattr["equippedweaponid"] = "-";
 			}
+			else if (results["equippedweapontype"] === "thm" || results["equippedweapontype"] === "thr") {
+				newattr["repeating_weapon"+results["equippedweapontype"]+"_"+results["equippedweaponid"]+"_equipweapon"+results["equippedweapontype"]+"main"] = 0;
+				newattr["weaponenh"] = 0;
+				newattr["weaponfocus"] = 0;
+				newattr["weaponattackstat"] = "(@{str-mod})";
+				newattr["equippedweapontype"] = "-";
+				newattr["equippedweaponid"] = "-";
+			}
 			newattr["equippedoffweapontype"] = "ohm";
 			newattr["equippedoffweaponid"] = ID;
 			newattr["offweaponenh"] = results[weaponString+"weaponohmenh"];
@@ -5886,11 +5893,12 @@ on("change:repeating_weaponohm:equipweaponohmoff", function(eventInfo) {
 			newattr["offtotal"] = "@{bab}+@{offweaponenh}+@{offweaponfocus}+@{offweaponattackstat}";
 			if (results["equippedshieldid"] !== "-") {
 				newattr["repeating_shield_"+results["equippedshieldid"]+"_newshieldworn"] = 0;
+				//TODO: reset shield score
 			}
 			setAttrs(newattr);
 		});
 	}
-	else {							//<-- Box was unchecked
+	else {							//<-- Weapon was unequipped
 		setAttrs({
 			"offweaponenh": 0,
 			"offweaponfocus": 0,
@@ -5943,7 +5951,6 @@ on("change:repeating_weaponohm:deleteweaponohm", function(value) {
     getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
 		getAttrs(["equippedweapontype", "equippedweaponid", "equippedoffweapontype", "equippedoffweaponid"], function(results) {
 			newattr = {};
-			console.log("Testing...");
 			if (results["equippedweapontype"] === "ohm" && results["equippedweaponid"] === ID) {
 				newattr["weaponenh"] = 0;
 				newattr["weaponfocus"] = 0;
@@ -5966,7 +5973,6 @@ on("change:repeating_weaponohm:deleteweaponohm", function(value) {
         	for (var j = i+1; j < IDs.length; j++) {
 				newattr["repeating_weaponohm_"+IDs[j]+"_weaponohmnumber"] = "Weapon "+j.toString();
 			}
-			console.log(newattr);
 	    	setAttrs(newattr);
         	removeRepeatingRow("repeating_weaponohm_"+ID);
 		});
@@ -5989,147 +5995,102 @@ on("clicked:addtwohandmelee", function(values) {
 /**********************************************************************************
 Function that changes the weapon score based on a two-handed melee weapon being equipped or removed from the main hand
 **********************************************************************************/
-on("change:repeating_weaponthm:equipweaponthmmain", function(values) {
-	if (values.sourceType === "sheetworker") {				//<-- Code executed by sheetworker: ignore
+on("change:repeating_weaponthm:equipweaponthmmain", function(eventInfo) {
+	if (eventInfo.sourceType === "sheetworker") {				//<-- Code executed by sheetworker: ignore
 		return;
 	}
-	if (parseInt(values.newValue,10) === 1) {				//<-- Box checked by a user; update the scores
-    	var ID=values.sourceAttribute.slice(20,values.sourceAttribute.length-19);
-    	getSectionIDsOrdered("repeating_weaponohm", function(IDs) {
-    		newattr = {};
-    		for (var i=0; i < IDs.length; i++) {
-				newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmmain"] = 0;
-				newattr["repeating_weaponohm_"+IDs[i]+"_equipweaponohmoff"] = 0;
-			}
-			setAttrs(newattr);
-		});
-		getSectionIDsOrdered("repeating_weaponthm", function(IDs) {
+	if (eventInfo.newValue === "1") {				//<-- Box checked by a user; update the scores
+		var ID = eventInfo.sourceAttribute.slice(20,eventInfo.sourceAttribute.length-19);
+		var weaponString = "repeating_weaponthm_"+ID+"_";
+		getAttrs(["equippedweapontype", "equippedweaponid", "equippedoffweapontype", "equippedoffweaponid", "equippedshieldid", weaponString+"weaponthmenh", weaponString+"weaponthmfocus", weaponString+"weaponthmstat"], function(results) {
 			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
-				if (IDs[i] !== ID) {
-					newattr["repeating_weaponthm_"+IDs[i]+"_equipweaponthmmain"] = 0;
-				}
+			if (results["equippedweapontype"] !== "-" && results["equippedweaponid"] !== "-") {
+				newattr["repeating_weapon"+results["equippedweapontype"]+"_"+results["equippedweaponid"]+"_equipweapon"+results["equippedweapontype"]+"main"] = 0;
 			}
-			setAttrs(newattr);
-		});
-		getSectionIDsOrdered("repeating_weaponohr", function(IDs) {
-			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
-				newattr["repeating_weaponohr_"+IDs[i]+"_equipweaponohrmain"] = 0;
-				newattr["repeating_weaponohr_"+IDs[i]+"_equipweaponohroff"] = 0;
+			if (results["equippedoffweapontype"] !== "-" && results["equippedoffweaponid"] !== "-") {
+				newattr["repeating_weapon"+results["equippedoffweapontype"]+"_"+results["equippedoffweaponid"]+"_equipweapon"+results["equippedoffweapontype"]+"off"] = 0;
+				newattr["offweaponenh"] = 0;
+				newattr["offweaponfocus"] = 0;
+				newattr["offweaponattackstat"] = 0;
+				newattr["equippedoffweapontype"] = "-";
+				newattr["equippedoffweaponid"] = "-";
+				newattr["offtotal"] = "-";
 			}
-			setAttrs(newattr);
-		});
-		getSectionIDsOrdered("repeating_weaponthr", function(IDs) {
-			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
-				newattr["repeating_weaponthr_"+IDs[i]+"_equipweaponthrmain"] = 0;
+			if (results["equippedshieldid"] !== "-") {
+				newattr["repeating_shield_"+results["equippedshieldid"]+"_newshieldworn"] = 0;
+				//TODO: clear out the shield score
 			}
+			newattr["equippedweapontype"] = "thm";
+			newattr["equippedweaponid"] = ID;
+			newattr["weaponenh"] = results[weaponString+"weaponthmenh"];
+			newattr["weaponfocus"] = results[weaponString+"weaponthmfocus"];
+			newattr["weaponattackstat"] = results[weaponString+"weaponthmstat"];
 			setAttrs(newattr);
-		});
-		getSectionIDsOrdered("repeating_shield", function(IDs) {
-			newattr = {};
-			for (var i = 0; i < IDs.length; i++) {
-				newattr["repeating_shield_"+IDs[i]+"_newshieldworn"] = 0;
-			}
-			setAttrs(newattr);
-			setAttrs({
-				"shieldbonus": 0,
-				"shieldcheckpenalty": 0,
-				"shieldspellfailure": 0
-			});
-		});
-		getAttrs(["repeating_weaponthm_"+ID+"_weaponthmenh", "repeating_weaponthm_"+ID+"_weaponthmfocus", "repeating_weaponthm_"+ID+"_weaponthmstat"], function(results) {
-			newattr = {};
-			field = "";
-			for (key in results) {
-				if (key.charAt(key.length-1) === 'h') {
-					field = "weaponenh";
-				}
-				else if (key.charAt(key.length-1) === 's') {
-					field = "weaponfocus";
-				}
-				else {
-					field = "weaponattackstat";
-				}
-				newattr[field] = results[key];
-			}
-			setAttrs(newattr);
-		});
-		setAttrs({
-			"offweaponenh": 0,
-			"offweaponfocus": 0,
-			"offweaponattackstat": 0,
-			"offtotal": "-"
 		});
 	}
-    else {                      //<-- Weapon was unequipped
-        setAttrs({
-            "weaponenh": 0,
-            "weaponfocus": 0,
-            "weaponattackstat": 0
-        });
-    }
+	else {							//<-- Weapon was unequipped
+		setAttrs({
+			"weaponenh": 0,
+			"weaponfocus": 0,
+			"weaponattackstat": "(@{str-mod})",
+			"equippedweapontype": "-",
+			"equippedweaponid": "-"
+		});
+	}
 });
 
 /**********************************************************************************
 Function that updates the weapon stats when the equipped two-handed melee weapon changes stats
 **********************************************************************************/
-on("change:repeating_weaponthm:weaponthmenh change:repeating_weaponthm:weaponthmfocus change:repeating_weaponthm:weaponthmstat", function(value) {
-	if (value.sourceType === "sheetworker") {						//<-- Triggered by a change of sheet, not player
+on("change:repeating_weaponthm:weaponthmenh change:repeating_weaponthm:weaponthmfocus change:repeating_weaponthm:weaponthmstat", function(eventInfo) {
+	if (eventInfo.sourceType === "sheetworker") {						//<-- Triggered by a change of sheet, not player
 		return;
 	}
-	var ID = value.sourceAttribute.slice(20);
-    ID = ID.slice(0,20);
-    getAttrs(["repeating_weaponthm_"+ID+"_equipweaponthmmain"], function(results) {
-        if (typeof results["repeating_weaponthm_"+ID+"_equipweaponthmmain"] === undefined) {
-            return;
-        }
-        if (parseInt(results["repeating_weaponthm_"+ID+"_equipweaponthmmain"],10) === 0) {
-            return;
-		}
+	var ID = eventInfo.sourceAttribute.slice(20).slice(0,20);
+	getAttrs(["equippedweapontype", "equippedweaponid"], function(results) {
 		var field = "";
-		if (value.sourceAttribute.charAt(value.sourceAttribute.length-1) === 't') {
-			field = "weaponattackstat"
+		if (eventInfo.sourceAttribute.charAt(eventInfo.sourceAttribute.length-1) === 't') {
+			field = "weaponattackstat";
+		}
+		else if (eventInfo.sourceAttribute.charAt(eventInfo.sourceAttribute.length-1) === 'h') {
+			field = "weaponenh"
 		}
 		else {
-			field = "weapon" + value.sourceAttribute.slice(50);
+			field = "weaponfocus";
 		}
-		newattr = {};
-		newattr[field] = value.newValue;
-        setAttrs(newattr);
-    });
+		if (results["equippedweapontype"] === "thm" && results["equippedweaponid"] === ID) {
+			newattr = {};
+			newattr[field] = eventInfo.newValue;
+			setAttrs(newattr);
+		}
+	});
 });
 
 /**********************************************************************************
-Function that deletes a repeating two-handed melee weapon and resets the weapon stats if appropriate
+Function that deletes a repeating one-hand melee weapon and resets the weapon stats if appropriate
 **********************************************************************************/
 on("change:repeating_weaponthm:deleteweaponthm", function(value) {
 	var ID = value.sourceAttribute.slice(20,value.sourceAttribute.length-16);
-    getSectionIDsOrdered("repeating_weaponthm", function(ids) {
-        getAttrs(["repeating_weaponthm_"+ID+"_equipweaponthmmain"], function(values) {
-            for (key in values) {
-				if (typeof values[key] !== undefined) {
-					if (parseInt(values[key]) === 1) {
-						setAttrs({
-							"weaponenh": 0,
-							"weaponfocus": 0,
-							"weaponattackstat": "(@{str-mod})"
-						});
-					}
-				}
+    getSectionIDsOrdered("repeating_weaponthm", function(IDs) {
+		getAttrs(["equippedweapontype", "equippedweaponid"], function(results) {
+			newattr = {};
+			if (results["equippedweapontype"] === "thm" && results["equippedweaponid"] === ID) {
+				newattr["weaponenh"] = 0;
+				newattr["weaponfocus"] = 0;
+				newattr["weaponattackstat"] = "(@{str-mod})";
+				newattr["equippedweapontype"] = "-";
+				newattr["equippedweaponid"] = "-";
 			}
+			var i = 0;
+			while (IDs[i] !== ID) {
+        	    i++;
+			}
+        	for (var j = i+1; j < IDs.length; j++) {
+				newattr["repeating_weaponthm_"+IDs[j]+"_weaponthmnumber"] = "Weapon "+j.toString();
+			}
+	    	setAttrs(newattr);
+        	removeRepeatingRow("repeating_weaponthm_"+ID);
 		});
-        var i = 0;
-        while (ids[i] !== ID) {
-            i++;
-		}
-        newattr = {};
-        for (var j = i+1; j < ids.length; j++) {
-			newattr["repeating_weaponthm_"+ids[j]+"_weaponthmnumber"] = "Weapon "+j.toString();
-		}
-        setAttrs(newattr);
-        removeRepeatingRow("repeating_weaponthm_"+ID)
     });
 });
 
