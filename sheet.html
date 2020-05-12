@@ -545,7 +545,7 @@
 				<td>+<input class="sheet-inputbox" type="text" name="attr_attackstat" title="attackstat" value="(@{weaponattackstat})" disabled="true" style="height: 24px; width: 35px;"/><br/><div style="font-size: 0.5em;" data-i18n="stat">Stat</div></td>
 				<td>+<input class="sheet-inputbox" type="text" name="attr_enh" title="enh" value="(@{weaponenh})" disabled="true" style="width: 35px; height: 24px;"/><br/><div style="font-size: 0.5em;" data-i18n="enh">Enh</div></td>
 				<td>+<input class="sheet-inputbox" type="text" name="attr_focus" title="focus" value="(@{weaponfocus})" disabled="true" style="height: 24px; width: 35px;"/><br/><div style="font-size: 0.5em;" data-i18n="focus">Focus</div></td>
-				<td>+<input class="sheet-inputbox" type="text" name="attr_twfpenalty" title="twfpenalty" value="0" disabled="true" style="height: 24px; width: 35px;"><br/><div style="font-size: 0.5em;" data-i18n="twf-penalty">TWF Penalty</div></td>
+				<td>+<input class="sheet-inputbox" type="text" name="attr_twfpenalty" title="twfpenalty" value="(@{twfformula})" disabled="true" style="height: 24px; width: 35px;"><br/><div style="font-size: 0.5em;" data-i18n="twf-penalty">TWF Penalty</div></td>
 				<td> &nbsp; &nbsp; &nbsp; </td>
 				<td style="width: 40px;" class="sheet-statlabel"><span data-i18n="full-attack">Full<br\>Attack</span></td>
 				<td> &nbsp; </td>
@@ -555,7 +555,17 @@
 				<td>/<input class="sheet-inputbox" type="text" name="attr_fullattack4" title="fullattack4" value="@{hiddenfullattack4}" disabled="true" style="height: 24px; width: 35px;"></td>
 				<td> &nbsp; &nbsp; &nbsp; </td>
 				<td><input class="sheet-inputbox" type="text" name="attr_secondattack1" title="secondattack1" value="@{offtotal}" disabled="true" style="height: 24px; width: 35px;"></td>
-				<td>/<input class="sheet-inputbox" type="text" name="attr_secondattack1" title="secondattack1" value="-" disabled="true" style="height: 24px; width: 35px;"></td>
+				<td>/<input class="sheet-inputbox" type="text" name="attr_secondattack2" title="secondattack2" value="@{offtotal2}" disabled="true" style="height: 24px; width: 35px;"></td>
+				<td> &nbsp; &nbsp; &nbsp; </td>
+				<td style="width: 40px;" class="sheet-statlabel"><span data-i18n="twf">TWF</span></td>
+				<td><select class="sheet-inputbox" style="height: 24px; width: 100px;" name="attr_twfselection" title="twfselection">
+					<option type="text" style="width: 100px;" value="none" data-i18n="none">None</option>
+					<option type="text" style="width: 100px;" value="light" data-i18n="light">Light</option>
+					<option type="text" style="width: 100px;" value="twf" data-i18n="twf">TWF</option>
+					<option type="text" style="width: 100px;" value="twflight" data-i18n="twf-light">TWF, Light</option>
+					<option type="text" style="width: 100px;" value="itwf" data-i18n="itwf">ITWF</option>
+					<option type="text" style="width: 100px;" value="itwflight" data-i18n="itwf-light">ITWF, Light</option>
+				</select></td>
 			</tr>
 		</table>
 		<input type="hidden" name="attr_equippedweapontype" title="equippedweapontype" value="-"/>
@@ -570,9 +580,14 @@
 		<input type="hidden" name="attr_offweaponfocus" title="offweaponfocus" value="0"/>
 		<input type="hidden" name="attr_offweaponattackstat" title="offweaponattackstat" value="0"/>
 		<input type="hidden" name="attr_offtotal" title="offtotal" value="-"/>
+		<input type="hidden" name="attr_offtotal2" title="offtotal2" value="-"/>
 		<input type="hidden" name="attr_hiddenfullattack2" title="hiddenfullattack2" value="-">
 		<input type="hidden" name="attr_hiddenfullattack3" title="hiddenfullattack3" value="-">
 		<input type="hidden" name="attr_hiddenfullattack4" title="hiddenfullattack4" value="-">
+		<input type="hidden" name="attr_twfmainpenalty" title="twfmainpenalty" value="-6"/>
+		<input type="hidden" name="attr_twfoffpenalty" title="twfoffpenalty" value="-10"/>
+		<input type="hidden" name="attr_twfformula" title="twfformula" value="0"/>
+		<input type="hidden" name="attr_twfformula2" title="twfformula2" value="-"/>
 		<input type="checkbox" class="sheet-pc-weapons-show sheet-arrow" title="weapons-show" name="attr_weapons-show" value="1" checked /><span style="text-align: left;" data-i18n="weapons">Weapons</span>
 		<div class="sheet-pc-weapons">
 			<div class="sheet-table">
@@ -5695,6 +5710,8 @@ on("change:repeating_weaponohm:equipweaponohmmain", function(eventInfo) {
 				newattr["equippedoffweapontype"] = "-";
 				newattr["equippedoffweaponid"] = "-";
 				newattr["offtotal"] = "-";
+				newattr["offtotal2"] = "-";
+				newattr["twfformula"] = 0;
 			}
 			newattr["equippedweapontype"] = "ohm";
 			newattr["equippedweaponid"] = ID;
@@ -5751,7 +5768,9 @@ on("change:repeating_weaponohm:equipweaponohmoff", function(eventInfo) {
 			newattr["offweaponenh"] = results[weaponString+"weaponohmenh"];
 			newattr["offweaponfocus"] = results[weaponString+"weaponohmfocus"];
 			newattr["offweaponattackstat"] = results[weaponString+"weaponohmstat"];
-			newattr["offtotal"] = "@{bab}+@{offweaponenh}+@{offweaponfocus}+@{offweaponattackstat}";
+			newattr["offtotal"] = "@{bab}+@{offweaponenh}+@{offweaponfocus}+@{offweaponattackstat}+@{twfoffpenalty}";
+			newattr["offtotal2"] = "@{twfformula2}";
+			newattr["twfformula"] = "@{twfmainpenalty}";
 			if (results["shieldid"] !== "-") {
 				newattr["repeating_shield_"+results["shieldid"]+"_newshieldworn"] = 0;
 				newattr["shieldbonus"] = 0;
@@ -5769,7 +5788,9 @@ on("change:repeating_weaponohm:equipweaponohmoff", function(eventInfo) {
 			"offweaponattackstat": 0,
 			"equippedoffweapontype": "-",
 			"equippedoffweaponid": "-",
-			"offtotal": "-"
+			"offtotal": "-",
+			"offtotal2": "-",
+			"twfformula": 0
 		});
 	}
 });
@@ -5829,6 +5850,8 @@ on("change:repeating_weaponohm:deleteweaponohm", function(value) {
 				newattr["equippedoffweapontype"] = "-";
 				newattr["equippedoffweaponid"] = "-";
 				newattr["offtotal"] = "-";
+				newattr["offtotal2"] = "-";
+				newattr["twfformula"] = 0;
 			}
 			var i = 0;
 			while (IDs[i] !== ID) {
@@ -5879,6 +5902,8 @@ on("change:repeating_weaponthm:equipweaponthmmain", function(eventInfo) {
 				newattr["equippedoffweapontype"] = "-";
 				newattr["equippedoffweaponid"] = "-";
 				newattr["offtotal"] = "-";
+				newattr["offtotal2"] = "-";
+				newattr["twfformula"] = 0;
 			}
 			if (results["shieldid"] !== "-") {
 				newattr["repeating_shield_"+results["shieldid"]+"_newshieldworn"] = 0;
@@ -5998,6 +6023,8 @@ on("change:repeating_weaponohr:equipweaponohrmain", function(eventInfo) {
 				newattr["equippedoffweapontype"] = "-";
 				newattr["equippedoffweaponid"] = "-";
 				newattr["offtotal"] = "-";
+				newattr["offtotal2"] = "-";
+				newattr["twfformula"] = 0;
 			}
 			newattr["equippedweapontype"] = "ohr";
 			newattr["equippedweaponid"] = ID;
@@ -6054,7 +6081,9 @@ on("change:repeating_weaponohr:equipweaponohroff", function(eventInfo) {
 			newattr["offweaponenh"] = results[weaponString+"weaponohrenh"];
 			newattr["offweaponfocus"] = results[weaponString+"weaponohrfocus"];
 			newattr["offweaponattackstat"] = results[weaponString+"weaponohrstat"];
-			newattr["offtotal"] = "@{bab}+@{offweaponenh}+@{offweaponfocus}+@{offweaponattackstat}";
+			newattr["offtotal"] = "@{bab}+@{offweaponenh}+@{offweaponfocus}+@{offweaponattackstat}+@{twfoffpenalty}";
+			newattr["offtotal2"] = "@{twfformula2}";
+			newattr["twfformula"] = "@{twfmainpenalty}";
 			if (results["shieldid"] !== "-") {
 				newattr["repeating_shield_"+results["shieldid"]+"_newshieldworn"] = 0;
 				newattr["shieldbonus"] = 0;
@@ -6072,7 +6101,9 @@ on("change:repeating_weaponohr:equipweaponohroff", function(eventInfo) {
 			"offweaponattackstat": 0,
 			"equippedoffweapontype": "-",
 			"equippedoffweaponid": "-",
-			"offtotal": "-"
+			"offtotal": "-",
+			"offtotal2": "-",
+			"twfformula": 0
 		});
 	}
 });
@@ -6132,6 +6163,8 @@ on("change:repeating_weaponohr:deleteweaponohr", function(value) {
 				newattr["equippedoffweapontype"] = "-";
 				newattr["equippedoffweaponid"] = "-";
 				newattr["offtotal"] = "-";
+				newattr["offtotal2"] = "-";
+				newattr["twfformula"] = 0;
 			}
 			var i = 0;
 			while (IDs[i] !== ID) {
@@ -6182,6 +6215,8 @@ on("change:repeating_weaponthr:equipweaponthrmain", function(eventInfo) {
 				newattr["equippedoffweapontype"] = "-";
 				newattr["equippedoffweaponid"] = "-";
 				newattr["offtotal"] = "-";
+				newattr["offtotal2"] = "-";
+				newattr["twfformula"] = 0;
 			}
 			if (results["shieldid"] !== "-") {
 				newattr["repeating_shield_"+results["shieldid"]+"_newshieldworn"] = 0;
@@ -6300,6 +6335,44 @@ on("change:bab", function(eventInfo) {
 		newattr["hiddenfullattack4"] = "(@{attackbonus}-15)";
 		setAttrs(newattr);
 	}
+});
+
+/**********************************************************************************
+Function that updates penalties caused by Two-Weapon Fighting
+**********************************************************************************/
+on("change:twfselection", function(eventInfo) {
+	newattr = {};
+	if (eventInfo.newValue === "none") {
+		newattr["twfmainpenalty"] = -6;
+		newattr["twfoffpenalty"] = -10;
+		newattr["twfformula2"] = "-";
+	}
+	else if (eventInfo.newValue === "light") {
+		newattr["twfmainpenalty"] = -4;
+		newattr["twfoffpenalty"] = -8;
+		newattr["twfformula2"] = "-";
+	}
+	else if (eventInfo.newValue === "twf") {
+		newattr["twfmainpenalty"] = -4;
+		newattr["twfoffpenalty"] = -4;
+		newattr["twfformula2"] = "-";
+	}
+	else if (eventInfo.newValue === "twflight") {
+		newattr["twfmainpenalty"] = -2;
+		newattr["twfoffpenalty"] = -2;
+		newattr["twfformula2"] = "-";
+	}
+	else if (eventInfo.newValue === "itwf") {
+		newattr["twfmainpenalty"] = -4;
+		newattr["twfoffpenalty"] = -4;
+		newattr["twfformula2"] = "@{secondattack1}-5";
+	}
+	else {
+		newattr["twfmainpenalty"] = -2;
+		newattr["twfoffpenalty"] = -2;
+		newattr["twfformula2"] = "@{secondattack1}-5";
+	}
+	setAttrs(newattr);
 });
 
 //  <!---- Copy weight from total equipment weight to total carried weight if wanted ---->

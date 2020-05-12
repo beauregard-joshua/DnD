@@ -399,5 +399,9 @@
 	"bab": "BAB",
 	"enh": "Enh",
 	"focus": "Focus",
-	"twf-penalty": "TWF Penalty"
+	"twf-penalty": "TWF Penalty",
+	"twf": "TWF",
+	"twf-light": "TWF, Light",
+	"itwf": "ITWF",
+	"itwf-light": "ITWF, Light"
 }
