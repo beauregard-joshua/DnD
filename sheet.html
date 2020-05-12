@@ -3381,36 +3381,38 @@
 					<tr>
 						<td class="sheet-statlabel" style="width: 150px; height: 24px; font-size: 1em;"><span data-i18n="language">Language</span></td>
 						<td class="sheet-statlabel" style="width: 150px; height: 24px; font-size: 1em;"><span data-i18n="alphabet">Alphabet</span></td>
-						<td class="sheet-statlabel" style="width: 480px; height: 24px; font-size: 1em;"><span data-i18n="spoken-by">Spoken By...</span></td>
+						<td class="sheet-statlabel" style="width: 485px; height: 24px; font-size: 1em;"><span data-i18n="spoken-by">Spoken By...</span></td>
+						<td class="sheet-statlabel" style="width: 30px; height: 24px; font-size: 0.75em;"><span data-i18n="del">Del</span></td>
 					</tr>
 				</table>
 				<fieldset class="repeating_language">
 					<table>
 						<tr>
 							<td><select class="sheet-statlabel" style="width: 150px; height: 24px;" name="attr_language" title="language">
-								<option type="text" style="width: 150px;" value="Infernal" datai18n="abyssal">Abyssal</option>
-								<option type="text" style="width: 150px;" value="Elven" datai18n="aquan">Aquan</option>
-								<option type="text" style="width: 150px;" value="Draconic" datai18n="auran">Auran</option>
+								<option type="text" style="width: 150px;" value="Abyssal" datai18n="abyssal">Abyssal</option>
+								<option type="text" style="width: 150px;" value="Aquan" datai18n="aquan">Aquan</option>
+								<option type="text" style="width: 150px;" value="Auran" datai18n="auran">Auran</option>
 								<option type="text" style="width: 150px;" value="Celestial" datai18n="celestial">Celestial</option>
 								<option type="text" style="width: 150px;" value="Common" datai18n="common" selected>Common</option>
 								<option type="text" style="width: 150px;" value="Draconic" datai18n="draconic">Draconic</option>
 								<option type="text" style="width: 150px;" value="Druidic" datai18n="druidic">Druidic</option>
 								<option type="text" style="width: 150px;" value="Dwarven" datai18n="dwarven">Dwarven</option>
 								<option type="text" style="width: 150px;" value="Elven" datai18n="elven">Elven</option>
-								<option type="text" style="width: 150px;" value="Dwarven" datai18n="giant">Giant</option>
-								<option type="text" style="width: 150px;" value="Dwarven" datai18n="gnome">Gnome</option>
-								<option type="text" style="width: 150px;" value="Dwarven" datai18n="goblin">Goblin</option>
-								<option type="text" style="width: 150px;" value="Common" datai18n="gnoll">Gnoll</option>
-								<option type="text" style="width: 150px;" value="Common" datai18n="halfling">Halfling</option>
-								<option type="text" style="width: 150px;" value="Draconic" datai18n="ignan">Ignan</option>
+								<option type="text" style="width: 150px;" value="Giant" datai18n="giant">Giant</option>
+								<option type="text" style="width: 150px;" value="Gnome" datai18n="gnome">Gnome</option>
+								<option type="text" style="width: 150px;" value="Goblin" datai18n="goblin">Goblin</option>
+								<option type="text" style="width: 150px;" value="Gnoll" datai18n="gnoll">Gnoll</option>
+								<option type="text" style="width: 150px;" value="Halfling" datai18n="halfling">Halfling</option>
+								<option type="text" style="width: 150px;" value="Ignan" datai18n="ignan">Ignan</option>
 								<option type="text" style="width: 150px;" value="Infernal" datai18n="infernal">Infernal</option>
-								<option type="text" style="width: 150px;" value="Dwarven" datai18n="orc">Orc</option>
-								<option type="text" style="width: 150px;" value="Elven" datai18n="sylvan">Sylvan</option>
-								<option type="text" style="width: 150px;" value="Dwarven" datai18n="terran">Terran</option>
+								<option type="text" style="width: 150px;" value="Orc" datai18n="orc">Orc</option>
+								<option type="text" style="width: 150px;" value="Sylvan" datai18n="sylvan">Sylvan</option>
+								<option type="text" style="width: 150px;" value="Terran" datai18n="terran">Terran</option>
 								<option type="text" style="width: 150px;" value="Elven" datai18n="undercommon">Undercommon</option>
 							</select></td>
 							<td><input class="sheet-inputbox" style="width: 150px; height: 24px;" name="attr_alphabet" title="alphabet" value="Common" readonly/></td>
-							<td><input class="sheet-inputbox" style="width: 480px; height: 24px;" name="attr_spoken" title="spoken" value="-" readonly></td>
+							<td><input class="sheet-inputbox" style="width: 485px; height: 24px;" name="attr_spoken" title="spoken" value="-" readonly></td>
+							<td> &nbsp; <input type="checkbox" name="attr_deletelanguage" title="deletelanguage" value="1" style="width: 20px;"></td>
 						</tr>
 					</table>
 				</fieldset>
@@ -3418,21 +3420,18 @@
 			</div>
 		</div>
 		<hr/>
-	</div>
-
-	<!--<div class="sheet-tab-content sheet-tab11 sheet-tab99">
-		<input type="checkbox" class="sheet-pc-languages-show sheet-arrow" title="languages-show" name="attr_languages-show" value="1" checked /><span style="text-align: left;" data-i18n="languages">Languages</span>
+		<!--<input type="checkbox" class="sheet-pc-abilities-show sheet-arrow" title="abilities-show" name="attr_abilities-show" value="1" checked /><span style="text-align: left;" data-i18n="abilities">Abilities </span>
 		<div class="sheet-pc-languages">
-			<div style="float: left;">
-				<table>
+			<div style="float: left">
+				<table cellpadding="10" cellspacing="0">
 					<tr>
-						<td colspan="2" class="sheet-statlabel-big-gray" style="width:800px; height: 35px; font-size: 1.5em;" data-i18n="languages">Languages</td>
+						<td colspan="3" class="sheet-statlabel-big-gray" style="font-size: 1.5em; width: 790px;" data-i18n="abilities">Abilities</td>
 					</tr>
 				</table>
-				<button name="act_addlanguage" title="addlanguage">Add Language</button>
+				<button type="action" name="act_addability" title="addability">Add Ability</button>
 			</div>
-		</div>
-	</div>-->
+		</div>-->
+
 
 	<!--<div class="sheet-tab-content sheet-tab9">
 		<input type="checkbox" class="sheet-pc-summons-show sheet-arrow" title="summons-show" name="attr_summons-show" value="1" checked /><span style="text-align: left;" data-i18n="other">Other</span>
@@ -6373,8 +6372,98 @@ on("clicked:addlanguage", function(eventInfo) {
 Function that updates text based on a change in language
 **********************************************************************************/
 on("change:repeating_language:language", function(eventInfo) {
-
+	var field = eventInfo.sourceAttribute.slice(0,40);
+	newattr = {};
+	switch (eventInfo.newValue) {
+		case "Abyssal":
+			newattr[field+"alphabet"] = "Infernal"
+			newattr[field+"spoken"] = "Demons, chaotic evil outsiders";
+			break;
+		case "Aquan":
+			newattr[field+"alphabet"] = "Elven"
+			newattr[field+"spoken"] = "Water-based creatures";
+			break;
+		case "Auran":
+			newattr[field+"alphabet"] = "Draconic"
+			newattr[field+"spoken"] = "Air-based creatures";
+			break;
+		case "Celestial":
+			newattr[field+"alphabet"] = "Celestial"
+			newattr[field+"spoken"] = "Good outsiders";
+			break;
+		case "Common":
+			newattr[field+"alphabet"] = "Common"
+			newattr[field+"spoken"] = "Humans, Halflings, Half-elves, Half-orcs";
+			break;
+		case "Draconic":
+			newattr[field+"alphabet"] = "Draconic"
+			newattr[field+"spoken"] = "Kobolds, Troglodytes, Lizardfolk, Dragons";
+			break;
+		case "Druidic":
+			newattr[field+"alphabet"] = "Druidic"
+			newattr[field+"spoken"] = "Druids (only)";
+			break;
+		case "Dwarven":
+			newattr[field+"alphabet"] = "Dwarven"
+			newattr[field+"spoken"] = "Dwarves";
+			break;
+		case "Elven":
+			newattr[field+"alphabet"] = "Elven"
+			newattr[field+"spoken"] = "Elves";
+			break;
+		case "Giant":
+			newattr[field+"alphabet"] = "Dwarven"
+			newattr[field+"spoken"] = "Ogres, Giants";
+			break;
+		case "Gnoll":
+			newattr[field+"alphabet"] = "Common"
+			newattr[field+"spoken"] = "Gnolls";
+			break;
+		case "Gnome":
+			newattr[field+"alphabet"] = "Dwarven"
+			newattr[field+"spoken"] = "Gnomes";
+			break;
+		case "Goblin":
+			newattr[field+"alphabet"] = "Dwarven"
+			newattr[field+"spoken"] = "Goblins, Hobgoblins, Bugbears";
+			break;
+		case "Halfling":
+			newattr[field+"alphabet"] = "Common"
+			newattr[field+"spoken"] = "Halflings";
+			break;
+		case "Ignan":
+			newattr[field+"alphabet"] = "Draconic"
+			newattr[field+"spoken"] = "Fire-based creatures";
+			break;
+		case "Infernal":
+			newattr[field+"alphabet"] = "Infernal"
+			newattr[field+"spoken"] = "Devils, lawful-evil outsiders";
+			break;
+		case "Orc":
+			newattr[field+"alphabet"] = "Dwarven"
+			newattr[field+"spoken"] = "Orcs";
+			break;
+		case "Sylvan":
+			newattr[field+"alphabet"] = "Elven"
+			newattr[field+"spoken"] = "Dryards, Brownies, Leprechauns";
+			break;
+		case "Terran":
+			newattr[field+"alphabet"] = "Dwarven"
+			newattr[field+"spoken"] = "Xorns, earth-based creatures";
+			break;
+		case "Undercommon":
+			newattr[field+"alphabet"] = "Elven"
+			newattr[field+"spoken"] = "Drow, Mind Flayers";
+			break;
+		default:
+			break;
+	}
+	setAttrs(newattr);
 });
+
+on("change:repeating_language:deletelanguage", function(eventInfo) {
+	removeRepeatingRow(eventInfo.sourceAttribute.slice(0,39));
+})
 
 //  <!---- Copy weight from total equipment weight to total carried weight if wanted ---->
 on("change:totalequipmentweight change:equipmentweightcopy", function() {
