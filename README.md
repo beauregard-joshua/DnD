@@ -25,4 +25,6 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
 * **Overhaul Inventory**
 * **Establish an Inventory Switch for a Bag of Holding**
 * **Add a feats page**
-    * *Do more than just make the page*
+    * *Add Languages*
+    * Add Special Abilities
+    * Add Feats
