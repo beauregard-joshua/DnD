@@ -3449,18 +3449,36 @@
 			</div>
 		</div>
 		<hr/>
-	</div>
-		<!--<input type="checkbox" class="sheet-pc-abilities-show sheet-arrow" title="abilities-show" name="attr_abilities-show" value="1" checked /><span style="text-align: left;" data-i18n="abilities">Abilities </span>
-		<div class="sheet-pc-languages">
+		<br/>
+		<input type="checkbox" class="sheet-pc-feats-show sheet-arrow" title="feats-show" name="attr_feats-show" value="1" checked /><span style="text-align: left;" data-i18n="feats">Feats </span>
+		<div class="sheet-pc-feats">
 			<div style="float: left">
 				<table cellpadding="10" cellspacing="0">
 					<tr>
-						<td colspan="3" class="sheet-statlabel-big-gray" style="font-size: 1.5em; width: 790px;" data-i18n="abilities">Abilities</td>
+						<td colspan="3" class="sheet-statlabel-big-gray" style="font-size: 1.5em; width: 815px;" data-i18n="feats">Feats</td>
 					</tr>
 				</table>
-				<button type="action" name="act_addability" title="addability">Add Ability</button>
+				<table>
+					<tr>
+						<td class="sheet-statlabel" style="width: 250px; height: 24px; font-size: 1em;"><span datai18n="feat-name">Feat Name</span></td>
+						<td class="sheet-statlabel" style="width: 531px; height: 24px; font-size: 1em;"><span datai18n="effect">Effect</span></td>
+						<td class="sheet-statlabel" style="width: 30px; height: 24px; font-size: 0.75em;"><span datai18n="del">Del</span></td>
+					</tr>
+				</table>
+				<fieldset class="repeating_feat">
+					<table>
+						<tr>
+							<td style="width: 252px;"><input class="sheet-inputbox" type="text" style="width: 250px; height: 24px;" name="attr_feat" title="ability"></td>
+							<td style="width: 533px;"><input class="sheet-inputbox" type="text" style="width: 531px; height: 24px;" name="attr_featdescription" title="featdescription"></td>
+							<td style="width: 32px;"><input type="checkbox" name="attr_deletefeat" title="deletefeat" value="1" style="width: 20px;"></td>
+						</tr>
+					</table>
+				</fieldset>
+				<button type="action" name="act_addfeat" title="addfeat">Add Feat</button>
 			</div>
-		</div>-->
+		</div>
+		<hr/>
+	</div>
 
 
 	<!--<div class="sheet-tab-content sheet-tab9">
@@ -6514,6 +6532,24 @@ Function that deletes a repeating ability
 **********************************************************************************/
 on("change:repeating_ability:deleteability", function(eventInfo) {
 	removeRepeatingRow(eventInfo.sourceAttribute.slice(0,38));
+});
+
+/**********************************************************************************
+Function that adds a repeating feat to the stage
+**********************************************************************************/
+on("clicked:addfeat", function(eventInfo) {
+	var ID = generateRowID();
+	newattr = {};
+	newattr["repeating_feat_"+ID+"_feat"] = "Feat";
+	newattr["repeating_feat_"+ID+"_featdescription"] = "Description";
+	setAttrs(newattr);
+});
+
+/**********************************************************************************
+Function that deletes a repeating feat
+**********************************************************************************/
+on("change:repeating_feat:deletefeat", function(eventInfo) {
+	removeRepeatingRow(eventInfo.sourceAttribute.slice(0,35));
 });
 
 //  <!---- Copy weight from total equipment weight to total carried weight if wanted ---->

@@ -1098,4 +1098,5 @@ font-style: italic;
 
 .sheet-pc-languages-show:not(:checked)~.sheet-pc-languages {display:none;}
 .sheet-pc-abilities-show:not(:checked)~.sheet-pc-abilities {display:none;}
+.sheet-pc-feats-show:not(:checked)~.sheet-pc-feats {display:none;}
 
