@@ -1058,7 +1058,25 @@
 						<td colspan="3" class="sheet-statlabel-big-gray" style="font-size: 1.5em; width: 815px;" data-i18n="other">Other</td>
 					</tr>
 				</table>
-				<button type="action" name="act_addring" title="addring">Add Other Equipment</button>
+				<table>
+					<tr>
+						<td class="sheet-statlabel" style="width: 150px; height: 24px; font-size: 1em;"><span data-i18n="equipment">Equipment</span></td>
+						<td class="sheet-statlabel" style="width: 150px; height: 24px; font-size: 1em;"><span data-i18n="body-location">Body Location</span></td>
+						<td class="sheet-statlabel" style="width: 480px; height: 24px; font-size: 1em;"><span data-i18n="effect">Effect</span></td>
+						<td class="sheet-statlabel" style="width: 30px; height: 24px; font-size: 0.75em;"><span data-i18n="del">Del</span></td>
+					</tr>
+				</table>
+				<fieldset class="repeating_equipment">
+					<table>
+						<tr>
+							<td><input type="text" class="sheet-inputbox" name="attr_equipment" title="equipment" style="width: 151px; height: 24px;"></td>
+							<td><input type="text" class="sheet-inputbox" name="attr_equipmentlocation" title="equipmentlocation" style="width: 151px; height: 24px;"></td>
+							<td><input type="text" class="sheet-inputbox" name="attr_equipmentdescription" title="equipmentdescription" style="width: 481px; height: 24px;"></td>
+							<td> &nbsp; <input type="checkbox" name="attr_deleteequipment" title="deleteequipment" value="1" style="width: 20px;"></td>
+						</tr>
+					</table>
+				</fieldset>
+				<button type="action" name="act_addequipment" title="addequipment">Add Other Equipment</button>
 			</div>
 		</div>
 		<hr/>
@@ -6591,6 +6609,25 @@ Function that deletes a repeating feat
 **********************************************************************************/
 on("change:repeating_feat:deletefeat", function(eventInfo) {
 	removeRepeatingRow(eventInfo.sourceAttribute.slice(0,35));
+});
+
+/**********************************************************************************
+Function that adds a repeating equipment to the stage
+**********************************************************************************/
+on("clicked:addequipment", function(eventInfo) {
+	var ID = generateRowID();
+	newattr = {};
+	newattr["repeating_equipment_"+ID+"_equipment"] = "Equipment";
+	newattr["repeating_equipment_"+ID+"_equipmentlocation"] = "Location";
+	newattr["repeating_equipment_"+ID+"_equipmentdescription"] = "Description";
+	setAttrs(newattr);
+});
+
+/**********************************************************************************
+Function that deletes a repeating feat
+**********************************************************************************/
+on("change:repeating_equipment:deleteequipment", function(eventInfo) {
+	removeRepeatingRow(eventInfo.sourceAttribute.slice(0,40));
 });
 
 //  <!---- Copy weight from total equipment weight to total carried weight if wanted ---->
