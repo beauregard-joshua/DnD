@@ -8,15 +8,15 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
 
 ## Tasks
 
-* **Overhaul the armor section**
+* ~~**Overhaul the armor section**~~
     * ~~Add repeating armor~~
     * ~~Add repeating shield~~
     * ~~Write javascript for working AC with armor and shields~~
-    * *Beautify everything*
-* **Overhaul the weapon section**
+    * ~~Beautify everything~~
+* ~~**Overhaul the weapon section**~~
     * ~~Add repeating weapons of each type~~
     * ~~Write javascript for updating weapon stats~~
-    * *Beautify everything*
+    * ~~Beautify everything~~
 * **Overhaul Spells**
 * **Overhaul Equipment**
     * *Add rings and necklaces*
@@ -28,3 +28,5 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
     * ~~Add Languages~~
     * ~~Add Special Abilities~~
     * ~~Add Feats~~
+* **Miscellaneous Stuff**
+    * Make speed update automatically
