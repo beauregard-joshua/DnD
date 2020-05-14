@@ -16,7 +16,7 @@
 .sheet-pc-acequipment-show:not(:checked)~.sheet-pc-acequipment {display:none;}
 .sheet-pc-acother-show:not(:checked)~.sheet-pc-acother {display:none;}
 .sheet-pc-singleuseequipment-show:not(:checked)~.sheet-pc-singleuseequipment {display:none;}
-.sheet-pc-magicequipment-show:not(:checked)~.sheet-pc-magicequipment {display:none;}
+.sheet-pc-magicequipment-show:not(:checked)~.sheet-pc-ment {display:none;}
 .sheet-pc-stdequipment-show:not(:checked)~.sheet-pc-stdequipment {display:none;}
 .sheet-pc-otherequipment-show:not(:checked)~.sheet-pc-otherequipment {display:none;}
 .sheet-pc-encumbrance-show:not(:checked)~.sheet-pc-encumbrance {display:none;}
