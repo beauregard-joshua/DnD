@@ -110,10 +110,10 @@
 		<span class="sheet-tab sheet-tab1" data-i18n="stats">Stats</span>
 	<input type="radio" name="attr_tab" class="sheet-tab sheet-tab2" value="2" title="Weapons" />
 		<span class="sheet-tab sheet-tab2" data-i18n="weapons">Weapons</span>
-	<input type="radio" name="attr_tab" class="sheet-tab sheet-tab3" value="3" title="AC" />
-		<span class="sheet-tab sheet-tab3" data-i18n="armor-class-i">AC</span>
-	<input type="radio" name="attr_tab" class="sheet-tab sheet-tab4" value="4" title="Equipment" />
-		<span class="sheet-tab sheet-tab4" data-i18n="equipment">Equipment</span>
+	<input type="radio" name="attr_tab" class="sheet-tab sheet-tab3" value="3" title="Equipment" />
+		<span class="sheet-tab sheet-tab3" data-i18n="equipment">Equipment</span>
+	<input type="radio" name="attr_tab" class="sheet-tab sheet-tab4" value="4" title="Inventory" />
+		<span class="sheet-tab sheet-tab4" data-i18n="inventory">Inventory</span>
 	<input type="radio" name="attr_tab" class="sheet-tab sheet-tab5" value="5" title="Skills" />
 		<span class="sheet-tab sheet-tab5" data-i18n="skills">Skills</span>
 	<input type="radio" name="attr_tab" class="sheet-tab sheet-tab6" value="6" title="Spells" />
@@ -1031,6 +1031,9 @@
 		<input type="checkbox" class="sheet-pc-magicequipment-show sheet-arrow" title="magicequipment-show" name="attr_magicequipment-show" value="1" checked /><span style="text-align: left;" data-i18n="magic-equipment">Magic Equipment </span>
 		<div class="sheet-pc-ment">
 			<div style="float: left;">
+				<input type="hidden" value="-" name="attr_necklaceid" title="necklaceid">
+				<input type="hidden" value="-" name="attr_ringid" title="ringid">
+				<input type="hidden" value="-" name="attr_ringid2" title="ringid2">
 				<table cellpadding="10" cellspacing="0">
 					<tr>
 						<td colspan="3" class="sheet-statlabel-big-darkgray" style="font-size: 2em; width: 815px;" data-i18n="magic-equipment">Magic Equipment</td>
@@ -1042,6 +1045,22 @@
 						<td colspan="3" class="sheet-statlabel-big-gray" style="font-size: 1.5em; width: 815px;" data-i18n="rings">Rings</td>
 					</tr>
 				</table>
+				<table>
+					<tr>
+						<td class="sheet-statlabel" style="width: 212px; height: 24px; font-size: 1em;"><span data-i18n="ring">Ring</span></td>
+						<td class="sheet-statlabel" style="width: 567px; height: 24px; font-size: 1em;"><span data-i18n="effect">Effect</span></td>
+						<td class="sheet-statlabel" style="width: 30px; height: 24px; font-size: 0.75em;"><span data-i18n="del">Del</span></td>
+					</tr>
+				</table>
+				<fieldset class="repeating_ring">
+					<table>
+						<tr>
+							<td><input type="checkbox" name="attr_equipring" title="equipring" value="1" style="width: 20px;"> &nbsp; <input type="text" class="sheet-inputbox" name="attr_ring" title="ring" style="width: 151px; height: 24px;"> &nbsp; <input type="checkbox" name="attr_equipring2" title="equipring2" value="1" style="width: 20px;" checked></td>
+							<td><input type="text" class="sheet-inputbox" name="attr_ringdescription" title="ringdescription" style="width: 567px; height: 24px;"></td>
+							<td> &nbsp; <input type="checkbox" name="attr_deletering" title="deletering" value="1" style="width: 20px;"></td>
+						</tr>
+					</table>
+				</fieldset>
 				<button type="action" name="act_addring" title="addring">Add Ring</button>
 				<br/>
 				<br/>
@@ -1050,6 +1069,22 @@
 						<td colspan="3" class="sheet-statlabel-big-gray" style="font-size: 1.5em; width: 815px;" data-i18n="necklaces">Necklaces</td>
 					</tr>
 				</table>
+				<table>
+					<tr>
+						<td class="sheet-statlabel" style="width: 180px; height: 24px; font-size: 1em;"><span data-i18n="necklace">Necklace</span></td>
+						<td class="sheet-statlabel" style="width: 600px; height: 24px; font-size: 1em;"><span data-i18n="effect">Effect</span></td>
+						<td class="sheet-statlabel" style="width: 30px; height: 24px; font-size: 0.75em;"><span data-i18n="del">Del</span></td>
+					</tr>
+				</table>
+				<fieldset class="repeating_necklace">
+					<table>
+						<tr>
+							<td><input type="checkbox" name="attr_equipnecklace" title="equipnecklace" value="1" style="width: 20px;" checked> &nbsp; <input type="text" class="sheet-inputbox" name="attr_necklace" title="necklace" style="width: 151px; height: 24px;"></td>
+							<td><input type="text" class="sheet-inputbox" name="attr_necklacedescription" title="necklacedescription" style="width: 601px; height: 24px;"></td>
+							<td> &nbsp; <input type="checkbox" name="attr_deletenecklace" title="deletenecklace" value="1" style="width: 20px;"></td>
+						</tr>
+					</table>
+				</fieldset>
 				<button type="action" name="act_addnecklace" title="addnecklace">Add Necklace</button>
 				<br/>
 				<br/>
@@ -6612,6 +6647,141 @@ on("change:repeating_feat:deletefeat", function(eventInfo) {
 });
 
 /**********************************************************************************
+Function that adds a repeating ring to the stage
+**********************************************************************************/
+on("clicked:addring", function(eventInfo) {
+	var ID = generateRowID();
+	newattr = {};
+	newattr["repeating_ring_"+ID+"_equipring"] = 0;
+	newattr["repeating_ring_"+ID+"_equipring2"] = 0;
+	setAttrs(newattr);
+});
+
+/**********************************************************************************
+Function that updates the equipped main ring
+**********************************************************************************/
+on("change:repeating_ring:equipring", function(eventInfo) {
+	if (eventInfo.sourceType === "sheetworker") {
+		return;
+	}
+	if (eventInfo.newValue === "1") {
+		getAttrs(["ringid", "ringid2"], function(result) {
+			var ID = eventInfo.sourceAttribute.slice(15,35);
+			newattr = {};
+			newattr["ringid"] = ID;
+			if (result["ringid"] !== "-") {
+				newattr["repeating_ring_"+result["ringid"]+"_equipring"] = 0;
+			}
+			if (result["ringid2"] === ID) {
+				newattr["repeating_ring_"+ID+"_equipring2"] = 0;
+				newattr["ringid2"] = "-";
+			}
+			setAttrs(newattr);
+		});
+	}
+	else {
+		newattr["ringid"] = "-";
+		setAttrs(newattr);
+	}
+});
+
+/**********************************************************************************
+Function that updates the equipped off ring
+**********************************************************************************/
+on("change:repeating_ring:equipring2", function(eventInfo) {
+	if (eventInfo.sourceType === "sheetworker") {
+		return;
+	}
+	if (eventInfo.newValue === "1") {
+		getAttrs(["ringid", "ringid2"], function(result) {
+			var ID = eventInfo.sourceAttribute.slice(15,35);
+			newattr = {};
+			newattr["ringid2"] = ID;
+			if (result["ringid2"] !== "-") {
+				newattr["repeating_ring_"+result["ringid2"]+"_equipring2"] = 0;
+			}
+			if (result["ringid"] === ID) {
+				newattr["repeating_ring_"+ID+"_equipring"] = 0;
+				newattr["ringid"] = "-";
+			}
+			setAttrs(newattr);
+		});
+	}
+	else {
+		newattr["ringid2"] = "-";
+		setAttrs(newattr);
+	}
+});
+
+/**********************************************************************************
+Function that deletes a repeating ring
+**********************************************************************************/
+on("change:repeating_ring:deletering", function(eventInfo) {
+	getAttrs(["ringid", "ringid2"], function(result) {
+		var ID = eventInfo.sourceAttribute.slice(15,35)
+		newattr = {};
+		if (ID === result["ringid"]) {
+			newattr["ringid"] = "-";
+			setAttrs(newattr);
+		}
+		else if (ID === result["ringid2"]) {
+			newattr["ringid2"] = "-";
+			setAttrs(newattr);
+		}
+		removeRepeatingRow(eventInfo.sourceAttribute.slice(0,35));
+	});
+});
+
+/**********************************************************************************
+Function that adds a repeating necklaces to the stage
+**********************************************************************************/
+on("clicked:addnecklace", function(eventInfo) {
+	var ID = generateRowID();
+	newattr = {};
+	newattr["repeating_necklace_"+ID+"_equipnecklace"] = 0;
+	setAttrs(newattr);
+});
+
+/**********************************************************************************
+Function that updates the equipped necklace
+**********************************************************************************/
+on("change:repeating_necklace:equipnecklace", function(eventInfo) {
+	if (eventInfo.sourceType === "sheetworker") {
+		return;
+	}
+	if (eventInfo.newValue === "1") {
+		getAttrs(["necklaceid"], function(result) {
+			var ID = eventInfo.sourceAttribute.slice(19,39);
+			newattr = {};
+			newattr["necklaceid"] = ID;
+			if (result["necklaceid"] !== "-") {
+				newattr["repeating_necklace_"+result["necklaceid"]+"_equipnecklace"] = 0;
+			}
+			setAttrs(newattr);
+		});
+	}
+	else {
+		newattr["necklaceid"] = "-";
+		setAttrs(newattr);
+	}
+});
+
+/**********************************************************************************
+Function that deletes a repeating necklaces
+**********************************************************************************/
+on("change:repeating_necklace:deletenecklace", function(eventInfo) {
+	getAttrs(["necklaceid"], function(result) {
+		var ID = eventInfo.sourceAttribute.slice(19,39)
+		if (ID === result["necklaceid"]) {
+			newattr = {};
+			newattr["necklaceid"] = "-";
+			setAttrs(newattr);
+		}
+		removeRepeatingRow(eventInfo.sourceAttribute.slice(0,39));
+	});
+});
+
+/**********************************************************************************
 Function that adds a repeating equipment to the stage
 **********************************************************************************/
 on("clicked:addequipment", function(eventInfo) {
@@ -6624,7 +6794,7 @@ on("clicked:addequipment", function(eventInfo) {
 });
 
 /**********************************************************************************
-Function that deletes a repeating feat
+Function that deletes a repeating equipment
 **********************************************************************************/
 on("change:repeating_equipment:deleteequipment", function(eventInfo) {
 	removeRepeatingRow(eventInfo.sourceAttribute.slice(0,40));

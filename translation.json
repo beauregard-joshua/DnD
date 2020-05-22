@@ -430,5 +430,8 @@
 	"magic-equipment": "Magic Equipment",
 	"rings": "Rings",
 	"necklaces": "Necklaces",
-	"body-location": "Body Location"
+	"body-location": "Body Location",
+	"necklace": "Necklace",
+	"effect": "Effect",
+	"ring": "Ring"
 }
