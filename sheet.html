@@ -3795,6 +3795,53 @@
 
 <div class="sheet-switch-inventory">
 <!-- start Inventory section -->
+
+<br/>
+<table class="sheet-inventory-labels">
+	<tr>
+		<td class="sheet-inventory-name"><span data-i18n="inventory-name">Inventory Name</span></td>
+		<td class="sheet-inventory-answer"><input class="sheet-inventory-line" type="text" name="attr_character_name" title="character_name"></td>
+	</tr>
+	<tr>
+		<td class="sheet-inventory-name"><span data-i18n="held-by">Held By</span></td>
+		<td class="sheet-inventory-answer"><input class="sheet-inventory-line" type="text" name="attr_holder" title="holder"></td>
+	</tr>
+	<tr>
+		<td class="sheet-inventory-name"><span data-i18n="information">Information</span></td>
+		<td class="sheet-inventory-answer"><input class="sheet-inventory-line" type="text" name="attr_inventory_info" title="inventory_holder"></td>
+	</tr>
+</table>
+<br/>
+
+<div class="sheet-inventory-items">
+	<table>
+		<tr style="height: 24px;">
+			<td class="sheet-statlabel" style="text-align: center; width: 180px;"><span data-i18n="item">Item</span></td>
+			<td class="sheet-statlabel" style="text-align: center; width: 45px;"><span data-i18n="quantity">Quantity</span></td>
+			<td class="sheet-statlabel" style="text-align: center; width: 45px;"><span data-i18n="weight">Weight</span></td>
+			<td class="sheet-statlabel" style="text-align: center; width: 474px;"><span data-i18n="description">Description</span></td>
+			<td class="sheet-statlabel" style="text-align: center; width: 30px;"><span data-i18n="del">Del</span></td>
+		</tr>
+	</table>
+	<fieldset class="repeating_otherinventory">
+		<table>
+			<tr style="height: 24px;">
+				<td><input class="sheet-inputbox" type="text" name="attr_otheritemname" title="otheritemname" style="width: 181px;"></td>
+				<td><input class="sheet-inputbox" type="text" name="attr_otheritemquantity" title="otheritemquantity" style="width: 46px;"></td>
+				<td><input class="sheet-inputbox" type="text" name="attr_otheritemweight" title="otheritemweight" style="width: 46px;"></td>
+				<td><input class="sheet-inputbox" type="text" name="attr_otheritemdescription" title="otheritemdescription" style="width: 474px;"></td>
+				<td> &nbsp; <input type="checkbox" name="attr_deleteotheritem" title="deleteotheritem" style="width: 25px;"></td>
+			</tr>
+		</table>
+	</fieldset>
+	<button type="action" name="act_addotheritem" title="addotheritem">Add Item</button>
+	<br/>
+	<br/>
+
+	<div class="sheet-total-inventory">
+		<span style="font-weight: bold;" data-i18n="total-weight">Total Weight:</span> &nbsp; <input type="text" class="sheet-inputbox" name="attr_totalotherweight" title="totalotherweight" style="width: 75px; height: 24px;" value="0" disabled="true">
+	</div>
+</div>
     
 </div>
 
@@ -6798,6 +6845,34 @@ Function that deletes a repeating equipment
 **********************************************************************************/
 on("change:repeating_equipment:deleteequipment", function(eventInfo) {
 	removeRepeatingRow(eventInfo.sourceAttribute.slice(0,40));
+});
+
+/**********************************************************************************
+Function that adds a repeating item to an inventory
+**********************************************************************************/
+on("clicked:addotheritem", function(eventInfo) {
+	var ID = generateRowID();
+	newattr = {};
+	newattr["repeating_otherinventory_"+ID+"_otheritemweight"] = 0;
+	newattr["repeating_otherinventory_"+ID+"_otheritemquantity"] = 1;
+	setAttrs(newattr);
+});
+
+/**********************************************************************************
+Function that updates the weight of the inverntory switch
+**********************************************************************************/
+on("change:repeating_otherinventory:otheritemquantity change:repeating_otherinventory:otheritemweight", function(eventInfo) {
+	getSectionIDsOrdered("repeating_otherinventory", function(IDs) {
+		var values = [];
+
+	});
+});
+
+/**********************************************************************************
+Function that deletes a repeating item in an inventory
+**********************************************************************************/
+on("change:repeating_otherinventory:deleteotheritem", function(eventInfo) {
+	removeRepeatingRow(eventInfo.sourceAttribute.slice(0,45));
 });
 
 //  <!---- Copy weight from total equipment weight to total carried weight if wanted ---->

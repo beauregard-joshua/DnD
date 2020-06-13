@@ -433,5 +433,11 @@
 	"body-location": "Body Location",
 	"necklace": "Necklace",
 	"effect": "Effect",
-	"ring": "Ring"
+	"ring": "Ring",
+	"inventory-name": "Inventory Name",
+	"held-by": "Held By",
+	"information": "information",
+	"item": "Item",
+	"quantity": "Quantity",
+	"description": "Description"
 }

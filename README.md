@@ -25,6 +25,8 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
     * Structure weight efectively
     * Beautify everything
 * **Establish an Inventory Switch for a Bag of Holding**
+    * ~~Build Inventory~~
+    * *Add updating weight*
 * ~~**Add a feats page**~~
     * ~~Add Languages~~
     * ~~Add Special Abilities~~
