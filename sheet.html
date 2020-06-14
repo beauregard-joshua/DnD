@@ -3839,7 +3839,7 @@
 	<br/>
 
 	<div class="sheet-total-inventory">
-		<span style="font-weight: bold;" data-i18n="total-weight">Total Weight:</span> &nbsp; <input type="text" class="sheet-inputbox" name="attr_totalotherweight" title="totalotherweight" style="width: 75px; height: 24px;" value="0" disabled="true">
+		<span style="font-weight: bold;" data-i18n="total-weight">Total Weight:</span> &nbsp; <input type="text" class="sheet-inputbox" name="attr_totalotherweight" title="totalotherweight" style="width: 75px; height: 24px;" value="0" readonly>
 	</div>
 </div>
     
@@ -6862,9 +6862,24 @@ on("clicked:addotheritem", function(eventInfo) {
 Function that updates the weight of the inverntory switch
 **********************************************************************************/
 on("change:repeating_otherinventory:otheritemquantity change:repeating_otherinventory:otheritemweight", function(eventInfo) {
+	if (eventInfo.sourceType === "sheetworker") {
+		return;
+	}
 	getSectionIDsOrdered("repeating_otherinventory", function(IDs) {
 		var values = [];
-
+		for (var i = 0; i < IDs.length; i++) {
+			values.push("repeating_otherinventory_"+IDs[i]+"_otheritemquantity");
+			values.push("repeating_otherinventory_"+IDs[i]+"_otheritemweight");
+		}
+		getAttrs(values, function(results) {
+			var total = 0.0;
+			for (var i = 0; i < IDs.length; i++) {
+				total += parseFloat(results["repeating_otherinventory_"+IDs[i]+"_otheritemweight"],10) * parseFloat(results["repeating_otherinventory_"+IDs[i]+"_otheritemquantity"],10)
+			}
+			newattr = {};
+			newattr["totalotherweight"] = total;
+			setAttrs(newattr);
+		});
 	});
 });
 
@@ -6872,6 +6887,27 @@ on("change:repeating_otherinventory:otheritemquantity change:repeating_otherinve
 Function that deletes a repeating item in an inventory
 **********************************************************************************/
 on("change:repeating_otherinventory:deleteotheritem", function(eventInfo) {
+	var ID = eventInfo.sourceAttribute.slice(25,45);
+	getSectionIDsOrdered("repeating_otherinventory", function(IDs) {
+		var values = [];
+		for (var i = 0; i < IDs.length; i++) {
+			if (ID !== IDs[i]) {
+				values.push("repeating_otherinventory_"+IDs[i]+"_otheritemquantity");
+				values.push("repeating_otherinventory_"+IDs[i]+"_otheritemweight");
+			}
+		}
+		getAttrs(values, function(results) {
+			var total = 0.0;
+			for (var i = 0; i < IDs.length; i++) {
+				if (ID !== IDs[i]) {
+					total += parseFloat(results["repeating_otherinventory_"+IDs[i]+"_otheritemweight"],10) * parseFloat(results["repeating_otherinventory_"+IDs[i]+"_otheritemquantity"],10);
+				}
+			}
+			newattr = {};
+			newattr["totalotherweight"] = total;
+			setAttrs(newattr);
+		});
+	});
 	removeRepeatingRow(eventInfo.sourceAttribute.slice(0,45));
 });
 
