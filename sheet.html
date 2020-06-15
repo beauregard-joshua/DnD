@@ -893,6 +893,10 @@
 								</td>
 							</tr>
 						</table>
+						<br/>
+						<div style="float: left;">
+							<span style="font-weight: bold;" data-i18n="total-weight">Total Weight:</span> &nbsp; <input class="sheet-inputbox" type="text" name="attr_weaponweight" title="weaponweight" value="0" style="width: 75px; height: 24px;" readonly>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -6469,6 +6473,47 @@ on("change:repeating_weaponthr:deleteweaponthr", function(value) {
         	removeRepeatingRow("repeating_weaponthr_"+ID);
 		});
     });
+});
+
+/**********************************************************************************
+Function that updates the weapon weights as appropriate
+**********************************************************************************/
+on("change:repeating_weaponohm:weaponohmweight change:repeating_weaponthm:weaponthmweight change:repeating_weaponohr:weaponohrweight change:repeating_weaponthr:weaponthrweight", function(eventInfo) {
+	if (eventInfo.sourceType === "sheetworker") {
+		return;
+	}
+	getSectionIDsOrdered("repeating_weaponohm", function(IDohm) {
+		getSectionIDsOrdered("repeating_weaponthm", function(IDthm) {
+			getSectionIDsOrdered("repeating_weaponohr", function(IDohr) {
+				getSectionIDsOrdered("repeating_weaponthr", function(IDthr) {
+					var values = [];
+					for (var i = 0; i < IDohm.length; i++) {
+						values.push("repeating_weaponohm_"+IDohm[i]+"_weaponohmweight");
+					}
+					for (var i = 0; i < IDthm.length; i++) {
+						values.push("repeating_weaponthm_"+IDthm[i]+"_weaponthmweight");
+					}
+					for (var i = 0; i < IDohr.length; i++) {
+						values.push("repeating_weaponohr_"+IDohr[i]+"_weaponohrweight");
+					}
+					for (var i = 0; i < IDthr.length; i++) {
+						values.push("repeating_weaponthr_"+IDthr[i]+"_weaponthrweight");
+					}
+					getAttrs(values, function(results) {
+						var total = 0.0;
+						for (key in results) {
+							console.log("Hi");
+							total += parseFloat(results[key],10);
+						}
+						newattr = {};
+						newattr["weaponweight"] = total;
+						console.log(total);
+						setAttrs(newattr);
+					});
+				});
+			});
+		});
+	});
 });
 
 /**********************************************************************************
