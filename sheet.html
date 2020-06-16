@@ -1123,10 +1123,24 @@
 				<button type="action" name="act_addequipment" title="addequipment">Add Other Equipment</button>
 				<br/>
 				<br/>
-				<div style="float: left;">
+				<table>
+					<tr>
+						<td><span data-i18n="total-weight">Total Weight:</span> &nbsp; <br/><div style="font-size: 0.7em;"> &nbsp; </div></td>
+						<td><input class="sheet-inputbox" type="text" name="attr_totalarmorweight" title="totalarmorweight" style="width: 60px; height: 24px;" value="@{armorweight}+@{shieldweight}+@{ringweight}+@{necklaceweight}+@{equipmentweight}" disabled="true"> &nbsp; = &nbsp; <br/><div style="font-size: 0.7em;"> &nbsp; </div></td>
+						<td><input class="sheet-inputbox" type="text" name="attr_armorweight" title="armorweight" style="width: 60px; height: 24px;" value="0" readonly><br/><div style="font-size: 0.7em;" data-i18n="armor">Armor</dov></td>
+						<td> &nbsp; + &nbsp; <br/><div style="font-size: 0.7em;"> &nbsp; </div></td>
+						<td><input class="sheet-inputbox" type="text" name="attr_shieldweight" title="shieldweight" style="width: 60px; height: 24px;" value="0" readonly><br/><div style="font-size: 0.7em;" data-i18n="shield">Shield</div></td>
+						<td> &nbsp; + &nbsp; <br/><div style="font-size: 0.7em;"> &nbsp; </div></td>
+						<td><input class="sheet-inputbox" type="text" name="attr_ringweight" title="ringweight" style="width: 60px; height: 24px;" value="0" readonly><br/><div style="font-size: 0.7em;" data-i18n="ring">Ring</div></td>
+						<td> &nbsp; + &nbsp; <br/><div style="font-size: 0.7em;"> &nbsp; </div></td>
+						<td><input class="sheet-inputbox" type="text" name="attr_necklaceweight" title="necklaceweight" style="width: 60px; height: 24px;" value="0" readonly><br/><div style="font-size: 0.7em;" data-i18n="necklace">Necklace</div></td>
+						<td> &nbsp; + &nbsp; <br/><div style="font-size: 0.7em;"> &nbsp; </div></td>
+						<td><input class="sheet-inputbox" type="text" name="attr_equipmentweight" title="equipmentweight" style="width: 60px; height: 24px;" value="0" readonly><br/><div style="font-size: 0.7em;" data-i18n="equipment">Equipment</div></td>
+					</tr>
+				</table>
+				<!--<div style="float: left;">
 					<span style="font-weight: bold;" data-i18n="total-weight">Total Weight:</span> &nbsp; <input type="text" class="sheet-inputbox" name="attr_armorweight" title="armorweight" style="width: 70px; height: 24px;" value="0" readonly>
-				</div>
-
+				</div>-->
 			</div>
 		</div>
 		<hr/>
@@ -4948,7 +4962,7 @@ var TAS = TAS || (function(){
 
 /* ---- END: TheAaronSheet.js ---- */
 
-on('change:repeating_equipment', function(){
+/*on('change:repeating_equipment', function(){
     TAS.repeating('equipment')
         .attrs('totalequipmentweight','totalequipmentcost','summary')
         .fields('equipmentname','equipmentquantity','equipmentweight','equipmenttotalweight','equipmentcost','equipmenttotalcost')
@@ -4965,7 +4979,7 @@ on('change:repeating_equipment', function(){
             a.D[2].totalequipmentcost=m.equipmentcost;
         })
         .execute();
-});
+});*/
 
 /* Setup for when a character sheet gets opened for the first time.  -Calc ability and ability mods as well as encumbrance. */
 function StartingSetup(version, cversion, calc) {
@@ -7065,17 +7079,60 @@ on("change:repeating_necklace:equipnecklace", function(eventInfo) {
 });
 
 /**********************************************************************************
+Function that updates the necklace weight on a change of weight
+**********************************************************************************/
+on("change:repeating_necklace:necklaceweight", function(eventInfo) {
+	if (eventInfo.sourceType === "sheetworker") {
+		return;
+	}
+	getSectionIDsOrdered("repeating_necklace", function(IDs) {
+		var values = [];
+		for (var i = 0; i < IDs.length; i++) {
+			values.push("repeating_necklace_"+IDs[i]+"_necklaceweight");
+		}
+		getAttrs(values, function(results) {
+			var total = 0.0;
+			for (key in results) {
+				total += parseFloat(results[key],10);
+			}
+			newattr = {};
+			newattr["necklaceweight"] = total;
+			setAttrs(newattr);
+		});
+	});
+});
+
+/**********************************************************************************
 Function that deletes a repeating necklaces
 **********************************************************************************/
 on("change:repeating_necklace:deletenecklace", function(eventInfo) {
-	getAttrs(["necklaceid"], function(result) {
-		var ID = eventInfo.sourceAttribute.slice(19,39)
-		if (ID === result["necklaceid"]) {
-			newattr = {};
-			newattr["necklaceid"] = "-";
-			setAttrs(newattr);
+	var ID = eventInfo.sourceAttribute.slice(19,39);
+	getSectionIDsOrdered("repeating_necklace", function(IDs) {
+		var values = [];
+		for (var i = 0; i < IDs.length; i++) {
+			if (ID !== IDs[i]) {
+				values.push("repeating_necklace_"+IDs[i]+"_necklaceweight");
+			}
 		}
-		removeRepeatingRow(eventInfo.sourceAttribute.slice(0,39));
+		values.push("necklaceid");
+		getAttrs(values, function(results) {
+			var total = 0.0;
+			newattr = {};
+			for (key in results) {
+				console.log(key);
+				if (key !== "necklaceid") {
+					console.log("hey");
+					total += parseFloat(results[key],10);
+				}
+				else if (ID === results["necklaceid"]) {
+					console.log("howdy");
+					newattr["necklaceid"] = "-";
+				}
+			}
+			newattr["necklaceweight"] = total;
+			setAttrs(newattr);
+			removeRepeatingRow(eventInfo.sourceAttribute.slice(0,39));
+		});
 	});
 });
 
@@ -7085,17 +7142,57 @@ Function that adds a repeating equipment to the stage
 on("clicked:addequipment", function(eventInfo) {
 	var ID = generateRowID();
 	newattr = {};
-	newattr["repeating_equipment_"+ID+"_equipment"] = "Equipment";
-	newattr["repeating_equipment_"+ID+"_equipmentlocation"] = "Location";
-	newattr["repeating_equipment_"+ID+"_equipmentdescription"] = "Description";
+	newattr["repeating_equipment_"+ID+"_equipmentweight"] = 0;
 	setAttrs(newattr);
+});
+
+/**********************************************************************************
+Function that updates the equipment weight on a change of weight
+**********************************************************************************/
+on("change:repeating_equipment:equipmentweight", function(eventInfo) {
+	if (eventInfo.sourceType === "sheetworker") {
+		return;
+	}
+	getSectionIDsOrdered("repeating_equipment", function(IDs) {
+		var values = [];
+		for (var i = 0; i < IDs.length; i++) {
+			values.push("repeating_equipment_"+IDs[i]+"_equipmentweight");
+		}
+		getAttrs(values, function(results) {
+			var total = 0.0;
+			for (key in results) {
+				total += parseFloat(results[key],10);
+			}
+			newattr = {};
+			newattr["equipmentweight"] = total;
+			setAttrs(newattr);
+		});
+	});
 });
 
 /**********************************************************************************
 Function that deletes a repeating equipment
 **********************************************************************************/
 on("change:repeating_equipment:deleteequipment", function(eventInfo) {
-	removeRepeatingRow(eventInfo.sourceAttribute.slice(0,40));
+	var ID = eventInfo.sourceAttribute.slice(20,40);
+	getSectionIDsOrdered("repeating_equipment", function(IDs) {
+		var values = [];
+		for (var i = 0; i < IDs.length; i++) {
+			if (ID !== IDs[i]) {
+				values.push("repeating_equipment_"+IDs[i]+"_equipmentweight");
+			}
+		}
+		getAttrs(values, function(results) {
+			var total = 0.0;
+			for (key in results) {
+				total += parseFloat(results[key],10);
+			}
+			newattr = {};
+			newattr["equipmentweight"] = total;
+			setAttrs(newattr);
+			removeRepeatingRow(eventInfo.sourceAttribute.slice(0,40));
+		});
+	});
 });
 
 /**********************************************************************************
@@ -7110,7 +7207,7 @@ on("clicked:addotheritem", function(eventInfo) {
 });
 
 /**********************************************************************************
-Function that updates the weight of the inverntory switch
+Function that updates the weight of the inventory switch
 **********************************************************************************/
 on("change:repeating_otherinventory:otheritemquantity change:repeating_otherinventory:otheritemweight", function(eventInfo) {
 	if (eventInfo.sourceType === "sheetworker") {
