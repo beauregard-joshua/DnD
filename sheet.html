@@ -7026,21 +7026,61 @@ on("change:repeating_ring:equipring2", function(eventInfo) {
 });
 
 /**********************************************************************************
+Function that updates the ring weight on a change of weight
+**********************************************************************************/
+on("change:repeating_ring:ringweight", function(eventInfo) {
+	if (eventInfo.sourceType === "sheetworker") {
+		return;
+	}
+	getSectionIDsOrdered("repeating_ring", function(IDs) {
+		var values = [];
+		for (var i = 0; i < IDs.length; i++) {
+			values.push("repeating_ring_"+IDs[i]+"_ringweight");
+		}
+		getAttrs(values, function(results) {
+			var total = 0.0;
+			for (key in results) {
+				total += parseFloat(results[key],10);
+			}
+			newattr = {};
+			newattr["ringweight"] = total;
+			setAttrs(newattr);
+		});
+	});
+});
+
+/**********************************************************************************
 Function that deletes a repeating ring
 **********************************************************************************/
 on("change:repeating_ring:deletering", function(eventInfo) {
-	getAttrs(["ringid", "ringid2"], function(result) {
-		var ID = eventInfo.sourceAttribute.slice(15,35)
-		newattr = {};
-		if (ID === result["ringid"]) {
-			newattr["ringid"] = "-";
-			setAttrs(newattr);
+	var ID = eventInfo.sourceAttribute.slice(15,35);
+	getSectionIDsOrdered("repeating_ring", function(IDs) {
+		var values = [];
+		for (var i = 0; i < IDs.length; i++) {
+			if (ID !== IDs[i]) {
+				values.push("repeating_ring_"+IDs[i]+"_ringweight");
+			}
 		}
-		else if (ID === result["ringid2"]) {
-			newattr["ringid2"] = "-";
+		values.push("ringid");
+		values.push("ringid2");
+		getAttrs(values, function(results) {
+			var total = 0.0;
+			newattr = {};
+			for (var i = 0; i < IDs.length; i++) {
+				if (ID !== IDs[i]) {
+					total += parseFloat(results["repeating_ring_"+IDs[i]+"_ringweight"],10);
+				}
+			}
+			if (ID === results["ringid"]) {
+				newattr["ringid"] = "-";
+			}
+			else if (ID === results["ringid2"]) {
+				newattr["ringid2"] = "-";
+			}
+			newattr["ringweight"] = total;
 			setAttrs(newattr);
-		}
-		removeRepeatingRow(eventInfo.sourceAttribute.slice(0,35));
+			removeRepeatingRow(eventInfo.sourceAttribute.slice(0,35));
+		});
 	});
 });
 
@@ -7119,13 +7159,10 @@ on("change:repeating_necklace:deletenecklace", function(eventInfo) {
 			var total = 0.0;
 			newattr = {};
 			for (key in results) {
-				console.log(key);
 				if (key !== "necklaceid") {
-					console.log("hey");
 					total += parseFloat(results[key],10);
 				}
 				else if (ID === results["necklaceid"]) {
-					console.log("howdy");
 					newattr["necklaceid"] = "-";
 				}
 			}
