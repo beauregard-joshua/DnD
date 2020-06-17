@@ -439,5 +439,9 @@
 	"information": "information",
 	"item": "Item",
 	"quantity": "Quantity",
-	"description": "Description"
+	"description": "Description",
+	"one-hand-melee": "One-Hand Melee",
+	"two-hand-melee": "Two-Hand Melee",
+	"one-hand-range": "One-Hand Range",
+	"two-hand-range": "Two-Hand Range"
 }
