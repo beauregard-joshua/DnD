@@ -5825,7 +5825,7 @@ on("change:repeating_shield:newshieldworn", function(eventInfo) {
 });
 
 /**********************************************************************************
-Function that updates the the armor score on a change of value
+Function that updates the the shield score on a change of value
 **********************************************************************************/
 on("change:repeating_shield:repshieldbonus change:repeating_shield:repshieldcheckpenalty change:repeating_shield:repshieldspellfailure", function(eventInfo) {
     var field = eventInfo.sourceAttribute.slice(41);
@@ -5840,19 +5840,56 @@ on("change:repeating_shield:repshieldbonus change:repeating_shield:repshieldchec
 });
 
 /**********************************************************************************
+Function that updates the the shield weight on a change of weight
+**********************************************************************************/
+on("change:repeating_shield:repshieldweight", function(eventInfo) {
+    getSectionIDsOrdered("repeating_shield", function(IDs) {
+		var values = [];
+		for (var i = 0; i < IDs.length; i++) {
+			values.push("repeating_shield_"+IDs[i]+"_repshieldweight");
+		}
+		getAttrs(values, function(results) {
+			var total = 0.0;
+			for (key in results) {
+				total += parseFloat(results[key],10);
+			}
+			newattr = {};
+			newattr["shieldweight"] = total;
+			setAttrs(newattr);
+		});
+	});
+});
+
+/**********************************************************************************
 Function that deletes a repeating shield and resets the shield scores if appropriate
 **********************************************************************************/
 on("change:repeating_shield:deleteshield", function(value) {
     var ID = value.sourceAttribute.slice(17,value.sourceAttribute.length-13);
     getSectionIDsOrdered("repeating_shield", function(IDs) {
-		getAttrs(["shieldid"], function(result) {
-			newattr = {};
-			if (result["shieldid"] === ID) {
-				newattr["shieldbonus"] = 0;
-				newattr["shieldcheckpenalty"] = 0;
-				newattr["shieldspellfailure"] = 0;
-				newattr["shieldid"] = "-";
+		values = [];
+		for (var i = 0; i < IDs.length; i++) {
+			if (ID !== IDs[i]) {
+				values.push("repeating_shield_"+IDs[i]+"_repshieldweight");
 			}
+		}
+		values.push("shieldid");
+		getAttrs(values, function(results) {
+			var total = 0.0;
+			newattr = {};
+			for (key in results) {
+				if (key === "shieldid") {
+					if (results["shieldid"] === ID) {
+						newattr["shieldbonus"] = 0;
+						newattr["shieldcheckpenalty"] = 0;
+						newattr["shieldspellfailure"] = 0;
+						newattr["shieldid"] = "-";
+					}
+				}
+				else {
+					total += parseFloat(results[key],10);
+				}
+			}
+			newattr["shieldweight"] = total;
 			var i = 0;
             while (IDs[i] !== ID) {
                 i++;
