@@ -23,9 +23,9 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
 * **Overhaul Spells**
 * **Overhaul Inventory**
     * ~~Add money~~
+    * ~~Add inventory~~
     * *Restructure Encumberance*
-    * Add Inventory
-    * Structure weight effectively
+    * *Structure weight effectively*
     * Beautify everything
 * ~~**Establish an Inventory Switch for a Bag of Holding**~~
     * ~~Build Inventory~~
