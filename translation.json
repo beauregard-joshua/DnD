@@ -443,5 +443,7 @@
 	"one-hand-melee": "One-Hand Melee",
 	"two-hand-melee": "Two-Hand Melee",
 	"one-hand-range": "One-Hand Range",
-	"two-hand-range": "Two-Hand Range"
+	"two-hand-range": "Two-Hand Range",
+	"total-value": "Total Value:",
+	"electrum-pieces-iu": "EP"
 }

@@ -1498,6 +1498,51 @@
 
 	<div class="sheet-tab-content sheet-tab4 sheet-tab99">
 		<!--Equipment-->
+		<input type="checkbox" class="sheet-pc-money-show sheet-arrow" name="attr_money-show" title="money-show" value="1" checked/><span style="text-align: left;" data-i18n="money">Money</span>
+		<div class="sheet-pc-money">
+			<div style="float: left;">
+				<table cellpadding="10" cellspacing="0">
+					<tr>
+						<td colspan="3" class="sheet-statlabel-big-gray" style="font-size: 1.5em; width: 790px;" data-i18n="money">Money</td>
+					</tr>
+				</table>
+				<table class="sheet-money" cellpadding="10" cellspacing="0">
+					<tr>
+						<td colspan="17" style="width: 788px; height: 10px;"> &nbsp; </td>
+					</tr>
+					<tr>
+						<td style="width: 20px;"></td>
+						<td style="width: 95px;"><span data-i18n="total-value">Total Value:</span><br> &nbsp; </td>
+						<td> &nbsp; <input type="text" class="sheet-inputbox" name="attr_totalmoney" title="totalmoney" disabled="true" value="@{moneymultiple}*(@{cp}+(10*@{sp})+(50*@{ep})+(100*@{gp})+(1000*@{pp}))" style="width: 70px;"><br> &nbsp; </td>
+						<td><select style="width: 50px;" name="attr_moneymultiple" title="moneymultiple">
+							<option value="1" data-i18n="copper-pieces-iu">CP</option>
+							<option value="0.1" data-i18n="silver-pieces-iu">SP</option>
+							<option value="0.02" data-i18n="electrum-pieces-iu">EP</option>
+							<option value="0.01" data-i18n="gold-pieces-iu" selected>GP</option>
+							<option value="0.001" data-i18n="platinum-pieces-iu">PP</option>
+						</select> &nbsp; =<br> &nbsp; </td>
+						<td> &nbsp; <input type="text" name="attr_cp" title="cp" style="width: 30px;" value="0"> &nbsp; <br><span data-i18n="copper-pieces-iu">CP</span></td>
+						<td>+<br>&nbsp;</td>
+						<td> &nbsp; <input type="text" name="attr_sp" title="sp" style="width: 30px;" value="0"> &nbsp; <br><span data-i18n="silver-pieces-iu">SP</span></td>
+						<td>+<br>&nbsp;</td>
+						<td> &nbsp; <input type="text" name="attr_ep" title="ep" style="width: 30px;" value="0"> &nbsp; <br><span data-i18n="electrum-pieces-iu">EP</span></td>
+						<td>+<br>&nbsp;</td>
+						<td> &nbsp; <input type="text" name="attr_gp" title="gp" style="width: 30px;" value="0"> &nbsp; <br><span data-i18n="gold-pieces-iu">GP</span></td>
+						<td>+<br>&nbsp;</td>
+						<td> &nbsp; <input type="text" name="attr_pp" title="pp" style="width: 30px;" value="0"> &nbsp; <br><span data-i18n="platinum-pieces-iu">GP</span></td>
+						<td style="width: 70px;"></td>
+						<td style="width: 95px;"><span data-i18n="total-weight">Total Weight:</span><br> &nbsp; </td>
+						<td> &nbsp; <input type="text" class="sheet-inputbox" name="attr_totalmoneyweight" title="totalmoneyweight" disabled="true" value="0.02*(@{cp}+@{sp}+@{ep}+@{gp}+@{pp})" style="width: 70px;"><br> &nbsp; </td>
+						<td style="width: 20px;"></td>
+					</tr>
+					<tr>
+						<td colspan="17" style="width: 788px; height: 10px;"> &nbsp; </td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<hr/>
+		<br/>
 		<input type="checkbox" class="sheet-pc-encumbrance-show sheet-arrow" title="encumbrance-show" name="attr_encumbrance-show" value="1" checked /><span style="text-align: left;" data-i18n="encumbrance/load">Encumbrance/Load</span>
 		<div class="sheet-pc-encumbrance">
 			<div style="float: left">

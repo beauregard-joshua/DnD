@@ -1099,6 +1099,7 @@ font-style: italic;
 .sheet-pc-languages-show:not(:checked)~.sheet-pc-languages {display:none;}
 .sheet-pc-abilities-show:not(:checked)~.sheet-pc-abilities {display:none;}
 .sheet-pc-feats-show:not(:checked)~.sheet-pc-feats {display:none;}
+.sheet-pc-money-show:not(:checked)~.sheet-pc-money {display:none;}
 
 .charsheet table.sheet-inventory-labels {
 	width: 790px;
@@ -1124,3 +1125,6 @@ font-style: italic;
 	font-size: 1em;
 }
 
+.charsheet table.sheet-money {
+	border: 1px solid black;
+}

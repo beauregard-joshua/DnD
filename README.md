@@ -22,6 +22,7 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
     * ~~Add weapon weight~~
 * **Overhaul Spells**
 * **Overhaul Inventory**
+    * ~~Add money~~
     * *Restructure Encumberance*
     * Add Inventory
     * Structure weight effectively
