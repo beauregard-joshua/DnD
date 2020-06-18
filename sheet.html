@@ -1543,6 +1543,41 @@
 		</div>
 		<hr/>
 		<br/>
+		<input type="checkbox" class="sheet-pc-inventory-show sheet-arrow" title="inventory-show" name="attr_inventory-show" value="1" checked /><span style="text-align: left;" data-i18n="inventory">Inventory</span>
+		<div class="sheet-pc-inventory">
+			<div style="float: left">
+				<table cellpadding="10" cellspacing="0">
+					<tr>
+						<td colspan="3" class="sheet-statlabel-big-gray" style="font-size: 1.5em; width: 790px;" data-i18n="inventory">Inventory</td>
+					</tr>
+				</table>
+				<table>
+					<tr style="height: 24px;">
+						<td class="sheet-statlabel" style="text-align: center; width: 180px;"><span data-i18n="item">Item</span></td>
+						<td class="sheet-statlabel" style="text-align: center; width: 45px;"><span data-i18n="quantity">Quantity</span></td>
+						<td class="sheet-statlabel" style="text-align: center; width: 45px;"><span data-i18n="weight">Weight</span></td>
+						<td class="sheet-statlabel" style="text-align: center; width: 45px;"><span data-i18n="value">Value</span></td>
+						<td class="sheet-statlabel" style="text-align: center; width: 429px;"><span data-i18n="description">Description</span></td>
+						<td class="sheet-statlabel" style="text-align: center; width: 30px;"><span data-i18n="del">Del</span></td>
+					</tr>
+				</table>
+				<fieldset class="repeating_inventory">
+					<table>
+						<tr style="height: 24px;">
+							<td><input class="sheet-inputbox" type="text" name="attr_itemname" title="itemname" style="width: 181px;"></td>
+							<td><input class="sheet-inputbox" type="text" name="attr_itemquantity" title="itemquantity" style="width: 46px;"></td>
+							<td><input class="sheet-inputbox" type="text" name="attr_itemweight" title="itemweight" style="width: 46px;"></td>
+							<td><input class="sheet-inputbox" type="text" name="attr_itemvalue" title="itemvalue" style="width: 46px;"></td>
+							<td><input class="sheet-inputbox" type="text" name="attr_itemdescription" title="itemdescription" style="width: 429px;"></td>
+							<td> &nbsp; <input type="checkbox" name="attr_deleteitem" title="deleteitem" style="width: 25px;"></td>
+						</tr>
+					</table>
+				</fieldset>
+				<button type="action" name="act_additem" title="additem">Add Item</button>
+			</div>
+		</div>
+		<hr/>
+		<br/>
 		<input type="checkbox" class="sheet-pc-encumbrance-show sheet-arrow" title="encumbrance-show" name="attr_encumbrance-show" value="1" checked /><span style="text-align: left;" data-i18n="encumbrance/load">Encumbrance/Load</span>
 		<div class="sheet-pc-encumbrance">
 			<div style="float: left">
@@ -3905,7 +3940,8 @@
 			<td class="sheet-statlabel" style="text-align: center; width: 180px;"><span data-i18n="item">Item</span></td>
 			<td class="sheet-statlabel" style="text-align: center; width: 45px;"><span data-i18n="quantity">Quantity</span></td>
 			<td class="sheet-statlabel" style="text-align: center; width: 45px;"><span data-i18n="weight">Weight</span></td>
-			<td class="sheet-statlabel" style="text-align: center; width: 474px;"><span data-i18n="description">Description</span></td>
+			<td class="sheet-statlabel" style="text-align: center; width: 45px;"><span data-i18n="value">Value</span></td>
+			<td class="sheet-statlabel" style="text-align: center; width: 429px;"><span data-i18n="description">Description</span></td>
 			<td class="sheet-statlabel" style="text-align: center; width: 30px;"><span data-i18n="del">Del</span></td>
 		</tr>
 	</table>
@@ -3915,7 +3951,8 @@
 				<td><input class="sheet-inputbox" type="text" name="attr_otheritemname" title="otheritemname" style="width: 181px;"></td>
 				<td><input class="sheet-inputbox" type="text" name="attr_otheritemquantity" title="otheritemquantity" style="width: 46px;"></td>
 				<td><input class="sheet-inputbox" type="text" name="attr_otheritemweight" title="otheritemweight" style="width: 46px;"></td>
-				<td><input class="sheet-inputbox" type="text" name="attr_otheritemdescription" title="otheritemdescription" style="width: 474px;"></td>
+				<td><input class="sheet-inputbox" type="text" name="attr_otheritemvalue" title="otheritemvalue" style="width: 46px;"></td>
+				<td><input class="sheet-inputbox" type="text" name="attr_otheritemdescription" title="otheritemdescription" style="width: 429px;"></td>
 				<td> &nbsp; <input type="checkbox" name="attr_deleteotheritem" title="deleteotheritem" style="width: 25px;"></td>
 			</tr>
 		</table>
@@ -7352,6 +7389,18 @@ on("change:repeating_otherinventory:deleteotheritem", function(eventInfo) {
 	});
 	removeRepeatingRow(eventInfo.sourceAttribute.slice(0,45));
 });
+
+on("clicked:additem", function(eventInfo) {
+	var ID = generateRowID();
+	newattr = {};
+	newattr["repeating_inventory_"+ID+"_itemquantity"] = 1;
+	newattr["repeating_inventory_"+ID+"_itemweight"] = 0;
+	setAttrs(newattr);
+});
+
+on("change:repeating_inventory:deleteitem", function(eventInfo) {
+	removeRepeatingRow(eventInfo.sourceAttribute.slice(0,40));
+})
 
 //  <!---- Copy weight from total equipment weight to total carried weight if wanted ---->
 on("change:totalequipmentweight change:equipmentweightcopy", function() {

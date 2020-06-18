@@ -445,5 +445,6 @@
 	"one-hand-range": "One-Hand Range",
 	"two-hand-range": "Two-Hand Range",
 	"total-value": "Total Value:",
-	"electrum-pieces-iu": "EP"
+	"electrum-pieces-iu": "EP",
+	"value": "Value"
 }
