@@ -1521,15 +1521,15 @@
 							<option value="0.01" data-i18n="gold-pieces-iu" selected>GP</option>
 							<option value="0.001" data-i18n="platinum-pieces-iu">PP</option>
 						</select> &nbsp; =<br> &nbsp; </td>
-						<td> &nbsp; <input type="text" name="attr_cp" title="cp" style="width: 30px;" value="0"> &nbsp; <br><span data-i18n="copper-pieces-iu">CP</span></td>
+						<td> &nbsp; <input type="text" name="attr_cp" title="cp" style="width: 30px;" value="0" step="1"> &nbsp; <br><span data-i18n="copper-pieces-iu">CP</span></td>
 						<td>+<br>&nbsp;</td>
-						<td> &nbsp; <input type="text" name="attr_sp" title="sp" style="width: 30px;" value="0"> &nbsp; <br><span data-i18n="silver-pieces-iu">SP</span></td>
+						<td> &nbsp; <input type="text" name="attr_sp" title="sp" style="width: 30px;" value="0" step="1"> &nbsp; <br><span data-i18n="silver-pieces-iu">SP</span></td>
 						<td>+<br>&nbsp;</td>
-						<td> &nbsp; <input type="text" name="attr_ep" title="ep" style="width: 30px;" value="0"> &nbsp; <br><span data-i18n="electrum-pieces-iu">EP</span></td>
+						<td> &nbsp; <input type="text" name="attr_ep" title="ep" style="width: 30px;" value="0" step="1"> &nbsp; <br><span data-i18n="electrum-pieces-iu">EP</span></td>
 						<td>+<br>&nbsp;</td>
-						<td> &nbsp; <input type="text" name="attr_gp" title="gp" style="width: 30px;" value="0"> &nbsp; <br><span data-i18n="gold-pieces-iu">GP</span></td>
+						<td> &nbsp; <input type="text" name="attr_gp" title="gp" style="width: 30px;" value="0" step="1"> &nbsp; <br><span data-i18n="gold-pieces-iu">GP</span></td>
 						<td>+<br>&nbsp;</td>
-						<td> &nbsp; <input type="text" name="attr_pp" title="pp" style="width: 30px;" value="0"> &nbsp; <br><span data-i18n="platinum-pieces-iu">GP</span></td>
+						<td> &nbsp; <input type="text" name="attr_pp" title="pp" style="width: 30px;" value="0" step="1"> &nbsp; <br><span data-i18n="platinum-pieces-iu">GP</span></td>
 						<td style="width: 70px;"></td>
 						<td style="width: 95px;"><span data-i18n="total-weight">Total Weight:</span><br> &nbsp; </td>
 						<td> &nbsp; <input type="text" class="sheet-inputbox" name="attr_totalmoneyweight" title="totalmoneyweight" disabled="true" value="0.02*(@{cp}+@{sp}+@{ep}+@{gp}+@{pp})" style="width: 70px;"><br> &nbsp; </td>
@@ -1617,6 +1617,8 @@
 						<td colspan="13" style="width: 788px;"> &nbsp; </td>
 					</tr>
 				</table>
+				<input type="hidden" name="attr_encumbrsize" title="encumbrsize" value="1">
+				<input type="hidden" name="attr_encumbrload" title="encumbrload" value="0.1">
 				<table cellpadding="0" cellspacing="0">
 					<tr>
 						<td class="sheet-statlabel-encumbrance sheet-table-encumbrance" data-i18n="light-load"> Light Load </td>
@@ -1638,9 +1640,10 @@
 				</table>
 				<table cellpadding="0" cellspacing="0">
 					<tr>
-						<td class="sheet-statlabel-encumbrance" style="width: 80px;" data-i18n="weight-carried"> Weight Carried </td>
+						<td class="sheet-statlabel-encumbrance sheet-table-load" data-i18n="gait"> Gait </td>
+						<!--<td class="sheet-statlabel-encumbrance" style="width: 80px;" data-i18n="weight-carried"> Weight Carried </td>
 						<td class="sheet-statlabel-encumbrance" style="width: 165px;" data-i18n="character-size-a"> Char Size </td>
-						<td class="sheet-statlabel-encumbrance" style="width: 80px;" data-i18n="load"> Load </td>
+						<td class="sheet-statlabel-encumbrance" style="width: 80px;" data-i18n="load"> Load </td>-->
 						<td class="sheet-statlabel-encumbrance sheet-table-load" data-i18n="maximum-dexterity-a"> Max Dex </td>
 						<td class="sheet-statlabel-encumbrance sheet-table-load" data-i18n="check-penalty"> Check Penalty </td>
 						<td class="sheet-statlabel-encumbrance sheet-table-load" data-i18n="speed-30ft"> Speed (30 ft.)</td>
@@ -1648,7 +1651,11 @@
 						<td class="sheet-statlabel-encumbrance sheet-table-load" data-i18n="run"> Run</td>
 					</tr>
 					<tr>
-						<td><input class="sheet-inputbox" type="text" name="attr_totalcarriedweight" title="totalcarriedweight" style="height: 24px; width: 75px;" value="0"></td>
+						<td><select style="height: 24px; width: 240px; padding: 0px;" name="attr_gait" title="gait">
+							<option value="b" data-i18n="biped">Biped</option>
+							<option value="q" data-i18n="quadreped">Quadreped</option>
+						</select></td>
+						<!--<td><input class="sheet-inputbox" type="text" name="attr_totalcarriedweight" title="totalcarriedweight" style="height: 24px; width: 75px;" value="0"></td>
 						<td><select style="height: 24px; width: 160px; padding: 0px;" name="attr_encumbrsize" title="encumbrsize">
 								<option value="16" data-i18n="colossal">Colossal</option>
 								<option value="8" data-i18n="gargantuan">Gargantuan</option>
@@ -1673,12 +1680,17 @@
 								<option type="text" value="0.1" data-i18n="light" selected>Light</option>
 								<option type="text" value="-3" data-i18n="medium">Medium</option>
 								<option type="text" value="-6" data-i18n="heavy">Heavy</option>
-							</select></td>
-						<td><input class="sheet-inputbox" type="text" name="attr_encumbrmaxdex" title="encumbrmaxdex" style="height: 24px; width: 45px;" value="floor(abs(9/(@{encumbrload})))" disabled="true" /></td>
-						<td><input class="sheet-inputbox" type="text" name="attr_encumbracp" title="encumbracp" style="height: 24px; width: 45px;" value="floor(@{encumbrload})" disabled="true" /></td>
-						<td><input class="sheet-inputbox" type="text" name="attr_encumbrspeed30" title="encumbrspeed30" style="height: 24px; width: 45px; text-align: right;" value="30-floor(@{encumbrload})/(@{encumbrload})*10" disabled="true" /><span data-i18n="feet-i">ft</span>.</td>
-						<td><input class="sheet-inputbox" type="text" name="attr_encumbrspeed20" title="encumbrspeed20" style="height: 24px; width: 45px; text-align: right;" value="20-floor(@{encumbrload})/(@{encumbrload})*5" disabled="true" /><span data-i18n="feet-i">ft</span>.</td>
-						<td>x<input class="sheet-inputbox" type="text" name="attr_encumbrrun" title="encumbrrun" style="height: 24px; width: 45px;" value="4-floor((@{encumbrload}+3)/3*@{encumbrload})/6" disabled="true" /></td>
+							</select></td>-->
+						<!--<td><input class="sheet-inputbox" type="text" name="attr_encumbrmaxdex" title="encumbrmaxdex" style="height: 24px; width: 45px;" value="floor(abs(9/(@{encumbrload})))" disabled="true" /></td>-->
+						<td><input class="sheet-inputbox" type="text" name="attr_encumbrmaxdex" title="encumbrmaxdex" style="height: 24px; width: 45px;" value="100+(97*floor(((@{lightloadmax})-(@{totalweight}))/1000000))+(2*floor(((@{medloadmax})-(@{totalweight}))/1000000))" disabled="true" /></td>
+						<!--<td><input class="sheet-inputbox" type="text" name="attr_encumbracp" title="encumbracp" style="height: 24px; width: 45px;" value="floor(@{encumbrload})" disabled="true" /></td>-->
+						<td><input class="sheet-inputbox" type="text" name="attr_encumbracp" title="encumbracp" style="height: 24px; width: 45px;" value="(3*floor(((@{lightloadmax})-(@{totalweight}))/1000000))+(3*floor(((@{medloadmax})-(@{totalweight}))/1000000))" disabled="true" /></td>
+						<!--<td><input class="sheet-inputbox" type="text" name="attr_encumbrspeed30" title="encumbrspeed30" style="height: 24px; width: 45px; text-align: right;" value="30-floor(@{encumbrload})/(@{encumbrload})*10" disabled="true" /><span data-i18n="feet-i">ft</span>.</td>-->
+						<td><input class="sheet-inputbox" type="text" name="attr_encumbrspeed30" title="encumbrspeed30" style="height: 24px; width: 45px; text-align: right;" value="30+(10*floor(((@{lightloadmax})-(@{totalweight}))/1000000))" disabled="true" /><span data-i18n="feet-i">ft</span>.</td>
+						<!--<td><input class="sheet-inputbox" type="text" name="attr_encumbrspeed20" title="encumbrspeed20" style="height: 24px; width: 45px; text-align: right;" value="20-floor(@{encumbrload})/(@{encumbrload})*5" disabled="true" /><span data-i18n="feet-i">ft</span>.</td>-->
+						<td><input class="sheet-inputbox" type="text" name="attr_encumbrspeed20" title="encumbrspeed20" style="height: 24px; width: 45px; text-align: right;" value="20+(5*floor(((@{lightloadmax})-(@{totalweight}))/1000000))" disabled="true" /><span data-i18n="feet-i">ft</span>.</td>
+						<!--<td>x<input class="sheet-inputbox" type="text" name="attr_encumbrrun" title="encumbrrun" style="height: 24px; width: 45px;" value="4-floor((@{encumbrload}+3)/3*@{encumbrload})/6" disabled="true" /></td>-->
+						<td>x<input class="sheet-inputbox" type="text" name="attr_encumbrrun" title="encumbrrun" style="height: 24px; width: 45px;" value="floor(((@{medloadmax})-(@{totalweight}))/1000000)+4" disabled="true" /></td>
 					</tr>
 				</table>
 			</div>
@@ -7421,6 +7433,9 @@ on("change:repeating_otherinventory:deleteotheritem", function(eventInfo) {
 	removeRepeatingRow(eventInfo.sourceAttribute.slice(0,45));
 });
 
+/**********************************************************************************
+Function that adds an item to the inventory
+**********************************************************************************/
 on("clicked:additem", function(eventInfo) {
 	var ID = generateRowID();
 	newattr = {};
@@ -7429,6 +7444,9 @@ on("clicked:additem", function(eventInfo) {
 	setAttrs(newattr);
 });
 
+/**********************************************************************************
+Function that updates the inventory weight
+**********************************************************************************/
 on("change:repeating_inventory:itemquantity change:repeating_inventory:itemweight", function(eventInfo) {
 	getSectionIDsOrdered("repeating_inventory", function(IDs) {
 		var values = [];
@@ -7448,6 +7466,9 @@ on("change:repeating_inventory:itemquantity change:repeating_inventory:itemweigh
 	});
 });
 
+/**********************************************************************************
+Function that deletes a repeating item in the inventory
+**********************************************************************************/
 on("change:repeating_inventory:deleteitem", function(eventInfo) {
 	var ID = eventInfo.sourceAttribute.slice(20,40);
 	getSectionIDsOrdered("repeating_inventory", function(IDs) {
@@ -7470,6 +7491,70 @@ on("change:repeating_inventory:deleteitem", function(eventInfo) {
 			setAttrs(newattr);
 			removeRepeatingRow(eventInfo.sourceAttribute.slice(0,40));
 		});
+	});
+});
+
+/**********************************************************************************
+Function that updates encumbrance values based on size
+**********************************************************************************/
+on("change:size change:gait", function(eventInfo) {
+	getAttrs(["size", "gait"], function(results) {
+		newattr = {};
+		if (results["gait"] === "b" && results["size"] === "-8") {		//<-- Colossal biped
+			newattr["encumbrsize"] = 16;
+		}
+		else if (results["gait"] === "q" && results["size"] === "-8") {	//<-- Colossal quadreped
+			newattr["encumbrsize"] = 24;
+		}
+		else if (results["gait"] === "b" && results["size"] === "-4") {	//<-- Gargantuan biped
+			newattr["encumbrsize"] = 8;
+		}
+		else if (results["gait"] === "q" && results["size"] === "-4") {	//<-- Gargantuan quadreped
+			newattr["encumbrsize"] = 12;
+		}
+		else if (results["gait"] === "b" && results["size"] === "-2") {	//<-- Huge biped
+			newattr["encumbrsize"] = 4;
+		}
+		else if (results["gait"] === "q" && results["size"] === "-2") {	//<-- Huge quadreped
+			newattr["encumbrsize"] = 6;
+		}
+		else if (results["gait"] === "b" && results["size"] === "-1") {	//<-- Large biped
+			newattr["encumbrsize"] = 2;
+		}
+		else if (results["gait"] === "q" && results["size"] === "-1") {	//<-- Large quadreped
+			newattr["encumbrsize"] = 3;
+		}
+		else if (results["gait"] === "b" && results["size"] === "0") {	//<-- Medium biped
+			newattr["encumbrsize"] = 1;
+		}
+		else if (results["gait"] === "q" && results["size"] === "0") {	//<-- Medium quadreped
+			newattr["encumbrsize"] = 1.5;
+		}
+		else if (results["gait"] === "b" && results["size"] === "1") {	//<-- Small biped
+			newattr["encumbrsize"] = 0.75;
+		}
+		else if (results["gait"] === "q" && results["size"] === "1") {	//<-- Small quadreped
+			newattr["encumbrsize"] = 1;
+		}
+		else if (results["gait"] === "b" && results["size"] === "2") {	//<-- Tiny biped
+			newattr["encumbrsize"] = 0.5;
+		}
+		else if (results["gait"] === "q" && results["size"] === "2") {	//<-- Tiny quadreped
+			newattr["encumbrsize"] = 0.75;
+		}
+		else if (results["gait"] === "b" && results["size"] === "4") {	//<-- Diminutive biped
+			newattr["encumbrsize"] = 0.25;
+		}
+		else if (results["gait"] === "q" && results["size"] === "4") {	//<-- Diminutive quadreped
+			newattr["encumbrsize"] = 0.5;
+		}
+		else if (results["gait"] === "b" && results["size"] === "8") {	//<-- Fine biped
+			newattr["encumbrsize"] = 0.125;
+		}
+		else if (results["gait"] === "q" && results["size"] === "8") {	//<-- Fine quadreped
+			newattr["encumbrsize"] = 0.25;
+		}
+		setAttrs(newattr);
 	});
 });
 

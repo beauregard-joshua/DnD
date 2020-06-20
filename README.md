@@ -25,8 +25,8 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
     * ~~Add money~~
     * ~~Add inventory~~
     * ~~Structure weight effectively~~
-    * *Restructure Encumberance*
-    * Beautify everything
+    * ~~Restructure Encumberance~~
+    * *Beautify everything*
 * ~~**Establish an Inventory Switch for a Bag of Holding**~~
     * ~~Build Inventory~~
     * ~~Add updating weight~~
@@ -36,3 +36,4 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
     * ~~Add Feats~~
 * **Miscellaneous Stuff**
     * Make speed update automatically
+    * Update Check Penalty and Max Dex

@@ -446,5 +446,8 @@
 	"two-hand-range": "Two-Hand Range",
 	"total-value": "Total Value:",
 	"electrum-pieces-iu": "EP",
-	"value": "Value"
+	"value": "Value",
+	"biped": "Biped",
+	"quadreped": "Quadreped",
+	"gait": "Gait"
 }
