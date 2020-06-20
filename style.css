@@ -1126,6 +1126,6 @@ font-style: italic;
 	font-size: 1em;
 }
 
-.charsheet table.sheet-money {
+.charsheet table.sheet-bordertable {
 	border: 1px solid black;
 }
