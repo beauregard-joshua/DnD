@@ -21,12 +21,12 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
     * ~~Beautify everything~~
     * ~~Add weapon weight~~
 * **Overhaul Spells**
-* **Overhaul Inventory**
+* ~~**Overhaul Inventory**~~
     * ~~Add money~~
     * ~~Add inventory~~
     * ~~Structure weight effectively~~
-    * ~~Restructure Encumberance~~
-    * *Beautify everything*
+    * ~~Restructure Encumbrance~~
+    * ~~Beautify everything~~
 * ~~**Establish an Inventory Switch for a Bag of Holding**~~
     * ~~Build Inventory~~
     * ~~Add updating weight~~
