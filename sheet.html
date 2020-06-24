@@ -1498,6 +1498,7 @@
 
 	<div class="sheet-tab-content sheet-tab4 sheet-tab99">
 		<!--Equipment-->
+		<input type="hidden" name="attr_weightscale" title="weightscale" value="1">
 		<input type="checkbox" class="sheet-pc-money-show sheet-arrow" name="attr_money-show" title="money-show" value="1" checked/><span style="text-align: left;" data-i18n="money">Money</span>
 		<div class="sheet-pc-money">
 			<div style="float: left;">
@@ -2618,7 +2619,7 @@
 			<hr/>
 			<input type="checkbox" class="sheet-pc-spells0-show sheet-arrow" title="spells0-show" name="attr_spells0-show" value="1" checked /><span style="text-align: left;"><span data-i18n="spell-section">Spell Section</span>0</span>
 			<div class="sheet-pc-spells0">
-				<table>
+				<!--<table>
 					<tr>
 						<td style="vertical-align:top;">
 							<table>
@@ -2680,9 +2681,80 @@
 							</fieldset>
 						</td>
 					</tr>
+				</table>-->
+				<table>
+					<tr>
+						<td><span data-i18n="level-0-spells">Level 0 Spells (Cantrips)</span></td>
+					</tr>
 				</table>
+				<table cellpadding="5" cellspacing="1">
+					<tr class="sheet-table-header sheet-rounded">
+						<td style="width: 67px;"><span data-i18n="use-prep">Use/Prep</span></td>
+						<td style="width: 81px"><span data-i18n="spell-name">Spell Name</span></td>
+						<td style="width: 90px;"><span data-i18n="components">Components</span></td>
+						<td style="width: 77px;"><span data-i18n="cast-time">Cast Time</span></td>
+						<td style="width: 50px;"><span data-i18n="range">Range</span></td>
+						<td style="width: 51px;"><span data-i18n="target">Target</span></td>
+						<td style="width: 76px;"><span data-i18n="duration">Duration</span></td>
+						<td style="width: 92px;"><span data-i18n="school">School</span></td>
+						<td style="width: 65px;"><span data-i18n="element">Element</span></td>
+						<td style="width: 83px;"><span data-i18n="save">Save</span></td>
+						<td style="width: 50px;"><span data-i18n="dc">DC</span></td>
+						<td style="width: 30px;"><span data-i18n="del">Del</span></td>
+					</tr>
+				</table>
+				<fieldset class="repeating_spell0">
+					<table style="border-collapse: separate; border-spacing: 2px 0px;">
+						<tr>
+							<td><input type="text" class="sheet-inputbox" name="attr_spelluses0" title="spelluses0" style="width: 30px;">/<input type="text" class="sheet-inputbox" name="attr_spellprep0" title="spellprep0" style="width: 30px;"></td>
+							<td><input type="text" class="sheet-inputbox" name="attr_spellname0" title="spellname0" style="width: 80px;"></td>
+							<td><select name="attr_components0" title="components0" style="width: 90px;">
+								<option data-i18n="v">V</option>
+								<option data-i18n="s">S</option>
+								<option data-i18n="v-s">V,S</option>
+								<option data-i18n="v-s-f">V,S,F</option>
+								<option data-i18n="v-s-m">V,S,M</option>
+							</select></td>
+							<td><input type="text" class="sheet-inputbox" name="attr_castingtime0" title="castingtime0" style="width: 75px;"></td>
+							<td><input type="text" class="sheet-inputbox" name="attr_range0" title="range0" style="width: 50px;"></td>
+							<td><input type="text" class="sheet-inputbox" name="attr_target0" title="target0" style="width: 50px;"></td>
+							<td><input type="text" class="sheet-inputbox" name="attr_duration0" title="duration0" style="width: 75px;"></td>
+							<td><select name="attr_school1" title="school1" style="width: 90px;">
+								<option data-i18n="abjuration">Abjuration</option>
+								<option data-i18n="conjuration">Conjuration</option>
+								<option data-i18n="enchantment">Enchantment</option>
+								<option data-i18n="evocation">Evocation</option>
+								<option data-i18n="illusion">Illusion</option>
+								<option data-i18n="necromancy">Necromancy</option>
+								<option data-i18n="transmutation">Transmutation</option>
+								<option data-i18n="none-divine">None (Divine)</option>
+							</select></td>
+							<td><select name="attr_element0" title="element0">
+								<option data-i18n="air">Air</option>
+								<option data-i18n="earth">Earth</option>
+								<option data-i18n="fire">Fire</option>
+								<option data-i18n="metal">Metal</option>
+								<option data-i18n="water">Water</option>
+								<option data-i18n="wood">Wood</option>
+								<option data-i18n="none">None</option>
+							</select></td>
+							<td><select name="attr_save0" title="save0">
+								<option data-i18n="fortitude">Fortitude</option>
+								<option data-i18n="reflex">Reflex</option>
+								<option data-i18n="will">Will</option>
+								<option data-i18n="none">None</option>
+							</select></td>
+							<td><input type="text" class="sheet-inputbox" name="attr_savedc0" title="savedc0" style="width: 50px;"></td>
+							<td><input type="checkbox" name="attr_deletespell0" title="deletespell0" style="width: 15px;" value="1"></td>
+						</tr>
+						<tr>
+							<td colspan="11"><textarea rows="2" cols="88" name="attr_notesspell0" title="notesspell0" style="resize: vertical; width: 780px;"></textarea></td>
+						</tr>
+					</table>
+				</fieldset>
+				<br>
+				<button type="action" name="act_addspell0" title="addspell0" data-i18n="add-spell">Add Spell</button>
 			</div>
-			<br>
 			<input type="checkbox" class="sheet-pc-spells1-show sheet-arrow" title="spells1-show" name="attr_spells1-show" value="1" checked /><span style="text-align: left;"><span data-i18n="spell-section">Spell Section</span>1</span>
 			<div class="sheet-pc-spells1">
 				<table>
@@ -7414,6 +7486,23 @@ on("change:size change:gait", function(eventInfo) {
 		}
 		setAttrs(newattr);
 	});
+});
+
+/**********************************************************************************
+Function that adds a repeating spell lvl 0 to the stage
+**********************************************************************************/
+on("clicked:addspell0", function(eventInfo) {
+	var ID = generateRowID();
+	newattr = {};
+	newattr["repeating_spell0_"+ID+"_spellprep0"] = 0;
+	setAttrs(newattr);
+});
+
+/**********************************************************************************
+Function that deletes a repeating lvl 0 spell
+**********************************************************************************/
+on("change:repeating_spell0:deletespell0", function(eventInfo) {
+	removeRepeatingRow(eventInfo.sourceAttribute.slice(0,37));
 });
 
 //  <!---- Copy weight from total equipment weight to total carried weight if wanted ---->

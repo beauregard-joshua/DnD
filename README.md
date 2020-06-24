@@ -23,6 +23,7 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
 * **Overhaul Spells**
     * *Add repeating spells*
     * Add Spell-like abilities
+    * Beautify everything
 * ~~**Overhaul Inventory**~~
     * ~~Add money~~
     * ~~Add inventory~~
