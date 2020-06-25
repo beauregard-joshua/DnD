@@ -2690,16 +2690,16 @@
 				<table cellpadding="5" cellspacing="1">
 					<tr class="sheet-table-header sheet-rounded">
 						<td style="width: 67px;"><span data-i18n="use-prep">Use/Prep</span></td>
-						<td style="width: 81px"><span data-i18n="spell-name">Spell Name</span></td>
-						<td style="width: 90px;"><span data-i18n="components">Components</span></td>
-						<td style="width: 77px;"><span data-i18n="cast-time">Cast Time</span></td>
-						<td style="width: 50px;"><span data-i18n="range">Range</span></td>
+						<td style="width: 101px"><span data-i18n="spell-name">Spell Name</span></td>
+						<td style="width: 71px;"><span data-i18n="comp">Comp.</span></td>
+						<td style="width: 71px;"><span data-i18n="cast-time">Cast Time</span></td>
+						<td style="width: 51px;"><span data-i18n="range">Range</span></td>
 						<td style="width: 51px;"><span data-i18n="target">Target</span></td>
-						<td style="width: 76px;"><span data-i18n="duration">Duration</span></td>
+						<td style="width: 66px;"><span data-i18n="duration">Duration</span></td>
 						<td style="width: 92px;"><span data-i18n="school">School</span></td>
-						<td style="width: 65px;"><span data-i18n="element">Element</span></td>
-						<td style="width: 83px;"><span data-i18n="save">Save</span></td>
-						<td style="width: 50px;"><span data-i18n="dc">DC</span></td>
+						<td style="width: 64px;"><span data-i18n="element">Element</span></td>
+						<td style="width: 84px;"><span data-i18n="save">Save</span></td>
+						<td style="width: 34px;"><span data-i18n="dc">DC</span></td>
 						<td style="width: 30px;"><span data-i18n="del">Del</span></td>
 					</tr>
 				</table>
@@ -2707,27 +2707,27 @@
 					<table style="border-collapse: separate; border-spacing: 2px 0px;">
 						<tr>
 							<td><input type="text" class="sheet-inputbox" name="attr_spelluses0" title="spelluses0" style="width: 30px;">/<input type="text" class="sheet-inputbox" name="attr_spellprep0" title="spellprep0" style="width: 30px;"></td>
-							<td><input type="text" class="sheet-inputbox" name="attr_spellname0" title="spellname0" style="width: 80px;"></td>
-							<td><select name="attr_components0" title="components0" style="width: 90px;">
+							<td><input type="text" class="sheet-inputbox" name="attr_spellname0" title="spellname0" style="width: 100px;"></td>
+							<td><select name="attr_components0" title="components0" style="width: 70px;">
 								<option data-i18n="v">V</option>
 								<option data-i18n="s">S</option>
 								<option data-i18n="v-s">V,S</option>
 								<option data-i18n="v-s-f">V,S,F</option>
 								<option data-i18n="v-s-m">V,S,M</option>
 							</select></td>
-							<td><input type="text" class="sheet-inputbox" name="attr_castingtime0" title="castingtime0" style="width: 75px;"></td>
+							<td><input type="text" class="sheet-inputbox" name="attr_castingtime0" title="castingtime0" style="width: 70px;"></td>
 							<td><input type="text" class="sheet-inputbox" name="attr_range0" title="range0" style="width: 50px;"></td>
 							<td><input type="text" class="sheet-inputbox" name="attr_target0" title="target0" style="width: 50px;"></td>
-							<td><input type="text" class="sheet-inputbox" name="attr_duration0" title="duration0" style="width: 75px;"></td>
-							<td><select name="attr_school1" title="school1" style="width: 90px;">
-								<option data-i18n="abjuration">Abjuration</option>
-								<option data-i18n="conjuration">Conjuration</option>
-								<option data-i18n="enchantment">Enchantment</option>
-								<option data-i18n="evocation">Evocation</option>
-								<option data-i18n="illusion">Illusion</option>
-								<option data-i18n="necromancy">Necromancy</option>
-								<option data-i18n="transmutation">Transmutation</option>
-								<option data-i18n="none-divine">None (Divine)</option>
+							<td><input type="text" class="sheet-inputbox" name="attr_duration0" title="duration0" style="width: 65px;"></td>
+							<td><select name="attr_school0" title="school0" style="width: 90px;">
+								<option value="@{sf-abjuration}" data-i18n="abjuration">Abjuration</option>
+								<option value="@{sf-conjuration}" data-i18n="conjuration">Conjuration</option>
+								<option value="@{sf-enchantment}" data-i18n="enchantment">Enchantment</option>
+								<option value="@{sf-evocation}" data-i18n="evocation">Evocation</option>
+								<option value="@{sf-illusion}" data-i18n="illusion">Illusion</option>
+								<option value="@{sf-necromancy}" data-i18n="necromancy">Necromancy</option>
+								<option value="@{sf-transmutation}" data-i18n="transmutation">Transmutation</option>
+								<option value="0" data-i18n="none-divine">None (Divine)</option>
 							</select></td>
 							<td><select name="attr_element0" title="element0">
 								<option data-i18n="air">Air</option>
@@ -2744,11 +2744,11 @@
 								<option data-i18n="will">Will</option>
 								<option data-i18n="none">None</option>
 							</select></td>
-							<td><input type="text" class="sheet-inputbox" name="attr_savedc0" title="savedc0" style="width: 50px;"></td>
+							<td><input type="text" class="sheet-inputbox" name="attr_savedc0" title="savedc0" style="width: 34px;" value="@{spelldc0}+@{school0}" disabled="true"></td>
 							<td><input type="checkbox" name="attr_deletespell0" title="deletespell0" style="width: 15px;" value="1"></td>
 						</tr>
 						<tr>
-							<td colspan="11"><textarea rows="2" cols="88" name="attr_notesspell0" title="notesspell0" style="resize: vertical; width: 780px;"></textarea></td>
+							<td colspan="11"><textarea rows="3" cols="88" name="attr_notesspell0" title="notesspell0" style="resize: vertical; width: 740px;"></textarea></td>
 						</tr>
 					</table>
 				</fieldset>
