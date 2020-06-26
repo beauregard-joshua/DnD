@@ -473,5 +473,14 @@
 	"save": "Save",
 	"dc": "DC",
 	"none-divine": "None (Divine)",
-	"level-0-spells": "Level 0 Spells (Cantrips)"
+	"level-0-spells": "Level 0 Spells (Cantrips)",
+	"level-1-spells": "Level 1 Spells",
+	"level-2-spells": "Level 2 Spells",
+	"level-3-spells": "Level 3 Spells",
+	"level-4-spells": "Level 4 Spells",
+	"level-5-spells": "Level 5 Spells",
+	"level-6-spells": "Level 6 Spells",
+	"level-7-spells": "Level 7 Spells",
+	"level-8-spells": "Level 8 Spells",
+	"level-9-spells": "Level 9 Spells"
 }

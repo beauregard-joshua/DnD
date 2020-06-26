@@ -2619,69 +2619,6 @@
 			<hr/>
 			<input type="checkbox" class="sheet-pc-spells0-show sheet-arrow" title="spells0-show" name="attr_spells0-show" value="1" checked /><span style="text-align: left;"><span data-i18n="spell-section">Spell Section</span>0</span>
 			<div class="sheet-pc-spells0">
-				<!--<table>
-					<tr>
-						<td style="vertical-align:top;">
-							<table>
-								<tr class="sheet-table-header">
-									<td colspan="5"><input type="text" style="width: 395px;" name="attr_spellgroupname01" title="spellgroupname01" value="Level 0 Divine Spells"></td>
-								</tr>
-							</table>
-							<table>
-								<tr class="sheet-table-header">
-										<td style="width: 55px;" data-i18n="use-prep">Use/Prep</td>
-										<td style="width: 120px;" data-i18n="spell-name"> Spell name </td>
-										<td style="width: 20px;" data-i18n="level-a">Lvl</td>
-										<td style="width: 160px;" data-i18n="emote-macro">Emote/macro</td>
-								</tr>
-							</table>
-								<fieldset class="repeating_spells01">
-									<table style="width: 350px;" class="sheet-table-row">
-										<tr>
-											<td><input type="text" style="width: 25px;" name="attr_spellused01" title="repeating_spells01_#_spellused01" />/<input type="text" style="width: 25px;" name="attr_spellprep01" title="repeating_spells01_#_spellprep01" /></td>
-											<td><input type="text" style="width: 120px;" name="attr_spellname01" title="repeating_spells01_#_spellname01" value="Cure Minor Wounds" /></td>
-											<td><input type="text" style="width: 20px;" name="attr_spelllevel01" title="repeating_spells01_#_spelllevel01" value="0" /></td>
-											<td>
-											<textarea input class="sheet-inputbox" rows="1" cols="55" style="height: 20px; width: 150px;" name="attr_spellmacro01" title="repeating_spells01_#_spellmacro01 : Edit this field to create the macro run by the roll button">&{template:DnD35StdRoll} {{spellflag=true}} {{name=@{character_name} }} {{subtags=casts [Cure Minor Wounds](http://www.dandwiki.com/wiki/Cure_minor_wounds ).}} {{School:= Conj(Healing)}} {{Level:= Cleric 0}} {{Cmpnts:=V,S}} {{Casting Time:=1 std action}} {{Range:= Touch}} {{Target:= Creature touched}} {{Duration:= Instantaneous}} {{Saving Throw:= Will Save(half) when used vs Undead}} {{Spell Resist.:= Undead can use spell resistance}} {{ Caster level check: = [[ 1d20+@{casterlevel}+@{spellpen} ]] vs spell resistance.}} {{compcheck= Conc: [[ {1d20 + [[ @{concentration} ]] }>?{Concentration DC=15+Spell Level or 10+Damage Received|16} ]] }} {{succeedcheck=Success! She casts her spell!}} {{failcheck=She fails :( }} {{notes= ?{Recipient's name|@{character_name}} receives 1 heath (or 1 point of damage if an undead creature) }} </textarea>
-												</td>
-											<td><button type="roll" name="roll_spellcast01" text="Spell Cast01" title="repeating_spells01_#_spellcast01" value="@{spellmacro01}" style="height: 24px; width: 20px;" ></button>
-											</td>
-										</tr>
-									</table>
-								</fieldset>
-						</td>
-						<td> &nbsp; </td>
-						<td style="vertical-align:top;">
-							<table>
-								<tr class="sheet-table-header">
-									<td colspan="4"><input type="text" style="width: 395px;" name="attr_spellgroupname02" title="spellgroupname02" value="Level 0 Arcane Spells"></td>
-								</tr>
-							</table>
-							<table>
-								<tr class="sheet-table-header">
-										<td style="width: 55px;" data-i18n="use-prep">Use/Prep</td>
-										<td style="width: 120px;" data-i18n="spell-name"> Spell name </td>
-										<td style="width: 20px;" data-i18n="level-a">Lvl</td>
-										<td style="width: 160px;" data-i18n="emote-macro">Emote/macro</td>
-								</tr>
-							</table>
-							<fieldset class="repeating_spells02">
-								<table style="width: 350px;" class="sheet-table-row">
-									<tr>
-										<td><input type="text" style="width: 25px;" name="attr_spellused02" title="repeating_spells02_#_spellused02" />/<input type="text" style="width: 25px;" name="attr_spellprep02" title="repeating_spells02_#_spellprep02" /></td>
-										<td><input type="text" style="width: 120px;" name="attr_spellname02" title="repeating_spells02_#_spellname02" value="Mending" /></td>
-										<td style="width: 20px;"><input type="text" name="attr_spelllevel02" title="repeating_spells02_#_spelllevel02" value="0" /></td>
-										<td>
-										<textarea input class="sheet-inputbox" rows="1" cols="55" style="height: 20px; width: 150px;" name="attr_spellmacro02" title="repeating_spells02_#_spellmacro02 : Edit this field to create the macro run by the roll button">&{template:DnD35StdRoll} {{spellflag=true}} {{name=@{character_name} }} {{subtags=casts [Mending](http://www.dandwiki.com/wiki/SRD:Mending ).}} {{check=One object within 10 feet of up to 1 lb. is repaired of small breaks or tears.}} {{checkroll=broken metallic objects such as a ring, a chain link, a medallion, or a slender dagger, are welded providing but one break exists. }} {{notes=Ceramic or wooden objects with multiple breaks can be invisibly rejoined to be as strong as new. A hole in a leather sack or a wineskin is completely healed over by mending. The spell can repair a magic item, but the item's magical abilities are not restored. The spell cannot mend broken magic rods, staffs, or wands, nor does it affect creatures (including constructs). }}</textarea>
-											</td>
-										<td><button type="roll" name="roll_spellcast02" text="Spell Cast02" title="repeating_spells02_#_spellcast02" value="@{spellmacro02}" style="height: 24px; width: 20px;" ></button>
-										</td>
-									</tr>
-								</table>
-							</fieldset>
-						</td>
-					</tr>
-				</table>-->
 				<table>
 					<tr>
 						<td><span data-i18n="level-0-spells">Level 0 Spells (Cantrips)</span></td>
@@ -2745,19 +2682,19 @@
 								<option data-i18n="none">None</option>
 							</select></td>
 							<td><input type="text" class="sheet-inputbox" name="attr_savedc0" title="savedc0" style="width: 34px;" value="@{spelldc0}+@{school0}" disabled="true"></td>
-							<td><input type="checkbox" name="attr_deletespell0" title="deletespell0" style="width: 15px;" value="1"></td>
+							<td>  <input type="checkbox" name="attr_deletespell0" title="deletespell0" style="width: 15px;" value="1"></td>
 						</tr>
 						<tr>
 							<td colspan="11"><textarea rows="3" cols="88" name="attr_notesspell0" title="notesspell0" style="resize: vertical; width: 740px;"></textarea></td>
 						</tr>
 					</table>
 				</fieldset>
-				<br>
 				<button type="action" name="act_addspell0" title="addspell0" data-i18n="add-spell">Add Spell</button>
 			</div>
+			<br/>
 			<input type="checkbox" class="sheet-pc-spells1-show sheet-arrow" title="spells1-show" name="attr_spells1-show" value="1" checked /><span style="text-align: left;"><span data-i18n="spell-section">Spell Section</span>1</span>
 			<div class="sheet-pc-spells1">
-				<table>
+				<!--<table>
 					<tr>
 						<td style="vertical-align:top;">
 							<table>
@@ -2819,7 +2756,78 @@
 							</fieldset>
 						</td>
 					</tr>
+				</table>-->
+				<table>
+					<tr>
+						<td><span data-i18n="level-1-spells">Level 1 Spells</span></td>
+					</tr>
 				</table>
+				<table cellpadding="5" cellspacing="1">
+					<tr class="sheet-table-header sheet-rounded">
+						<td style="width: 67px;"><span data-i18n="use-prep">Use/Prep</span></td>
+						<td style="width: 101px"><span data-i18n="spell-name">Spell Name</span></td>
+						<td style="width: 71px;"><span data-i18n="comp">Comp.</span></td>
+						<td style="width: 71px;"><span data-i18n="cast-time">Cast Time</span></td>
+						<td style="width: 51px;"><span data-i18n="range">Range</span></td>
+						<td style="width: 51px;"><span data-i18n="target">Target</span></td>
+						<td style="width: 66px;"><span data-i18n="duration">Duration</span></td>
+						<td style="width: 92px;"><span data-i18n="school">School</span></td>
+						<td style="width: 64px;"><span data-i18n="element">Element</span></td>
+						<td style="width: 84px;"><span data-i18n="save">Save</span></td>
+						<td style="width: 34px;"><span data-i18n="dc">DC</span></td>
+						<td style="width: 30px;"><span data-i18n="del">Del</span></td>
+					</tr>
+				</table>
+				<fieldset class="repeating_spell1">
+					<table style="border-collapse: separate; border-spacing: 2px 0px;">
+						<tr>
+							<td><input type="text" class="sheet-inputbox" name="attr_spelluses1" title="spelluses1" style="width: 30px;">/<input type="text" class="sheet-inputbox" name="attr_spellprep1" title="spellprep1" style="width: 30px;"></td>
+							<td><input type="text" class="sheet-inputbox" name="attr_spellname1" title="spellname1" style="width: 100px;"></td>
+							<td><select name="attr_components1" title="components1" style="width: 70px;">
+								<option data-i18n="v">V</option>
+								<option data-i18n="s">S</option>
+								<option data-i18n="v-s">V,S</option>
+								<option data-i18n="v-s-f">V,S,F</option>
+								<option data-i18n="v-s-m">V,S,M</option>
+							</select></td>
+							<td><input type="text" class="sheet-inputbox" name="attr_castingtime1" title="castingtime1" style="width: 70px;"></td>
+							<td><input type="text" class="sheet-inputbox" name="attr_range1" title="range1" style="width: 50px;"></td>
+							<td><input type="text" class="sheet-inputbox" name="attr_target1" title="target1" style="width: 50px;"></td>
+							<td><input type="text" class="sheet-inputbox" name="attr_duration1" title="duration1" style="width: 65px;"></td>
+							<td><select name="attr_school1" title="school1" style="width: 90px;">
+								<option value="@{sf-abjuration}" data-i18n="abjuration">Abjuration</option>
+								<option value="@{sf-conjuration}" data-i18n="conjuration">Conjuration</option>
+								<option value="@{sf-enchantment}" data-i18n="enchantment">Enchantment</option>
+								<option value="@{sf-evocation}" data-i18n="evocation">Evocation</option>
+								<option value="@{sf-illusion}" data-i18n="illusion">Illusion</option>
+								<option value="@{sf-necromancy}" data-i18n="necromancy">Necromancy</option>
+								<option value="@{sf-transmutation}" data-i18n="transmutation">Transmutation</option>
+								<option value="0" data-i18n="none-divine">None (Divine)</option>
+							</select></td>
+							<td><select name="attr_element1" title="element1">
+								<option data-i18n="air">Air</option>
+								<option data-i18n="earth">Earth</option>
+								<option data-i18n="fire">Fire</option>
+								<option data-i18n="metal">Metal</option>
+								<option data-i18n="water">Water</option>
+								<option data-i18n="wood">Wood</option>
+								<option data-i18n="none">None</option>
+							</select></td>
+							<td><select name="attr_save1" title="save1">
+								<option data-i18n="fortitude">Fortitude</option>
+								<option data-i18n="reflex">Reflex</option>
+								<option data-i18n="will">Will</option>
+								<option data-i18n="none">None</option>
+							</select></td>
+							<td><input type="text" class="sheet-inputbox" name="attr_savedc1" title="savedc1" style="width: 34px;" value="@{spelldc1}+@{school1}" disabled="true"></td>
+							<td>  <input type="checkbox" name="attr_deletespell1" title="deletespell1" style="width: 15px;" value="1"></td>
+						</tr>
+						<tr>
+							<td colspan="11"><textarea rows="3" cols="88" name="attr_notesspell1" title="notesspell1" style="resize: vertical; width: 740px;"></textarea></td>
+						</tr>
+					</table>
+				</fieldset>
+				<button type="action" name="act_addspell1" title="addspell1" data-i18n="add-spell">Add Spell</button>
 			</div>
 			<br>
 			<input type="checkbox" class="sheet-pc-spells2-show sheet-arrow" title="spells2-show" name="attr_spells2-show" value="1" checked /><span style="text-align: left;"><span data-i18n="spell-section">Spell Section</span>2</span>
@@ -7502,6 +7510,23 @@ on("clicked:addspell0", function(eventInfo) {
 Function that deletes a repeating lvl 0 spell
 **********************************************************************************/
 on("change:repeating_spell0:deletespell0", function(eventInfo) {
+	removeRepeatingRow(eventInfo.sourceAttribute.slice(0,37));
+});
+
+/**********************************************************************************
+Function that adds a repeating spell lvl 1 to the stage
+**********************************************************************************/
+on("clicked:addspell1", function(eventInfo) {
+	var ID = generateRowID();
+	newattr = {};
+	newattr["repeating_spell1_"+ID+"_spellprep1"] = 0;
+	setAttrs(newattr);
+});
+
+/**********************************************************************************
+Function that deletes a repeating lvl 1 spell
+**********************************************************************************/
+on("change:repeating_spell1:deletespell1", function(eventInfo) {
 	removeRepeatingRow(eventInfo.sourceAttribute.slice(0,37));
 });
 
