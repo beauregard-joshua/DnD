@@ -21,8 +21,8 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
     * ~~Beautify everything~~
     * ~~Add weapon weight~~
 * **Overhaul Spells**
-    * *Add repeating spells*
-    * Add Spell-like abilities
+    * ~~Add repeating spells~~
+    * *Add caster notes*
     * Beautify everything
 * ~~**Overhaul Inventory**~~
     * ~~Add money~~
@@ -38,6 +38,7 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
     * ~~Add Special Abilities~~
     * ~~Add Feats~~
 * **Miscellaneous Stuff**
+    * ~~Add special ability types~~
     * Make speed update automatically
     * Update Check Penalty and Max Dex
     * Add notes

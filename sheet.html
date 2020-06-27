@@ -3366,72 +3366,6 @@
 				</fieldset>
 				<button type="action" name="act_addspell9" title="addspell9" data-i18n="add-spell">Add Spell</button>
 			</div>
-			<br>
-			<input type="checkbox" class="sheet-pc-spells10-show sheet-arrow" title="spells10-show" name="attr_spells10-show" value="1" checked /><span style="text-align: left;"><span data-i18n="spell-section">Spell Section</span>10</span>
-			<div class="sheet-pc-spells10">
-				<table>
-					<tr>
-						<td style="vertical-align:top;">
-							<table>
-								<tr class="sheet-table-header">
-									<td colspan="4"><input type="text" style="width: 395px;" name="attr_spellgroupname101" title="spellgroupname101" value="Spell-like Abilities"></td>
-								</tr>
-							</table>
-							<table>
-								<tr class="sheet-table-header">
-										<td style="width: 55px;" data-i18n="use-prep">Use/Prep</td>
-										<td style="width: 120px;" data-i18n="spell-name"> Spell name </td>
-										<td style="width: 20px;" data-i18n="level-a">Lvl</td>
-										<td style="width: 160px;" data-i18n="emote-macro">Emote/macro</td>
-								</tr>
-							</table>
-								<fieldset class="repeating_spells101">
-									<table style="width: 350px;" class="sheet-table-row">
-										<tr>
-											<td><input type="text" style="width: 25px;" name="attr_spellused101" title="repeating_spells101_#_spellused101" />/<input type="text" style="width: 25px;" name="attr_spellprep101" title="repeating_spells101_#_spellprep101" /></td>
-											<td style="width: 120px;"><input type="text" name="attr_spellname101" title="repeating_spells101_#_spellname101" placeholder="Spell Name" /></td>
-											<td style="width: 20px;"><input type="text" name="attr_spelllevel101" title="repeating_spells101_#_spelllevel101" value="*" /></td>
-											<td>
-											<textarea input class="sheet-inputbox" rows="1" cols="55" style="height: 20px; width: 150px;" name="attr_spellmacro101" title="repeating_spells101_#_spellmacro101 : Edit this field to create the macro run by the roll button" placeholder="spell macro goes here"></textarea>
-												</td>
-											<td><button type="roll" name="roll_spellcast101" text="Spell Cast101" title="repeating_spells101_#_spellcast101" value="@{spellmacro101}" style="height: 24px; width: 20px;" ></button>
-											</td>
-										</tr>
-									</table>
-								</fieldset>
-						</td>
-						<td> &nbsp; </td>
-						<td style="vertical-align:top;">
-							<table>
-								<tr class="sheet-table-header">
-									<td colspan="4"><input type="text" style="width: 395px;" name="attr_spellgroupname102" title="spellgroupname102" value="Spell-like Abilities"></td>
-								</tr>
-							</table>
-							<table>
-								<tr class="sheet-table-header">
-										<td style="width: 55px;" data-i18n="use-prep">Use/Prep</td>
-										<td style="width: 120px;" data-i18n="spell-name"> Spell name </td>
-										<td style="width: 20px;" data-i18n="level-a">Lvl</td>
-										<td style="width: 160px;" data-i18n="emote-macro">Emote/macro</td>
-								</tr>
-							</table>
-								<fieldset class="repeating_spells102">
-									<table style="width: 350px;" class="sheet-table-row">
-										<tr>
-											<td><input type="text" style="width: 25px;" name="attr_spellused102" title="repeating_spells102_#_spellused102" />/<input type="text" style="width: 25px;" name="attr_spellprep102" title="repeating_spells102_#_spellprep102" /></td>
-											<td style="width: 120px;"><input type="text" name="attr_spellname102" title="repeating_spells102_#_spellname102" placeholder="Spell Name" /></td>
-											<td style="width: 20px;"><input type="text" name="attr_spelllevel102" title="repeating_spells102_#_spelllevel102" value="*" ></td>
-											<td><textarea input class="sheet-inputbox" rows="1" cols="55" style="height: 20px; width: 150px;" name="attr_spellmacro102" title="repeating_spells102_#_spellmacro102 : Edit this field to create the macro run by the roll button" placeholder="spell macro goes here"></textarea>
-												</td>
-											<td><button type="roll" name="roll_spellcast102" text="Spell Cast102" title="repeating_spells102_#_spellcast102" value="@{spellmacro102}" style="height: 24px; width: 20px;" ></button>
-											</td>
-										</tr>
-									</table>
-								</fieldset>
-						</td>
-					</tr>
-				</table>
-			</div>
 		</div>
 		<br>
 	</div>
@@ -3500,8 +3434,9 @@
 				</table>
 				<table>
 					<tr>
-						<td class="sheet-statlabel" style="width: 250px; height: 24px; font-size: 1em;"><span datai18n="ability-name">Ability Name</span></td>
-						<td class="sheet-statlabel" style="width: 531px; height: 24px; font-size: 1em;"><span datai18n="effect">Effect</span></td>
+						<td class="sheet-statlabel" style="width: 250px; height: 24px; font-size: 1em;"><span dataii18n="ability-name">Ability Name</span></td>
+						<td class="sheet-statlabel" style="width: 49px; height: 24px; font-size: 1em;"><span datai-i18n="type">Type</span></td>
+						<td class="sheet-statlabel" style="width: 481px; height: 24px; font-size: 1em;"><span datai18n="effect">Effect</span></td>
 						<td class="sheet-statlabel" style="width: 30px; height: 24px; font-size: 0.75em;"><span datai18n="del">Del</span></td>
 					</tr>
 				</table>
@@ -3509,7 +3444,13 @@
 					<table>
 						<tr>
 							<td style="width: 252px;"><input class="sheet-inputbox" type="text" style="width: 250px; height: 24px;" name="attr_ability" title="ability"></td>
-							<td style="width: 533px;"><input class="sheet-inputbox" type="text" style="width: 531px; height: 24px;" name="attr_abilitydescription" title="abilitydescription"></td>
+							<td> <select name="attr_abilitytype" title="abilitytype" style="width: 49px; height: 24px;">
+								<option data-i18n="na" selected>Na</option>
+								<option data-i18n="ex">Ex</option>
+								<option data-i18n="spe">Sp</option>
+								<option data-i18n="su">Su</option>
+							</select></td>
+							<td style="width: 483px;"><input class="sheet-inputbox" type="text" style="width: 481px; height: 24px;" name="attr_abilitydescription" title="abilitydescription"></td>
 							<td style="width: 32px;"><input type="checkbox" name="attr_deleteability" title="deleteability" value="1" style="width: 20px;"></td>
 						</tr>
 					</table>

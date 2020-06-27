@@ -482,5 +482,9 @@
 	"level-6-spells": "Level 6 Spells",
 	"level-7-spells": "Level 7 Spells",
 	"level-8-spells": "Level 8 Spells",
-	"level-9-spells": "Level 9 Spells"
+	"level-9-spells": "Level 9 Spells",
+	"na": "Na",
+	"ex": "Ex",
+	"spe": "Sp",
+	"su": "Su"
 }
