@@ -1129,3 +1129,11 @@ font-style: italic;
 .charsheet table.sheet-bordertable {
 	border: 1px solid black;
 }
+
+.charsheet tr.sheet-rounded td {
+	text-align: center;
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
+	border: 1px solid black;
+	vertical-align: middle;
+}
