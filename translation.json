@@ -487,5 +487,6 @@
 	"ex": "Ex",
 	"spe": "Sp",
 	"su": "Su",
-	"caster-notes": "Caster<br>Notes"
+	"caster-notes": "Caster<br>Notes",
+	"notes-on": "Notes On: "
 }

@@ -39,6 +39,6 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
     * ~~Add Feats~~
 * **Miscellaneous Stuff**
     * ~~Add special ability types~~
+    * ~~Add notes~~
     * Make speed update automatically
     * Update Check Penalty and Max Dex
-    * Add notes

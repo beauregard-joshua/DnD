@@ -3508,44 +3508,23 @@
 					<td colspan="2" class="sheet-statlabel-big-gray" style="width:800px; height: 35px; font-size: 1.5em;" data-i18n="notes">Notes</td>
 				</tr>
 			</table>
-			<input type="checkbox" class="sheet-pc-notes1-show sheet-arrow" title="notes1-show" name="attr_notes1-show" value="1" checked /><span style="text-align: left;"><span data-i18n="show?">Show?</span> <input type="text" style="width: 395px;" name="attr_notes1groupname" title="notes1groupname" value="Notes Section Title (change it to what you want)"></span>
+			<input type="checkbox" class="sheet-pc-notes1-show sheet-arrow" title="notes1-show" name="attr_notes1-show" value="1" checked /><!--<span style="text-align: left;"><span data-i18n="show?">Show?</span> <input type="text" style="width: 395px;" name="attr_notes1groupname" title="notes1groupname" value="Notes Section Title (change it to what you want)"></span>-->
 			<div class="sheet-pc-notes1">
-				<table>
-					<tr>
-						<td style="vertical-align:top;">
-							<fieldset class="repeating_notes1">
-								<table style="width: 790px;" class="sheet-table-row">
-									<div class="sheet-table-row">
-										<span class="sheet-table-col"><input style="width: 80px;" type="text" name="attr_note1date" title="repeating_notes1_x_note1date" placeholder="Date" data-i18n-placeholder="date"> &nbsp; </span>
-										<span class="sheet-table-col">
-										<textarea input class="sheet-inputbox" rows="1" cols="55" style="height: 20px; width: 690px;" name="attr_note1body" title="repeating_notes1_x_note1body" placeholder="Note etc" data-i18n-placeholder="note-etc"></textarea>
-											</span>
-									</div>
-								</table>
-							</fieldset>
-						</td>
-					</tr>
-				</table>
-			</div>
-			<hr/>
-			<input type="checkbox" class="sheet-pc-notes2-show sheet-arrow" title="notes2-show" name="attr_notes2-show" value="1" checked /><span style="text-align: left;"><span data-i18n="show?">Show?</span> <input type="text" style="width: 395px;" name="attr_notes2groupname" title="notes2groupname" value="Notes Section Title (change it to what you want)"></span>
-			<div class="sheet-pc-notes2">
-				<table>
-					<tr>
-						<td style="vertical-align:top;">
-							<fieldset class="repeating_notes2">
-								<table style="width: 790px;" class="sheet-table-row">
-									<div class="sheet-table-row">
-										<span class="sheet-table-col"><input style="width: 80px;" type="text" name="attr_note2date" title="repeating_notes2_x_note2date" placeholder="Date" data-i18n-placeholder="date"> &nbsp; </span>
-										<span class="sheet-table-col">
-										<textarea input class="sheet-inputbox" rows="1" cols="55" style="height: 20px; width: 690px;" name="attr_note2body" title="repeating_notes2_x_note2body" placeholder="Note etc" data-i18n-placeholder="note-etc"></textarea>
-											</span>
-									</div>
-								</table>
-							</fieldset>
-						</td>
-					</tr>
-				</table>
+				<fieldset class="repeating_notes">
+					<table>
+						<tr>
+							<td style="width: 20px;"> &nbsp; </td>
+							<td style="text-align: left;"><span data-i18n="notes-on">Notes On: </span><input type="text" name="attr_notestitle" title="notestitle" style="width: 620px;"></td>
+							<td style="width: 30px;"><span data-i18n="del">Del</span></td>
+						</tr>
+						<tr>
+							<td style="width: 20px;"> &nbsp; </td>
+							<td><textarea style="width: 700px; resize: both;" cols="90" rows="8"></textarea></td>
+							<td><input type="checkbox" value="1" name="attr_deletenotes" title="deletenotes" style="width: 15px; vertical-align: top;"></td>
+						</tr>
+					</table>
+				</fieldset>
+				<button type="action" name="act_addnotes" title="addnotes">Add Notes</button>
 			</div>
 			<hr/>
 		</div>
@@ -7618,6 +7597,23 @@ Function that deletes a repeating lvl 9 spell
 **********************************************************************************/
 on("change:repeating_spell9:deletespell9", function(eventInfo) {
 	removeRepeatingRow(eventInfo.sourceAttribute.slice(0,37));
+});
+
+/**********************************************************************************
+Function that adds a repeating set of notes
+**********************************************************************************/
+on("clicked:addnotes", function(eventInfo) {
+	var ID = generateRowID();
+	newattr = {};
+	newattr["repeating_notes_"+ID+"_notestitle"] = "Title";
+	setAttrs(newattr);
+});
+
+/**********************************************************************************
+Function that deletes a repeating set of notes
+**********************************************************************************/
+on("change:repeating_notes:deletenotes", function(eventInfo) {
+	removeRepeatingRow(eventInfo.sourceAttribute.slice(0,36));
 });
 
 //  <!---- Copy weight from total equipment weight to total carried weight if wanted ---->
