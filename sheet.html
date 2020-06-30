@@ -1194,7 +1194,7 @@
         								<td style="width: 205px;"><input type="checkbox" name="attr_dexacbonusinuse" title="dexacbonusinuse (Uncheck if Dex is not used in your AC.)" value="1" style="width: 15px;" checked /> <input type="text" name="attr_dexacname" title="dexacname" style="width: 180px;" placeholder="Dex Bonus" data-i18n-placeholder="dexterity-bonus-a" readonly="readonly" /></td>
         								<td style="width: 45px;"><input type="text" name="attr_dexbonus" title="dexbonus" style="width: 45px;" value="@{dex-mod}" disabled="true" /></td>
         								<td style="width: 25px;">Y </td>
-        								<td style="width: 45px;"><input type="text" name="attr_dexacbonus" title="dexacbonus" style="width: 45px;" value="@{armorclassdexmod}" disabled="true" />
+										<td style="width: 45px;"><input type="text" name="attr_dexacbonus" title="dexacbonus" style="width: 45px;" value="@{armorclassdexmod}" disabled="true" />
         								<input type="hidden" name="attr_dexacpenalty" title="dexacpenalty" value="( [[ (0-floor((@{dex-mod} +0.1)/(abs(@{dex-mod}+0.1) +0.001))*@{dex-mod}) ]] )" disabled="true" />
         								<input type="hidden" name="attr_armordexmod" title="armordexmod (either dex-mod or max dex from AC items section below; whichever is lower)" value="(ceil((@{dex-mod} -@{acitemdex}*(100-99*@{armorworn}))/10000000000)*@{acitemdex} - floor((@{dex-mod} -@{acitemdex}*(100-99*@{armorworn})-1)/10000000000)*@{dex-mod} )" disabled="true"/>
         								<input type="hidden" name="attr_armorclassdexmod" title="armorclassdexmod (either dex-mod, max dex from AC items section, or max dex from encumbrance; whichever is lower)" value="(ceil((@{armordexmod}-@{encumbrmaxdex})/10000000000)*@{encumbrmaxdex} - floor((@{armordexmod}-@{encumbrmaxdex}-1)/10000000000)*@{armordexmod})" disabled="true" /></td>
@@ -1655,7 +1655,7 @@
 							<option value="b" data-i18n="biped">Biped</option>
 							<option value="q" data-i18n="quadreped">Quadreped</option>
 						</select></td>
-						<td><input class="sheet-inputbox" type="text" name="attr_encumbrmaxdex" title="encumbrmaxdex" style="height: 24px; width: 45px;" value="100+(97*floor(((@{lightloadmax})-(@{totalweight}))/1000000))+(2*floor(((@{medloadmax})-(@{totalweight}))/1000000))" disabled="true" /></td>
+						<td><input class="sheet-inputbox" type="text" name="attr_encumbrmaxdex" title="encumbrmaxdex" style="height: 24px; width: 45px;" value="(100+(97*floor(((@{lightloadmax})-(@{totalweight}))/1000000))+(2*floor(((@{medloadmax})-(@{totalweight}))/1000000)))" disabled="true" /></td>
 						<td><input class="sheet-inputbox" type="text" name="attr_encumbracp" title="encumbracp" style="height: 24px; width: 45px;" value="(3*floor(((@{lightloadmax})-(@{totalweight}))/1000000))+(3*floor(((@{medloadmax})-(@{totalweight}))/1000000))" disabled="true" /></td>
 						<td><input class="sheet-inputbox" type="text" name="attr_encumbrspeed50" title="encumbrspeed50" style="height: 24px; width: 45px; text-align: right;" value="5*ceil(10*(1+(floor(((@{lightloadmax})-(@{totalweight}))/1000000)/3)))" disabled="true" /><span data-i18n="feet-i">ft</span>.</td>
 						<td><input class="sheet-inputbox" type="text" name="attr_encumbrspeed40" title="encumbrspeed40" style="height: 24px; width: 45px; text-align: right;" value="5*ceil(8*(1+(floor(((@{lightloadmax})-(@{totalweight}))/1000000)/3)))" disabled="true" /><span data-i18n="feet-i">ft</span>.</td>

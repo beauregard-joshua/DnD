@@ -40,5 +40,5 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
 * **Miscellaneous Stuff**
     * ~~Add special ability types~~
     * ~~Add notes~~
+    * ~~Update the check penalty and max dex~~
     * Make speed update automatically
-    * Update Check Penalty and Max Dex
