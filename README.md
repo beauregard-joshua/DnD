@@ -6,8 +6,10 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
 *Italic* text refers to tasks currently in development  
 ~~Striked~~ text refers to tasks completed  
 
-## Tasks
+## Version History
 
+### Version 1.0 (Official Release)
+First official release of the character sheet.
 * ~~**Overhaul the armor section**~~
     * ~~Add repeating armor~~
     * ~~Add repeating shield~~
@@ -20,10 +22,9 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
     * ~~Write javascript for updating weapon stats~~
     * ~~Beautify everything~~
     * ~~Add weapon weight~~
-* **Overhaul Spells**
+* ~~**Overhaul Spells**~~
     * ~~Add repeating spells~~
     * ~~Add caster notes~~
-    * Beautify everything
 * ~~**Overhaul Inventory**~~
     * ~~Add money~~
     * ~~Add inventory~~
@@ -37,8 +38,7 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
     * ~~Add Languages~~
     * ~~Add Special Abilities~~
     * ~~Add Feats~~
-* **Miscellaneous Stuff**
+* ~~**Miscellaneous Stuff**~~
     * ~~Add special ability types~~
     * ~~Add notes~~
     * ~~Update the check penalty and max dex~~
-    * Make speed update automatically
