@@ -8,6 +8,11 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
 
 ## Version History
 
+### Version 1.01
+Revised translation issues
+* ~~Clean out the translation~~
+* Add new translation elements where missing
+
 ### Version 1.0 (Official Release)
 First official release of the character sheet.
 * ~~**Overhaul the armor section**~~
