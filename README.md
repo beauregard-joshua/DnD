@@ -11,7 +11,7 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
 ### Version 1.02
 Cleaning up translation issues and improving file sizes by removing excess translation
 
-* ~~Removed unnecessary translation
+* ~~Removed unnecessary translation~~
 * *Add new translations*
 
 ### Version 1.01
