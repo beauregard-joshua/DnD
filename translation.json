@@ -455,6 +455,7 @@
 	"v": "V",
 	"v-s": "V,S",
 	"v-s-f": "V,S,F",
+	"v-s-df": "V,S,DF",
 	"v-s-m": "V,S,M",
 	"s": "S",
 	"air": "Air",
