@@ -458,6 +458,7 @@
 	"v-s-df": "V,S,DF",
 	"v-s-m": "V,S,M",
 	"v-s-m-f": "V,S,M,F",
+	"v-s-m-df": "V,S,M,DF",
 	"s": "S",
 	"air": "Air",
 	"earth": "Earth",
