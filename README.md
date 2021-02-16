@@ -7,6 +7,16 @@ These files represent a character sheet for DnD 3.5e that will be used for the G
 ~~Striked~~ text refers to tasks completed  
 
 ## Version History
+
+### Version 1.02
+Fixed all current spells of players to incorperate all possible components
+* ~~Added V,S,DF~~
+* ~~Added V,S,M,F~~
+* ~~Added V,S,M,DF~~
+
+Fixed skill related bugs
+* ~~Fixed a bug where Spellcraft did not take synergy into account~~
+
 ### Version 1.01
 Fixed a bug where spells did not have the school option for Divination
 
