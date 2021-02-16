@@ -5662,10 +5662,10 @@ on("change:sleightofhandranks change:sleightofhandmiscmod change:acitemcheckpena
 Function that updates the untrained skill Spellcraft
 **********************************************************************************/
 on("change:spellcraftranks change:spellcraftmiscmod change:int-mod", function() {
-    getAttrs(["spellcraftranks", "spellcraftmiscmod", "int-mod"], function(values) {
+    getAttrs(["spellcraftranks", "spellcraftmiscmod", "spellcraftsynergy", "int-mod"], function(values) {
         if(parseInt(values.spellcraftranks,10) > 0) {
             setAttrs({
-                "spellcraft": parseInt(values.spellcraftranks,10)+parseInt(values.spellcraftmiscmod,10)+parseInt(values["int-mod"],10)
+                "spellcraft": parseInt(values.spellcraftranks,10)+parseInt(values.spellcraftmiscmod,10)+parseInt(values["spellcraftsynergy"],10)+parseInt(values["int-mod"],10)
             });
         }
         else {
